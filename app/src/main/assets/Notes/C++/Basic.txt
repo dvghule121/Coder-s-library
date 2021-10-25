@@ -1,0 +1,155 @@
+*** C++ Programming Basics ***
+
+1.Basic Syntax and First Program in C++:
+     Learning C++ programming can be simplified into writing your program in a text editor and saving it with correct extension
+     (.CPP, .C, .CP) and compiling your program using a compiler or online IDE. 
+     The “Hello World” program is the first step towards learning any programming language and also one of the simplest programs you will learn.
+
+2.Comments in C++:
+      A well-documented program is a good practice as a programmer. It makes a program more readable and error finding become easier. 
+      One important part of good documentation is Comments. In computer programming, a comment is a programmer-readable explanation or annotation in the source code of a computer program.
+       These are statements that are not executed by the compiler and interpreter.
+
+3.C++ Data Types:
+      All variables use data-type during declaration to restrict the type of data to be stored. 
+      Therefore, we can say that data types are used to tell the variables the type of data it can store. 
+      Whenever a variable is defined in C++, the compiler allocates some memory for that variable based on the data-type with which it is declared. 
+      Every data type requires a different amount of memory.
+
+4.Variables in C++:
+      A variable is a name given to a memory location. It is the basic unit of storage in a program. 
+
+         1)The value stored in a variable can be changed during program execution.
+         2)A variable is only a name given to a memory location, all the operations done on the variable effects that memory location.
+         3)In C++, all the variables must be declared before use.
+    
+5.Constants and Literals in C++: 
+      As the name suggests the name constants is given to such variables or values in C++ programming language which cannot be modified once they are defined. 
+      They are fixed values in a program. There can be any types of constants like integer, float, octal, hexadecimal, character constants, etc.
+       Every constant has some range. The integers that are too big to fit into an int will be taken as long. 
+       Now there are various ranges that differ from unsigned to signed bits. Under the signed bit, the range of an int varies from -128 to +127 and under the unsigned bit, int varies from 0 to 255.
+       Literals are kind of constants and both the terms are used interchangeably in C++.
+
+6.Loops in C++:
+     Loops in programming comes into use when we need to repeatedly execute a block of statements. For example: Suppose we want to print “Hello World” 10 times.
+      This can be done in two ways, Iterative method and by using Loops.
+
+7.Input Stream: If the direction of flow of bytes is from the device(for example, Keyboard) to the main memory then this process is called input.
+Output Stream: If the direction of flow of bytes is opposite, i.e. from main memory to device( display screen ) then this process is called output.
+
+
+**Header files available in C++ for Input/Output operations are: 
+
+-->iostream: iostream stands for standard input-output stream. This header file contains definitions of objects like cin, cout, cerr, etc.
+iomanip: iomanip stands for input-output manipulators. The methods declared in these files are used for manipulating streams. This file contains definitions of setw, setprecision, etc.
+fstream: This header file mainly describes the file stream. This header file is used to handle the data being read from a file as input or data being written into the file as output.
+The two keywords cout in C++ and cin in C++ are used very often for printing outputs and taking inputs respectively. These two are the most basic methods of taking input and printing output in C++. To use cin and cout in C++ one must include the header file iostream in the program.
+
+This article mainly discusses the objects defined in the header file iostream like the cin and cout.  
+
+
+9.Standard output stream (cout): Usually the standard output device is the display screen. The C++ cout statement is the instance of the ostream class. It is used to produce output on the standard output device which is usually the display screen. The data needed to be displayed on the screen is inserted in the standard output stream (cout) using the insertion operator(<<).
+
+10.Sample Code : 
+
+#include <iostream>
+ 
+using namespace std;
+ 
+int main()
+{
+    char sample[] = "GeeksforGeeks";
+ 
+    cout << sample << " - A computer science portal for geeks";
+ 
+    return 0;
+}
+Output: 
+
+GeeksforGeeks - A computer science portal for geeks
+
+In the above program, the insertion operator(<<) inserts the value of the string variable sample followed by the string “A computer science portal for geeks” in the standard output stream cout which is then displayed on the screen.
+
+standard input stream (cin): Usually the input device in a computer is the keyboard. C++ cin statement is the instance of the class istream and is used to read input from the standard input device which is usually a keyboard. 
+The extraction operator(>>) is used along with the object cin for reading inputs. The extraction operator extracts the data from the object cin which is entered using the keyboard.
+
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+    int age;
+ 
+    cout << "Enter your age:";
+    cin >> age;
+    cout << "\nYour age is: " << age;
+ 
+    return 0;
+}
+Input : 
+
+18
+Output: 
+
+Enter your age:
+Your age is: 18
+The above program asks the user to input the age. The object cin is connected to the input device. The age entered by the user is extracted from cin using the extraction operator(>>) and the extracted data is then stored in the variable age present on the right side of the extraction operator.
+
+Un-buffered standard error stream (cerr): The C++ cerr is the standard error stream that is used to output the errors. This is also an instance of the ostream class. As cerr in C++ is un-buffered so it is used when one needs to display the error message immediately. It does not have any buffer to store the error message and display it later.
+The main difference between cerr and cout comes when you would like to redirect output using “cout” that gets redirected to file if you use “cerr” the error doesn’t get stored in file.(This is what un-buffered means ..It cant store the message)
+
+#include <iostream>
+ 
+using namespace std;
+ 
+int main()
+{
+    cerr << "An error occured";
+    return 0;
+}
+Output: 
+
+8.An error occured
+buffered standard error stream (clog): This is also an instance of ostream class and used to display errors but unlike cerr the error is first inserted into a buffer and is stored in the buffer until it is not fully filled. or the buffer is not explicitly flushed (using flush()). The error message will be displayed on the screen too.
+
+#include <iostream>
+ 
+using namespace std;
+ 
+int main()
+{
+    clog << "An error occured";
+ 
+    return 0;
+}
+Output: 
+
+An error occured
+
+
+
+11. endl vs \n in C++
+
+Difficulty Level : Easy
+Last Updated : 08 Feb, 2021
+Although they both seem to do the same thing, there is a subtle difference between them. 
+
+cout << endl  : Inserts a new line and flushes the stream
+
+cout << "\n"  : Only inserts a new line.
+Therefore, 
+cout << endl; 
+can be said equivalent to 
+cout << ‘\n’ << flush; 
+So cout << “\n” seems performance wise better than cout << endl; unless flushing of stream is required. 
+Some other differences between endl and \n are:  
+
+endl is manipulator while \n is character.
+endl doesn’t occupy any memory whereas \n is character so It occupy 1 byte memory.
+\n being a character can be stored in a string(will still convey its specific meaning of line break) while endl is a keyword and would not specify any meaning when stored in a string.
+We cannot write endl in between double quotation while we can write \n in between double quotation like 
+cout<<“\n”; it is right but cout<<“endl”; is wrong.
+We can use \n both in C and C++ but, endl is only supported by C++ and not the C language.
+
+==================================================
+      

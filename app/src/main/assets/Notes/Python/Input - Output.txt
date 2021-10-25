@@ -1,0 +1,786 @@
+***Taking input in Python***
+Developers often have a need to interact with users, either to get data or to 
+provide some sort of result. Most programs today use a dialog box as a way of 
+asking the user to provide some type of input. While Python provides us with 
+two inbuilt functions to read the input from the keyboard.
+
+input ( prompt )
+raw_input ( prompt )
+input ( ) : This function first takes the input from the user and then 
+evaluates the expression, which means Python automatically identifies whether 
+user entered a string or a number or list. If the input provided is not 
+correct then either syntax error or exception is raised by python. 
+For example –
+# Python program showing 
+# a use of input()
+  
+val = input("Enter your value: ")
+print(val)
+Output:
+
+How the input function works in Python :
+
+When input() function executes program flow will be stopped until the user has 
+given an input.
+The text or message display on the output screen to ask a user to enter input 
+value is optional i.e. the prompt, will be printed on the screen is optional.
+Whatever you enter as input, input function convert it into a string. if you 
+enter an integer value still input() function convert it into a string. You 
+need to explicitly convert it into an integer in your code using typecasting.
+Code:
+
+# Program to check input 
+# type in Python
+  
+num = input ("Enter number :")
+print(num)
+name1 = input("Enter name : ")
+print(name1)
+  
+# Printing type of input value
+print ("type of number", type(num))
+print ("type of name", type(name1))
+Output :
+
+
+raw_input ( ) : This function works in older version (like Python 2.x). This 
+function takes exactly what is typed from the keyboard, convert it to string 
+and then return it to the variable in which we want to store. For example –
+
+# Python program showing 
+# a use of raw_input()  
+
+g = raw_input("Enter your name : ")
+print g
+Output :
+Here, g is a variable which will get the string value, typed by user during 
+the execution of program. Typing of data for the raw_input() function is 
+terminated by enter key. We can use raw_input() to enter numeric data also. In 
+that case we use typecasting
+
+===============================================
+
+*** Taking Input From Console ***
+
+What is Console in Python? Console (also called Shell) is basically a command 
+line interpreter that takes input from the user i.e one command at a time and 
+interprets it. If it is error free then it runs the command and gives required 
+output otherwise shows the error message. A Python Console looks like this.
+
+Here we write command and to execute the command just press enter key and your 
+command will be interpreted.
+For coding in Python you must know the basics of the console used in Python.
+
+The primary prompt of the python console is the three greater than symbols
+>>>
+You are free to write the next command on the shell only when after executing 
+the first command these prompts have appeared. The Python Console accepts 
+command in Python which you write after the prompt.
+
+Accepting Input from Console
+User enters the values in the Console and that value is then used in the 
+program as it was required.
+To take input from the user we make use of a built-in function input().
+
+# input
+input1 = input()
+  
+# output
+print(input1)
+We can also type cast this input to integer, float or string by specifying the 
+input() function inside the type.
+
+Typecasting the input to Integer: There might be conditions when you might 
+require integer input from user/Console, the following code takes two input
+(integer/float) from console and typecasts them to integer then prints the sum.
+
+# input
+num1 = int(input())
+num2 = int(input())
+  
+# printing the sum in integer
+print(num1 + num2)
+Typecasting the input to Float: To convert the input to float the following 
+code will work out.
+
+# input
+num1 = float(input())
+num2 = float(input())
+  
+# printing the sum in float
+print(num1 + num2)
+Typecasting the input to String: All kind of input can be converted to string 
+type whether they are float or integer. We make use of keyword str for 
+typecasting.
+
+# input
+string = str(input())
+  
+# output
+print(string)
+
+===============================================
+
+*** Taking Multiple Inputs ***
+
+The developer often wants a user to enter multiple values or inputs in one 
+line. In C++/C user can take multiple inputs in one line using scanf but in 
+Python user can take multiple values or inputs in one line by two methods. 
+
+Using split() method
+Using List comprehension
+Using split() method : 
+This function helps in getting multiple inputs from users. It breaks the given 
+input by the specified separator. If a separator is not provided then any 
+white space is a separator. Generally, users use a split() method to split a 
+Python string but one can use it in taking multiple inputs.
+
+Syntax : 
+
+input().split(separator, maxsplit)
+Example : 
+
+
+# Python program showing how to
+# multiple input using split
+ 
+# taking two inputs at a time
+x, y = input("Enter a two value: ").split()
+print("Number of boys: ", x)
+print("Number of girls: ", y)
+print()
+ 
+# taking three inputs at a time
+x, y, z = input("Enter a three value: ").split()
+print("Total number of students: ", x)
+print("Number of boys is : ", y)
+print("Number of girls is : ", z)
+print()
+ 
+# taking two inputs at a time
+a, b = input("Enter a two value: ").split()
+print("First number is {} and second number is {}".format(a, b))
+print()
+ 
+# taking multiple inputs at a time
+# and type casting using list() function
+x = list(map(int, input("Enter a multiple value: ").split()))
+print("List of students: ", x)
+Output: 
+ 
+
+
+
+
+
+
+Using List comprehension : 
+List comprehension is an elegant way to define and create list in Python. We 
+can create lists just like mathematical statements in one line only. It is 
+also used in getting multiple inputs from a user. 
+
+Example: 
+
+
+# Python program showing
+# how to take multiple input
+# using List comprehension
+ 
+# taking two input at a time
+x, y = [int(x) for x in input("Enter two value: ").split()]
+print("First Number is: ", x)
+print("Second Number is: ", y)
+print()
+ 
+# taking three input at a time
+x, y, z = [int(x) for x in input("Enter three value: ").split()]
+print("First Number is: ", x)
+print("Second Number is: ", y)
+print("Third Number is: ", z)
+print()
+ 
+# taking two inputs at a time
+x, y = [int(x) for x in input("Enter two value: ").split()]
+print("First number is {} and second number is {}".format(x, y))
+print()
+ 
+# taking multiple inputs at a time
+x = [int(x) for x in input("Enter multiple value: ").split()]
+print("Number of list is: ", x)
+Output : 
+ 
+
+
+
+Note: The above examples take input separated by spaces. In case we wish to 
+take input separated by comma (, ), we can use the following: 
+
+
+# taking multiple inputs at a time separated by comma
+x = [int(x) for x in input("Enter multiple value: ").split(",")]
+print("Number of list is: ", x)
+
+===============================================
+
+*** Output in Python ***
+
+The simplest way to produce output is using the print() function where you can 
+pass zero or more expressions separated by commas. This function converts the 
+expressions you pass into a string before writing to the screen. 
+
+Syntax: print(value(s), sep= ‘ ‘, end = ‘\n’, file=file, flush=flush)
+Parameters: 
+value(s) : Any value, and as many as you like. Will be converted to string 
+before printed 
+sep=’separator’ : (Optional) Specify how to separate the objects, if there is 
+more than one.Default :’ ‘ 
+end=’end’: (Optional) Specify what to print at the end.Default : ‘\n’ 
+file : (Optional) An object with a write method. Default :sys.stdout 
+flush : (Optional) A Boolean, specifying if the output is flushed (True) or 
+buffered (False). Default: False
+Returns: It returns output to the screen.
+
+Though it is not necessary to pass arguments in the print() function, it 
+requires an empty parenthesis at the end that tells python to execute the 
+function rather calling it by name. Now, let’s explore the optional arguments 
+that can be used with the print() function.
+
+1. String Literals
+String literals in python’s print statement are primarily used to format or 
+design how a specific string appears when printed using the print() function.
+
+\n : This string literal is used to add a new blank line while printing a 
+statement.
+“” : An empty quote (“”) is used to print an empty line.
+Example:
+
+
+
+
+
+print ("GeeksforGeeks \n is best for DSA Content.")
+Output:
+
+GeeksforGeeks 
+ is best for DSA Content.
+2. end= ” ” statement
+The end keyword is used to specify the content that is to be printed at the 
+end of the execution of the print() function. By default, it is set to “\n”, 
+which leads to the change of line after the execution of print() statement.
+
+Example:
+
+
+# This line will automatically add a new line before the
+# next print statement
+print ("GeeksForGeeks is the best platform for DSA content")
+ 
+# This print() function ends with "**" as set in the end argument.
+print ("GeeksForGeeks is the best platform for DSA content", end= "**")
+Output:
+
+GeeksForGeeks is the best platform for DSA content
+GeeksForGeeks is the best platform for DSA content**
+3. flush Argument
+The I/Os in python is generally buffered, meaning they are used in chunks. 
+This is where flush comes in as it helps users to decide if they need the 
+written content to be buffered or not. By default, it is set to false. If it 
+is set to true, the output will be written as a sequence of characters one 
+after the other. This process is slow simply because it is easier to write in 
+chunks rather than writing one character at a time. To understand the use case 
+of the flush argument in the print() function, let’s take an example.
+
+Example:
+
+Imagine you are building a countdown timer, which appends the remaining time 
+to the same line every second. It would look something like below:
+
+3>>>2>>>1>>>Start
+The initial code for this would look something like below;
+
+import time
+ 
+count_seconds = 3
+for i in reversed(range(count_seconds + 1)):
+    if i > 0:
+        print(i, end='>>>')
+        time.sleep(1)
+    else:
+        print('Start')
+So, the above code adds text without a trailing newline and then sleeps for 
+one second after each text addition. At the end of the countdown, it prints 
+Start and terminates the line. If you run the code as it is, it waits for 3 
+seconds and abruptly prints the entire text at once. This is a waste of 3 
+seconds caused due to buffering of the text chunk as shown below:
+
+
+
+Though buffering serves a purpose, it can result in undesired effects as shown 
+above. To counter the same issue, the flush argument is used with the print() 
+function. Now, set the flush argument as true and again see the results.
+
+
+import time
+ 
+count_seconds = 3
+for i in reversed(range(count_seconds + 1)):
+    if i > 0:
+        print(i, end='>>>', flush = True)
+        time.sleep(1)
+    else:
+        print('Start')
+Output:
+
+Video Player
+
+00:00
+00:10
+
+
+4. Separator
+The print() function can accept any number of positional arguments. These 
+arguments can be separated from each other using a “,” separator. These are 
+primarily used for formatting multiple statements in a single print() function.
+
+Example:
+
+
+b = "for"
+ 
+print("Geeks", b , "Geeks")
+Output:
+
+Geeks for Geeks
+5. file Argument
+Contrary to popular belief, the print() function doesn’t convert the messages 
+into text on the screen. These are done by lower-level layers of code, that 
+can read data(message) in bytes. The print() function is an interface over 
+these layers, that delegates the actual printing to a stream or file-like 
+object. By default, the print() function is bound to sys.stdout through the 
+file argument. 
+
+Example:
+
+import io
+ 
+# declare a dummy file
+dummy_file = io.StringIO()
+ 
+# add message to the dummy file
+print('Hello Geeks!!', file=dummy_file)
+ 
+# get the value from dummy file
+dummy_file.getvalue()
+Output:
+
+'Hello Geeks!!\n'
+Example : Using print() function in Python
+ 
+
+
+# Python 3.x program showing
+# how to print data on
+# a screen
+ 
+# One object is passed
+print("GeeksForGeeks")
+ 
+x = 5
+# Two objects are passed
+print("x =", x)
+ 
+# code for disabling the softspace feature
+print('G', 'F', 'G', sep ='')
+ 
+# using end argument
+print("Python", end = '@') 
+print("GeeksforGeeks")
+Output
+GeeksForGeeks
+x = 5
+GFG
+Python@GeeksforGeeks
+ Attention geek! Strengthen your foundations with the Python Programming 
+ Foundation Course and learn the basics.  
+
+
+===============================================
+
+*** Print Output ***
+
+Generally, people switching from C/C++ to Python wonder how to print two or 
+more variables or statements without going into a new line in python. Since 
+the python print() function by default ends with a newline. Python has a 
+predefined format if you use print(a_variable) then it will go to the next 
+line automatically. 
+ 
+
+For example: 
+
+
+print("geeks")
+print("geeksforgeeks")
+Will result in this: 
+
+geeks
+geeksforgeeks
+But sometimes it may happen that we don’t want to go to the next line but want 
+to print on the same line. So what we can do? 
+ 
+
+For Example: 
+
+
+
+
+Input : print("geeks") print("geeksforgeeks")
+Output : geeks geeksforgeeks
+
+Input : a = [1, 2, 3, 4]
+Output : 1 2 3 4 
+The solution discussed here is totally dependent on the python version you are 
+using. 
+ 
+
+Print without newline in Python 2.x
+
+# Python 2 code for printing
+# on the same line printing
+# geeks and geeksforgeeks
+# in the same line
+ 
+print("geeks"),
+print("geeksforgeeks")
+ 
+# array
+a = [1, 2, 3, 4]
+ 
+# printing a element in same
+# line
+for i in range(4):
+    print(a[i]),
+Output: 
+
+geeks geeksforgeeks
+1 2 3 4
+Print without newline in Python 3.x
+
+# Python 3 code for printing
+# on the same line printing
+# geeks and geeksforgeeks
+# in the same line
+ 
+print("geeks", end =" ")
+print("geeksforgeeks")
+ 
+# array
+a = [1, 2, 3, 4]
+ 
+# printing a element in same
+# line
+for i in range(4):
+    print(a[i], end =" ")
+Output: 
+
+geeks geeksforgeeks
+1 2 3 4
+Print without newline in Python 3.x without using for loop
+
+# Print without newline in Python 3.x without using for loop
+ 
+l=[1,2,3,4,5,6]
+ 
+# using * symbol prints the list
+# elements in a single line
+print(*l)
+ 
+#This code is contributed by anuragsingh1022
+Output:
+
+1 2 3 4 5 6
+
+===============================================
+
+*** End parameter ***
+
+By default python’s print() function ends with a newline. A programmer with 
+C/C++ background may wonder how to print without newline.
+
+Python’s print() function comes with a parameter called ‘end’. By default, the 
+value of this parameter is ‘\n’, i.e. the new line character. You can end a 
+print statement with any character/string using this parameter.
+
+
+# This Python program must be run with
+# Python 3 as it won't work with 2.7.
+  
+# ends the output with a <space> 
+print("Welcome to" , end = ' ') 
+print("GeeksforGeeks", end = ' ')
+
+Output :
+Welcome to GeeksforGeeks
+
+One more program to demonstrate working of end parameter.
+
+
+# This Python program must be run with
+# Python 3 as it won't work with 2.7.
+  
+# ends the output with '@'
+print("Python" , end = '@') 
+print("GeeksforGeeks")
+
+Output :
+Python@GeeksforGeeks
+This article is contributed by Ankit Bindal. If you like GeeksforGeeks and 
+would like to contribute, you can also write an article and mail your article 
+to contribute@geeksforgeeks.org. See your article appearing on the 
+GeeksforGeeks main page and help other Geeks.
+
+===============================================
+
+*** Seperator parameter ***
+
+The separator between the arguments to print() function in Python is space by 
+default (softspace feature) , which can be modified and can be made to any 
+character, integer or string as per our choice. The ‘sep’ parameter is used to 
+achieve the same, it is found only in python 3.x or later. It is also used for 
+formatting the output strings. 
+
+Examples:
+
+#code for disabling the softspace feature
+print('G','F','G', sep='')
+ 
+#for formatting a date
+print('09','12','2016', sep='-')
+ 
+#another example
+print('pratik','geeksforgeeks', sep='@')
+Output: 
+ 
+
+GFG
+09-12-2016
+pratik@geeksforgeeks
+
+The sep parameter when used with the end parameter it produces awesome 
+results. Some examples by combining the sep and end parameters.
+ 
+print('G','F', sep='', end='')
+print('G')
+#\n provides new line after printing the year
+print('09','12','2016', sep='-', end='\n')
+ 
+print('prtk','agarwal', sep='', end='@')
+print('geeksforgeeks')
+Output: 
+ 
+ 
+#import the below module and see what happens
+import antigravity
+#NOTE - it wont work on online ide
+===============================================
+
+*** Output Formatting ***
+
+There are several ways to present the output of a program, data can be printed 
+in a human-readable form, or written to a file for future use or even in some 
+other specified form. Sometimes user often wants more control the formatting 
+of output than simply printing space-separated values. There are several ways 
+to format output. 
+
+To use formatted string literals, begin a string with f or F before the 
+opening quotation mark or triple quotation mark.
+The str.format() method of strings help a user to get a fancier Output
+Users can do all the string handling by using string slicing and concatenation 
+operations to create any layout that the user wants. The string type has some 
+methods that perform useful operations for padding strings to a given column 
+width.
+Formatting output using String modulo operator(%) : 
+The % operator can also be used for string formatting. It interprets the left 
+argument much like a printf()-style format as in C language string to be 
+applied to the right argument. In Python, there is no printf() function but 
+the functionality of the ancient printf is contained in Python. To this 
+purpose, the modulo operator % is overloaded by the string class to perform 
+string formatting. Therefore, it is often called a string modulo (or sometimes 
+even called modulus) operator. 
+
+The string modulo operator ( % ) is still available in Python(3.x) and the 
+user is using it widely. But nowadays the old style of formatting is removed 
+from the language. 
+
+
+# Python program showing how to use
+# string modulo operator(%) to print
+# fancier output
+ 
+# print integer and float value
+print("Geeks : %2d, Portal : %5.2f" % (1, 05.333))
+ 
+# print integer value
+print("Total students : %3d, Boys : %2d" % (240, 120))
+ 
+# print octal value
+print("%7.3o" % (25))
+ 
+# print exponential value
+print("%10.3E" % (356.08977))
+Output : 
+
+Geeks :  1, Portal : 5.33
+Total students : 240, Boys : 120
+031
+3.561E+02
+
+
+
+
+
+There are two of those in our example: “%2d” and “%5.2f”. The general syntax 
+for a format placeholder is: 
+
+ %[flags][width][.precision]type 
+Let’s take a look at the placeholders in our example.  
+
+The first placeholder “%2d” is used for the first component of our tuple, i.e. 
+the integer 1. The number will be printed with 2 characters. As 1 consists 
+only of one digit, the output is padded with 1 leading blanks.
+The second one “%5.2f” is a format description for a float number. Like other 
+placeholders, it is introduced with the % character. This is followed by the 
+total number of digits the string should contain. This number includes the 
+decimal point and all the digits, i.e. before and after the decimal point.
+Our float number 05.333 has to be formatted with 5 characters. The decimal 
+part of the number or the precision is set to 2, i.e. the number following the 
+“.” in our placeholder. Finally, the last character “f” of our placeholder 
+stands for “float”.
+Formatting output using the format method : 
+The format() method was added in Python(2.6). The format method of strings 
+requires more manual effort. Users use {} to mark where a variable will be 
+substituted and can provide detailed formatting directives, but the user also 
+needs to provide the information to be formatted. This method lets us 
+concatenate elements within an output through positional formatting. For 
+Example – 
+
+Code 1:  
+
+
+# Python program showing
+# use of format() method
+ 
+# using format() method
+print('I love {} for "{}!"'.format('Geeks', 'Geeks'))
+ 
+# using format() method and referring
+# a position of the object
+print('{0} and {1}'.format('Geeks', 'Portal'))
+ 
+print('{1} and {0}'.format('Geeks', 'Portal'))
+ 
+ 
+# the above formatting can also be done by using f-Strings
+# Although, this features work only with python 3.6 or above.
+ 
+print(f"I love {'Geeks'} for \"{'Geeks'}!\"")
+ 
+# using format() method and referring
+# a position of the object
+print(f"{'Geeks'} and {'Portal'}")
+Output : 
+
+I love Geeks for "Geeks!"
+Geeks and Portal
+Portal and Geeks
+The brackets and characters within them (called format fields) are replaced 
+with the objects passed into the format() method. A number in the brackets can 
+be used to refer to the position of the object passed into the format() 
+method. 
+  
+Code 2: 
+
+
+# Python program showing
+# a use of format() method
+ 
+# combining positional and keyword arguments
+print('Number one portal is {0}, {1}, and {other}.'
+     .format('Geeks', 'For', other ='Geeks'))
+ 
+# using format() method with number
+print("Geeks :{0:2d}, Portal :{1:8.2f}".
+      format(12, 00.546))
+ 
+# Changing positional argument
+print("Second argument: {1:3d}, first one: {0:7.2f}".
+      format(47.42, 11))
+ 
+print("Geeks: {a:5d},  Portal: {p:8.2f}".
+     format(a = 453, p = 59.058))
+Output: 
+
+Number one portal is Geeks, For, and Geeks.
+Geeks :12, Portal :    0.55
+Second argument:  11, first one:   47.42
+Geeks:   453, Portal:    59.06
+The following diagram with an example usage depicts how the format method 
+works for positional parameters: 
+
+Code 3: 
+
+# Python program to
+# show format () is
+# used in dictionary
+ 
+tab = {'geeks': 4127, 'for': 4098, 'geek': 8637678}
+ 
+# using format() in dictionary
+print('Geeks: {0[geeks]:d}; For: {0[for]:d}; '
+    'Geeks: {0[geek]:d}'.format(tab))
+ 
+data = dict(fun ="GeeksForGeeks", adj ="Portal")
+ 
+# using format() in dictionary
+print("I love {fun} computer {adj}".format(**data))
+Output: 
+
+Geeks: 4127; For: 4098; Geeks: 8637678
+I love GeeksForGeeks computer Portal
+Formatting output using the String method : 
+This output is formatted by using string slicing and concatenation operations. 
+The string type has some methods that help in formatting output in a fancier 
+way. Some of method which help in formatting a output are str.ljust(), str.
+rjust(), str.centre()
+
+
+# Python program to
+# format a output using
+# string() method
+ 
+cstr = "I love geeksforgeeks"
+   
+# Printing the center aligned 
+# string with fillchr
+print ("Center aligned string with fillchr: ")
+print (cstr.center(40, '#'))
+ 
+# Printing the left aligned 
+# string with "-" padding 
+print ("The left aligned string is : ")
+print (cstr.ljust(40, '-'))
+ 
+# Printing the right aligned string
+# with "-" padding 
+print ("The right aligned string is : ")
+print (cstr.rjust(40, '-'))
+Output: 
+
+Center aligned string with fillchr: 
+##########I love geeksforgeeks##########
+
+The left aligned string is : 
+I love geeksforgeeks--------------------
+
+The right aligned string is : 
+--------------------I love geeksforgeeks
+===============================================

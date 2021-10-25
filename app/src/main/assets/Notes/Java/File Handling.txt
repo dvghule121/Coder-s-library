@@ -1,0 +1,706 @@
+
+***Java.io.InputStream Class in Java***
+
+* Last Updated : 01 Mar, 2018
+InputStream class is the superclass of all the io classes i.e. representing an input stream of bytes. It represents input stream of bytes. Applications that are defining subclass of InputStream must provide method, returning the next byte of input.
+A reset() method is invoked which re-positions the stream to the recently marked position.
+ InputStream 
+
+Declaration :
+public abstract class InputStream
+   extends Object
+      implements Closeable
+Constructor :
+* InputStream() : Single Constructor
+Methods:
+ InputStream Class in Java. 
+
+mark() : Java.io.InputStream.mark(int arg) marks the current position of the input stream. It sets readlimit i.e. maximum number of bytes that can be read before mark position becomes invalid.
+Syntax :
+public void mark(int arg)
+Parameters :
+arg : integer specifying the read limit of the input Stream
+Return : 
+* void
+read() : java.io.InputStream.read() reads next byte of data from the Input Stream. The value byte is returned in the range 0 to 255. If no byte is available because the end of the stream has been reached, the value -1 is returned.
+Syntax :
+
+
+public abstract int read()
+Parameters :
+------
+Return : 
+Reads next data else, -1 i.e. when end of file is reached.
+Exception :
+* ->  IOException : If I/O error occurs.
+close() : java.io.InputStream.close() closes the input stream and releases system resources associated with this stream to Garbage Collector.
+Syntax :
+public void close()
+Parameters :
+------
+Return : 
+void
+Exception :
+* ->  IOException : If I/O error occurs.
+read() : Java.io.InputStream.read(byte[] arg) reads number of bytes of arg.length from the input stream to the buffer array arg. The bytes read by read() method are returned as int. If len is zero, then no bytes are read and 0 is returned; otherwise, there is an attempt to read at least one byte.
+Syntax :
+public int read(byte[] arg)
+Parameters :
+arg : array whose number of bytes to be read
+Return : 
+ reads number of bytes and return to the buffer else, -1 i.e. when end of file is reached.
+Exception :
+->  IOException : If I/O error occurs.
+* ->  NullPointerException : if arg is null.
+reset() : Java.io.InputStream.reset() is invoked by mark() method. It repositions the input stream to the marked position.
+Syntax :
+public void reset()
+Parameters :
+----
+Return : 
+void
+Exception :
+* ->  IOException : If I/O error occurs.
+markSupported() : Java.io.InputStream.markSupported() method tests if this input stream supports the mark and reset methods. The markSupported method of InputStream returns false by default.
+Syntax :
+public boolean markSupported()
+Parameters :
+-------
+Return : 
+* true if input stream supports the mark() and reset() method  else,false
+skip() : Java.io.InputStream.skip(long arg) skips and discards arg bytes in the input stream.
+Syntax :
+public long skip(long arg)
+Parameters :
+arg : no. of bytes to be skipped
+Return : 
+skip bytes.
+Exception :
+* ->  IOException : If I/O error occurs.
+Java Program explaining InputStream Class methods :
+// Java program illustrating the working of InputStream method
+// mark(), read(), skip()
+// markSupported(), close(), reset()
+import java.io.*;
+  
+public class NewClass
+{
+    public static void main(String[] args) throws Exception
+    {
+        InputStream geek = null;
+        try {
+  
+            geek = new FileInputStream("ABC.txt");
+  
+            // read() method : reading and printing Characters
+            // one by one
+            System.out.println("Char : "+(char)geek.read());
+            System.out.println("Char : "+(char)geek.read());
+            System.out.println("Char : "+(char)geek.read());
+  
+            // mark() : read limiing the 'geek' input stream
+            geek.mark(0);
+  
+            // skip() : it results in redaing of 'e' in G'e'eeks
+            geek.skip(1);
+            System.out.println("skip() method comes to play");
+            System.out.println("mark() method comes to play");
+            System.out.println("Char : "+(char)geek.read());
+            System.out.println("Char : "+(char)geek.read());
+            System.out.println("Char : "+(char)geek.read());
+  
+            boolean check = geek.markSupported();
+            if (geek.markSupported())
+            {
+                // reset() method : repositioning the stram to
+                // marked positions.
+                geek.reset();
+                System.out.println("reset() invoked");
+                System.out.println("Char : "+(char)geek.read());
+                System.out.println("Char : "+(char)geek.read());
+            }
+            else
+                System.out.println("reset() method not supported.");
+  
+  
+            System.out.println("geek.markSupported() supported"+
+                              " reset() : "+check);
+  
+        }
+        catch(Exception excpt)
+        {
+            // in case of I/O error
+            excpt.printStackTrace();
+        }
+        finally
+        {
+            // releasing the resources back to the
+            // GarbageCollector when closes
+            if (geek!=null)
+            {
+                // Use of close() : closing the file
+                // and releasing resources
+                geek.close();
+            }
+        }
+    }
+}
+	
+
+Note :
+This code won’t run on online IDE as no suc file is present here.
+You can run this code on your System to check the working.
+ABC.txt file used in the code has
+HelloGeeks
+Output :
+Char : H
+Char : e
+Char : l
+skip() method comes to play
+mark() method comes to play
+Char : o
+Char : G
+Char : e
+reset() method not supported.
+   * geek.markSupported() supported reset() : false
+
+==================================================
+
+*** Java.io.OutputStream class in Java ***
+
+* Difficulty Level : Easy
+* Last Updated : 24 Jan, 2017
+This abstract class is the superclass of all classes representing an output stream of bytes. An output stream accepts output bytes and sends them to some sink.
+Applications that need to define a subclass of OutputStream must always provide at least a method that writes one byte of output.
+Constructor and Description
+* OutputStream() : Single Constructor
+Methods:
+void close() : Closes this output stream and releases any system resources associated with this stream.
+Syntax :public void close()
+           throws IOException
+Throws:
+* IOException
+void flush() : Flushes this output stream and forces any buffered output bytes to be written out.
+Syntax :public void flush()
+           throws IOException
+Throws:
+* IOException
+void write(byte[] b) : Writes b.length bytes from the specified byte array to this output stream.
+Syntax :public void write(byte[] b)
+           throws IOException
+Parameters:
+b - the data.
+Throws:
+* IOException
+void write(byte[] b, int off, int len) : Writes len bytes from the specified byte array starting at offset off to this output stream.
+Syntax :public void write(byte[] b,
+         int off,
+         int len)
+           throws IOException
+Parameters:
+b - the data.
+off - the start offset in the data.
+len - the number of bytes to write.
+Throws:
+* IOException
+abstract void write(int b) : Writes the specified byte to this output stream.
+Syntax :public abstract void write(int b)
+                    throws IOException
+Parameters:
+b - the byte.
+Throws:
+* IOException
+import java.io.*;
+//Java program to demonstrate OutputStream
+class OutputStreamDemo
+{
+    public static void main(String args[])throws Exception
+    {
+        OutputStream os = new FileOutputStream("file.txt");
+        byte b[] = {65, 66, 67, 68, 69, 70};
+          
+        //illustrating write(byte[] b) method
+        os.write(b);
+          
+        //illustrating flush() method
+        os.flush();
+  
+        //illustrating write(int b) method
+        for (int i = 71; i <75 ; i++) 
+        {
+            os.write(i);
+        }
+          
+        os.flush();
+          
+        //close the stream
+        os.close();
+    }
+}
+	Output :
+ABCDEFGHIJ
+
+==================================================
+
+*** File Class ***
+
+Java.io.File Class in Java
+The File class is Java’s representation of a file or directory path name. Because file and directory names have different formats on different platforms, a simple string is not adequate to name them. The File class contains several methods for working with the path name, deleting and renaming files, creating new directories, listing the contents of a directory, and determining several common attributes of files and directories.
+* It is an abstract representation of file and directory pathnames.
+* A pathname, whether abstract or in string form can be either absolute or relative. The parent of an abstract pathname may be obtained by invoking the getParent() method of this class.
+* First of all, we should create the File class object by passing the filename or directory name to it. A file system may implement restrictions to certain operations on the actual file-system object, such as reading, writing, and executing. These restrictions are collectively known as access permissions.
+* Instances of the File class are immutable; that is, once created, the abstract pathname represented by a File object will never change.
+How to create a File Object?
+A File object is created by passing in a String that represents the name of a file, or a String or another File object. For example,
+File a = new File("/usr/local/bin/geeks");
+defines an abstract file name for the geeks file in directory /usr/local/bin. This is an absolute abstract file name.
+Constructors 
+* File(File parent, String child) : Creates a new File instance from a parent abstract pathname and a child pathname string.
+* File(String pathname) : Creates a new File instance by converting the given pathname string into an abstract pathname.
+* File(String parent, String child) : Creates a new File instance from a parent pathname string and a child pathname string.
+* File(URI uri) : Creates a new File instance by converting the given file: URI into an abstract pathname.
+Methods
+
+
+
+
+1. boolean canExecute() : Tests whether the application can execute the file denoted by this abstract pathname.
+2. boolean canRead() : Tests whether the application can read the file denoted by this abstract pathname.
+3. boolean canWrite() : Tests whether the application can modify the file denoted by this abstract pathname.
+4. int compareTo(File pathname) : Compares two abstract pathnames lexicographically.
+5. boolean createNewFile() : Atomically creates a new, empty file named by this abstract pathname .
+6. static File createTempFile(String prefix, String suffix) : Creates an empty file in the default temporary-file directory.
+7. boolean delete() : Deletes the file or directory denoted by this abstract pathname.
+8. boolean equals(Object obj) : Tests this abstract pathname for equality with the given object.
+9. boolean exists() : Tests whether the file or directory denoted by this abstract pathname exists.
+10. String getAbsolutePath() : Returns the absolute pathname string of this abstract pathname.
+11. long getFreeSpace() : Returns the number of unallocated bytes in the partition .
+12. String getName() : Returns the name of the file or directory denoted by this abstract pathname.
+13. String getParent() : Returns the pathname string of this abstract pathname’s parent.
+14. File getParentFile() : Returns the abstract pathname of this abstract pathname’s parent.
+15. String getPath() : Converts this abstract pathname into a pathname string.
+16. boolean isDirectory() : Tests whether the file denoted by this pathname is a directory.
+17. boolean isFile() : Tests whether the file denoted by this abstract pathname is a normal file.
+18. boolean isHidden() : Tests whether the file named by this abstract pathname is a hidden file.
+19. long length() : Returns the length of the file denoted by this abstract pathname.
+20. String[] list() : Returns an array of strings naming the files and directories in the directory .
+21. File[] listFiles() : Returns an array of abstract pathnames denoting the files in the directory.
+22. boolean mkdir() : Creates the directory named by this abstract pathname.
+23. boolean renameTo(File dest) : Renames the file denoted by this abstract pathname.
+24. boolean setExecutable(boolean executable) : A convenience method to set the owner’s execute permission.
+25. boolean setReadable(boolean readable) : A convenience method to set the owner’s read permission.
+26. boolean setReadable(boolean readable, boolean ownerOnly) : Sets the owner’s or everybody’s read permission.
+27. boolean setReadOnly() : Marks the file or directory named so that only read operations are allowed.
+28. boolean setWritable(boolean writable) : A convenience method to set the owner’s write permission.
+29. String toString() : Returns the pathname string of this abstract pathname.
+30. URI toURI() : Constructs a file URI that represents this abstract pathname.
+Implementation
+Program 1: Program to check if a file or directory physically exist or not.
+// In this program, we accepts a file or directory name from 
+// command line arguments. Then the program will check if 
+// that file or directory physically exist or not and 
+// it displays the property of that file or directory.
+import java.io.File;
+  
+// Displaying file property
+class fileProperty
+{
+    public static void main(String[] args) {
+        //accept file name or directory name through command line args
+        String fname =args[0];
+  
+        //pass the filename or directory name to File object
+        File f = new File(fname);
+  
+        //apply File class methods on File object
+        System.out.println("File name :"+f.getName());
+        System.out.println("Path: "+f.getPath());
+        System.out.println("Absolute path:" +f.getAbsolutePath());
+        System.out.println("Parent:"+f.getParent());
+        System.out.println("Exists :"+f.exists());
+        if(f.exists())
+        {
+            System.out.println("Is writeable:"+f.canWrite());
+            System.out.println("Is readable"+f.canRead());
+            System.out.println("Is a directory:"+f.isDirectory());
+            System.out.println("File Size in bytes "+f.length());
+        }
+    }
+}
+	Output:
+File name :file.txt
+Path: file.txt
+Absolute path:C:\Users\akki\IdeaProjects\codewriting\src\file.txt
+Parent:null
+Exists :true
+Is writeable:true
+Is readabletrue
+Is a directory:false
+File Size in bytes 20
+
+
+Program 2: Program to display all the contents of a directory
+Here we will accept a directory name from the keyboard and then display all the contents of the directory .For this purpose, list() method can be used as:
+String arr[]=f.list();
+In the preceding statement , the list() method causes all the directory entries copied into the array arr[]. Then pass these array elements arr[i] to File object and test them to know if they represent a file or directory .
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+  
+//Displaying the contents of a directory
+class Contents
+{
+    public static void main(String[] args) throws IOException {
+        //enter the path and dirname from keyboard
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+  
+        System.out.println("Enter dirpath:");
+        String dirpath=br.readLine();
+        System.out.println("Enter the dirname");
+        String dname=br.readLine();
+  
+        //create File object with dirpath and dname
+        File f = new File(dirpath, dname);
+  
+        //if directory exists,then
+        if(f.exists())
+        {
+            //get the contents into arr[]
+            //now arr[i] represent either a File or Directory
+            String arr[]=f.list();
+  
+            //find no. of entries in the directory
+            int n=arr.length;
+  
+            //displaying the entries
+            for (int i = 0; i < n ; i++) {
+                System.out.println(arr[i]);
+                //create File object with the entry and test
+                //if it is a file or directory
+                File f1=new File(arr[i]);
+                if(f1.isFile())
+                    System.out.println(": is a file");
+                if(f1.isDirectory())
+                    System.out.println(": is a directory");
+            }
+            System.out.println("No of entries in this directory "+n);
+        }
+        else
+            System.out.println("Directory not found");
+    }
+}
+	Output:
+Enter dirpath:
+C:\Users\akki\IdeaProjects\
+Enter the dirname
+codewriting
+.idea
+: is a directory
+an1.txt
+: is a file
+codewriting.iml
+: is a file
+file.txt
+: is a file
+out
+: is a directory
+src
+: is a directory
+text
+: is a file
+No of entries in this directory 7
+
+==================================================
+
+*** Copying file using FileStreams ***
+
+We can copy a file from one location to another using FileInputStream and FileOutputStream classes in Java.
+For this we have to import some specific classes of java.io package. So for instance let us include the entire package with statement import java.io.*;
+The main logic of copying file is to read the file associated to FileInputStream variable and write the read contents into the file associated with FileOutputStream variable.
+Methods used in the program
+1. int read(); Reads a byte of data. Present in FileInputStream. Other versions of this method : int read(byte[] bytearray) and int read(byte[] bytearray, int offset, int length)
+2. void write(int b) : Writes a byte of data. Present in FileOutputStream. Other versions of this method : void write(byte[] bytearray) and void write(byte[] bytearray, int offset, int length);
+/* Program to copy a src file to destination.
+   The name of src file and dest file must be
+   provided using command line arguments where
+   args[0] is the name of source file and
+   args[1] is name of destination file */
+  
+import java.io.*;
+class src2dest
+{
+    public static void main(String args[])
+    throws FileNotFoundException,IOException
+    {
+        /* If file doesnot exist FileInputStream throws
+           FileNotFoundException and read() write() throws
+           IOException if I/O error occurs */
+        FileInputStream fis = new FileInputStream(args[0]);
+  
+        /* assuming that the file exists and need not to be
+           checked */
+        FileOutputStream fos = new FileOutputStream(args[1]);
+  
+        int b;
+        while  ((b=fis.read()) != -1)
+            fos.write(b);
+  
+        /* read() will readonly next int so we used while
+           loop here in order to read upto end of file and
+           keep writing the read int into dest file */
+        fis.close();
+        fos.close();
+    }
+}
+
+==================================================
+
+*** Delete a file ***
+
+Java provides methods to delete files using java programs. On the contrary to normal delete operations in any operating system, files being deleted using java program is deleted permanently without being moved to trash/recycle bin.
+Following are the methods used to delete a file in Java:
+Using java.io.File.delete() function: Deletes the file or directory denoted by this abstract path name.
+Syntax:
+public boolean delete()
+Returns: true if and only if the file or 
+1. directory is successfully deleted; false otherwise
+// Java program to delete a file 
+import java.io.*;
+  
+public class Test
+{
+    public static void main(String[] args)
+    {
+        File file = new File("C:\\Users\\Mayank\\Desktop\\1.txt");
+          
+        if(file.delete())
+        {
+            System.out.println("File deleted successfully");
+        }
+        else
+        {
+            System.out.println("Failed to delete the file");
+        }
+    }
+}
+	2. 
+Output:
+File deleted successfully
+Using java.nio.file.files.deleteifexists(Path p) method defined in Files package: This method deletes a file if it exists. It also deletes a directory mentioned in the path only if the directory is not empty.
+Syntax:
+public static boolean deleteIfExists(Path path) throws IOException
+Parameters: path - the path to the file to delete
+Returns: true if the file was deleted by this method; 
+false if the file could not be deleted because it did not exist.
+Throws: 
+DirectoryNotEmptyException - if the file is a directory and 
+could not otherwise be deleted because the directory is not empty
+(optional specific exception)
+   3. IOException - if an I/O error occurs
+// Java program to demonstrate delete using Files class
+import java.io.IOException;
+import java.nio.file.*;
+  
+public class Test
+{
+    public static void main(String[] args)
+    {
+        try
+        {
+            Files.deleteIfExists(Paths.get("C:\\Users\\Mayank\\Desktop\\
+            445.txt"));
+        }
+        catch(NoSuchFileException e)
+        {
+            System.out.println("No such file/directory exists");
+        }
+        catch(DirectoryNotEmptyException e)
+        {
+            System.out.println("Directory is not empty.");
+        }
+        catch(IOException e)
+        {
+            System.out.println("Invalid permissions.");
+        }
+          
+        System.out.println("Deletion successful.");
+    }
+}
+	   4. 
+Output:
+
+
+Deletion successful.
+
+==================================================
+
+*** CRUD Operation ***
+
+So far the operations using Java programs are done on a prompt/terminal which is not stored anywhere. But in the software industry, most of the programs are written to store the information fetched from the program. One such way is to store the fetched information in a file.
+What is File Handling in Java?
+A file is a container that is used to store various types of information. Data is permanently stored in secondary memory by creating a file with a unique name. A file may consist of text, image or any other document. 
+Different operations that can be performed on a file are: 
+1. Creation of a new file
+2. Opening an existing file
+3. Reading from file
+4. Writing to a file
+5. Moving to a specific location in a file
+6. Closing a file
+Different classes that can be used in Java for File Handling: 
+
+
+
+
+1. InputStream
+2. OutputStream
+3. FilterOutputStream
+4. FileOutputStream
+5. ByteArrayOutputStream
+6. ByteArrayInputStream
+7. FileInputStream
+8. FilterInputStream
+9. StringBufferInputStream
+10. SequenceInputStream
+11. BufferedOutputStream
+12. StringBufferInputStream
+13. DataOutputStream
+14. PrintStream
+15. BufferedInputStream
+16. DataInputStream
+17. PushbackInputStream
+In this article, we will learn how Java ByteStreams are used to perform input and output of 8-bits(1 byte) using class RandomAccessFile which consists of method writeBytes() and readBytes() to write and read the data in the form of bytes.
+Various Methods used to perform File operation:  
+* writeBytes(String s): Writes the string to the file as a sequence of bytes.
+* readLine(): Reads the next line of text from this file.
+* getFilePointer(): Returns the current offset in this file.
+* length(): Returns the length of this file and return type is long.
+* close(): Closes this random access file stream and releases any system resources associated with the stream.
+* setLength(long newLength): Sets the length of this file.
+* seek(long pos): Sets the file-pointer offset, measured from the beginning of this file, at which the next read or write occurs.
+
+==================================================
+
+*** File Permission ***
+
+Java provides a number of method calls to check and change the permission of a file, such as a read-only file can be changed to have permissions to write. File permissions are required to be changed when the user want to restrict the operations permissible on a file. For example, a file permission can be changed from write to read-only because the user no longer want to edit the file.
+Checking the current file permissions
+
+
+A file can be in any combination of following permissible permissions:
+Executable: Tests whether the application can execute the file denoted by this abstract path name.
+Syntax:
+public boolean canExecute()
+Returns: true if and only if the abstract path name
+* exists and the application is allowed to execute the file
+Readable: Tests whether the application can read the file denoted by this abstract path name.
+Syntax:
+
+
+public boolean canRead()
+Returns: true if and only if the file specified by this
+* abstract path name exists and can be read by the application; false otherwise
+Writable: Tests whether the application can modify the file denoted by this abstract path name.
+Syntax:
+public boolean canWrite()
+Returns: true if and only if the file system actually 
+contains a file denoted by this abstract path name and 
+* the application is allowed to write to the file; false otherwise.
+For example, a file can be readable and writable but not executable. Here’s Java program to get the current permissions associated with a file.
+// Java program to check the current file permissions.
+import java.io.*;
+  
+public class Test
+{
+    public static void main(String[] args)
+    {
+        // creating a file instance
+        File file = new File("C:\\Users\\Mayank\\Desktop\\1.txt");
+          
+        // check if the file exists
+        boolean exists = file.exists();
+        if(exists == true)
+        {
+            // printing the permissions associated with the file
+            System.out.println("Executable: " + file.canExecute());
+            System.out.println("Readable: " + file.canRead());
+            System.out.println("Writable: "+ file.canWrite());
+        }
+        else
+        {
+            System.out.println("File not found.");
+        }
+    }
+}
+	Output
+Executable: true
+Readable: true
+Writable: true
+Changing file permissions
+
+
+A file can have any combinations of the following permissions:
+* Executable
+* Readable
+* Writable
+Here are methods to change the permissions associated with a file:
+setExecutableA convenience method to set the owner’s execute permission for this abstract path name.
+public boolean setExecutable(boolean executable)
+Description: 
+Parameters: executable - If true, sets the access 
+permission to allow execute operations;
+if false to disallow execute operations
+* Returns: true if and only if the operation succeeded.
+The operation will fail if the user does not have permission to change the access permissions of this abstract path name. If executable is false and the underlying file system does not implement an execute permission, then the operation will fail.
+setReadable: A convenience method to set the owner’s read permission for this abstract path name.
+public boolean setReadable(boolean readable)
+Parameters: readable - If true, sets the access permission to 
+allow read operations; if false to disallow read operations
+   * Returns: true if and only if the operation succeeded.
+The operation will fail if the user does not have permission to change the access permissions of this abstract path name. If readable is false and the underlying file system does not implement a read permission, then the operation will fail.
+setWritable : A convenience method to set the owner’s write permission for this abstract path name.
+public boolean setWritable(boolean writable)
+Parameters: writable - If true, sets the access permission
+to allow write operations; if false to disallow write operations
+      * Returns: true if and only if the operation succeeded.
+The operation will fail if the user does not have permission to change the access permissions of this abstract path name.
+// Java program to change the file permissions
+import java.io.*;
+  
+public class Test
+{
+    public static void main(String[] args)
+    {
+        // creating a new file instance
+        File file = new File("C:\\Users\\Mayank\\Desktop\\1.txt");
+          
+        // check if file exists
+        boolean exists = file.exists();
+        if(exists == true)
+        {
+            // changing the file permissions
+            file.setExecutable(true);
+            file.setReadable(true);
+            file.setWritable(false);
+            System.out.println("File permissions changed.");
+  
+            // printing the permissions associated with the file currently
+            System.out.println("Executable: " + file.canExecute());
+            System.out.println("Readable: " + file.canRead());
+            System.out.println("Writable: "+ file.canWrite());
+              
+        }
+        else
+        {
+            System.out.println("File not found.");
+        }
+    }
+}
+	Output
+File permissions changed.
+Executable: true
+Readable: true
+Writable: false
+
+
+==================================================

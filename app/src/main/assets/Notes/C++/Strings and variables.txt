@@ -1,0 +1,178 @@
+*** Variables in C++ ***
+
+Variables in C++
+
+A variable is a name given to a memory location. It is the basic unit of storage in a program. 
+
+  -->The value stored in a variable can be changed during program execution.
+  -->A variable is only a name given to a memory location, all the operations done on the variable effects that memory location.
+  -->In C++, all the variables must be declared before use.
+ 
+  
+
+Q.How to declare variables?
+
+A typical variable declaration is of the form: 
+ 
+
+// Declaring a single variable
+type variable_name;
+
+// Declaring multiple variables:
+type variable1_name, variable2_name, variable3_name;
+
+
+A variable name can consist of alphabets (both upper and lower case), numbers and the underscore ‘_’ character.
+ However, the name must not start with a number
+
+ *Examples: 
+ 
+
+// Declaring float variable
+float simpleInterest; 
+
+// Declaring integer variable
+int time, speed; 
+
+// Declaring character variable
+char var; 
+
+*Types of variables
+
+There are three types of variables based on the scope of variables in C++: 
+ 
+1.Local Variables
+2.Instance Variables
+3.Static Variables
+
+
+1.Local Variables: 
+A variable defined within a block or method or constructor is called local variable. 
+These variable are created when the block in entered or the function is called and destroyed after exiting from the block or when the call returns from the function.
+The scope of these variables exists only within the block in which the variable is declared. i.e. we can access these variable only within that block.
+Initialisation of Local Variable is Mandatory.
+
+
+2.Instance Variables: 
+Instance variables are non-static variables and are declared in a class outside any method, constructor or block. 
+As instance variables are declared in a class, these variables are created when an object of the class is created and destroyed when the object is destroyed.
+Unlike local variables, we may use access specifiers for instance variables. If we do not specify any access specifier then the default access specifier will be used.
+Initialisation of Instance Variable is not Mandatory.
+Instance Variable can be accessed only by creating objects.
+
+
+3.Static Variables: 
+Static variables are also known as Class variables. 
+These variables are declared similarly as instance variables, the difference is that static variables are declared using the static keyword within a class outside any method constructor or block.
+Unlike instance variables, we can only have one copy of a static variable per class irrespective of how many objects we create.
+Static variables are created at the start of program execution and destroyed automatically when execution ends.
+Initialization of Static Variable is not Mandatory. Its default value is 0
+If we access the static variable like Instance variable (through an object), the compiler will show the warning message and it won’t halt the program. The compiler will replace the object name to class name automatically.
+If we access the static variable without the class name, Compiler will automatically append the class name.
+ 
+
+Instance variable Vs Static variable
+
+ 
+
+Each object will have its own copy of instance variable whereas We can only have one copy of a static variable per class irrespective of how many objects we create.
+Changes made in an instance variable using one object will not be reflected in other objects as each object has its own copy of instance variable. In case of static, changes will be reflected in other objects as static variables are common to all object of a class.
+We can access instance variables through object references and Static Variables can be accessed directly using class name.
+Syntax for static and instance variables:
+
+class Example
+{
+    static int a; // static variable
+    int b;        // instance variable
+}
+
+==================================================
+
+*** String in C++ ***
+Difficulty Level : Basic
+Last Updated : 26 Jul, 2017
+Convert numerical value to string
+
+Syntax :
+
+string to_string (int val);
+string to_string (long val);
+string to_string (long long val);
+string to_string (unsigned val);
+string to_string (unsigned long val);
+string to_string (unsigned long long val);
+string to_string (float val);
+string to_string (double val);
+string to_string (long double val);
+
+Parameters :
+val - Numerical value.
+
+Return Value :
+A string object containing the representation of val as a sequence of characters.
+
+// CPP program to illustrate
+// std::to_string
+#include <bits/stdc++.h>
+  
+// Driver code
+int main()
+{
+  
+    // Converting float to string
+    std::string str1 = std::to_string(12.10);
+  
+    // Converting integer to string
+    std::string str2 = std::to_string(9999);
+  
+    // Printing the strings
+    std::cout << str1 << '\n';
+    std::cout << str2 << '\n';
+    return 0;
+}
+Output:
+
+12.100000
+9999
+Problem : Find a specific digit in a given integer.
+Example :
+
+Input : number  = 10340, digit = 3
+Output : 3 is at position 3
+
+// CPP code to find a digit in a number
+// using std::tostring
+#include <bits/stdc++.h>
+  
+// Driver code
+int main()
+{
+  
+    // Converting number to string
+    std::string str = std::to_string(9954);
+  
+    // Finding 5 in the number
+    std::cout << "5 is at position " << str.find('5') + 1;
+}
+Output :
+
+5 is at position 3
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

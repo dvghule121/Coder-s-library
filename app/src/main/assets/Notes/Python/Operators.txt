@@ -1,0 +1,1379 @@
+*** Python Operators ***
+
+Python Operators in general are used to perform operations on values and 
+variables. These are standard symbols used for the purpose of logical and 
+arithmetic operations. In this article, we will look into different types of 
+Python operators. 
+
+Arithmetic Operators
+Arithmetic operators are used to performing mathematical operations like 
+addition, subtraction, multiplication, and division.
+
+Operator	Description	Syntax
++	Addition: adds two operands	x + y
+–	Subtraction: subtracts two operands	x – y
+*	Multiplication: multiplies two operands	x * y
+/	Division (float): divides the first operand by the second	x / y
+//	Division (floor): divides the first operand by the second	x // y
+%	Modulus: returns the remainder when the first operand is divided by the 
+second	x % y
+**	Power: Returns first raised to power second	x ** y
+Example: Arithmetic operators in Python
+
+# Examples of Arithmetic Operator
+a = 9
+b = 4
+ 
+# Addition of numbers
+add = a + b
+ 
+# Subtraction of numbers
+sub = a - b
+ 
+# Multiplication of number
+mul = a * b
+ 
+# Division(float) of number
+div1 = a / b
+ 
+# Division(floor) of number
+div2 = a // b
+ 
+# Modulo of both number
+mod = a % b
+ 
+# Power
+p = a ** b
+ 
+# print results
+print(add)
+print(sub)
+print(mul)
+print(div1)
+print(div2)
+print(mod)
+print(p)
+Output
+13
+5
+36
+2.25
+2
+1
+6561
+Note: Refer to Differences between / and // for some interesting facts about 
+these two operators.
+
+Comparison Operators
+Comparison of Relational operators compares the values. It either returns True 
+or False according to the condition.
+
+
+
+
+Operator	Description	Syntax
+>	Greater than: True if the left operand is greater than the right	x > y
+<	Less than: True if the left operand is less than the right	x < y
+==	Equal to: True if both operands are equal	x == y
+!=	Not equal to – True if operands are not equal	x != y
+>=	Greater than or equal to True if the left operand is greater than or equal 
+to the right	x >= y
+<=	Less than or equal to True if the left operand is less than or equal to 
+the right	x <= y
+Example: Comparison Operators in Python
+
+# Examples of Relational Operators
+a = 13
+b = 33
+ 
+# a > b is False
+print(a > b)
+ 
+# a < b is True
+print(a < b)
+ 
+# a == b is False
+print(a == b)
+ 
+# a != b is True
+print(a != b)
+ 
+# a >= b is False
+print(a >= b)
+ 
+# a <= b is True
+print(a <= b)
+Output
+False
+True
+False
+True
+False
+True
+Logical Operators
+Logical operators perform Logical AND, Logical OR, and Logical NOT operations. 
+It is used to combine conditional statements.
+
+Operator	Description	Syntax
+and	Logical AND: True if both the operands are true	x and y
+or	Logical OR: True if either of the operands is true 	x or y
+not	Logical NOT: True if the operand is false 	not x
+Example: Logical Operators in Python
+
+# Examples of Logical Operator
+a = True
+b = False
+ 
+# Print a and b is False
+print(a and b)
+ 
+# Print a or b is True
+print(a or b)
+ 
+# Print not a is False
+print(not a)
+Output
+False
+True
+False
+Bitwise Operators
+Bitwise operators act on bits and perform the bit-by-bit operations. These are 
+used to operate on binary numbers.
+
+Operator	Description	Syntax
+&	Bitwise AND	x & y
+|	Bitwise OR	x | y
+~	Bitwise NOT	~x
+^	Bitwise XOR	x ^ y
+>>	Bitwise right shift	x>>
+<<	Bitwise left shift	x<<
+Example: Bitwise Operators in Python
+
+# Examples of Bitwise operators
+a = 10
+b = 4
+ 
+# Print bitwise AND operation
+print(a & b)
+ 
+# Print bitwise OR operation
+print(a | b)
+ 
+# Print bitwise NOT operation
+print(~a)
+ 
+# print bitwise XOR operation
+print(a ^ b)
+ 
+# print bitwise right shift operation
+print(a >> 2)
+ 
+# print bitwise left shift operation
+print(a << 2)
+Output
+0
+14
+-11
+14
+2
+40
+Assignment Operators 
+Assignment operators are used to assigning values to the variables.
+
+Operator	Description	Syntax
+=	Assign value of right side of expression to left side operand 	x = y + z
++=	Add AND: Add right-side operand with left side operand and then assign to 
+left operand	a+=b     a=a+b
+-=	Subtract AND: Subtract right operand from left operand and then assign to 
+left operand	a-=b     a=a-b
+*=	Multiply AND: Multiply right operand with left operand and then assign to 
+left operand	a*=b     a=a*b
+/=	Divide AND: Divide left operand with right operand and then assign to left 
+operand	a/=b     a=a/b
+%=	Modulus AND: Takes modulus using left and right operands and assign the 
+result to left operand	a%=b     a=a%b
+//=	Divide(floor) AND: Divide left operand with right operand and then assign 
+the value(floor) to left operand	a//=b     a=a//b
+**=	Exponent AND: Calculate exponent(raise power) value using operands and 
+assign value to left operand	a**=b     a=a**b
+&=	Performs Bitwise AND on operands and assign value to left operand	a&
+=b     a=a&b
+|=	Performs Bitwise OR on operands and assign value to left operand	a|
+=b     a=a|b
+^=	Performs Bitwise xOR on operands and assign value to left operand	
+a^=b     a=a^b
+>>=	Performs Bitwise right shift on operands and assign value to left 
+operand	a>>=b     a=a>>b
+<<=	Performs Bitwise left shift on operands and assign value to left 
+operand	a <<= b     a= a << b
+Example: Assignment Operators in Python
+
+# Examples of Assignment Operators
+a = 10
+ 
+# Assign value
+b = a
+print(b)
+ 
+# Add and assign value
+b += a
+print(b)
+ 
+# Subtract and assign value
+b -= a
+print(b)
+ 
+# multiply and assign
+b *= a
+print(b)
+ 
+# bitwise lishift operator
+b <<= a
+print(b)
+Output
+10
+20
+10
+100
+102400
+Identity Operators
+is and is not are the identity operators both are used to check if two values 
+are located on the same part of the memory. Two variables that are equal do 
+not imply that they are identical. 
+
+
+
+
+is          True if the operands are identical 
+is not      True if the operands are not identical 
+Example: Identity Operator
+
+a = 10
+b = 20
+c = a
+ 
+print(a is not b)
+print(a is c)
+Output
+True
+True
+Membership Operators
+in and not in are the membership operators; used to test whether a value or 
+variable is in a sequence.
+
+in            True if value is found in the sequence
+not in        True if value is not found in the sequence
+Example: Membership Operator
+
+# Python program to illustrate
+# not 'in' operator
+x = 24
+y = 20
+list = [10, 20, 30, 40, 50]
+ 
+if (x not in list):
+    print("x is NOT present in given list")
+else:
+    print("x is present in given list")
+ 
+if (y in list):
+    print("y is present in given list")
+else:
+    print("y is NOT present in given list")
+Output
+x is NOT present in given list
+y is present in given list
+Precedence and Associativity of Operators
+Precedence and Associativity of Operators: Operator precedence and 
+associativity determine the priorities of the operator.
+
+Operator Precedence
+This is used in an expression with more than one operator with different 
+precedence to determine which operation to perform first.
+
+Example: Operator Precedence
+
+# Examples of Operator Precedence
+ 
+# Precedence of '+' & '*'
+expr = 10 + 20 * 30
+print(expr)
+ 
+# Precedence of 'or' & 'and'
+name = "Alex"
+age = 0
+ 
+if name == "Alex" or name == "John" and age >= 2:
+    print("Hello! Welcome.")
+else:
+    print("Good Bye!!")
+Output
+610
+Hello! Welcome.
+Operator Associativity
+If an expression contains two or more operators with the same precedence then 
+Operator Associativity is used to determine. It can either be Left to Right or 
+from Right to Left.
+
+Example: Operator Associativity
+
+# Examples of Operator Associativity
+ 
+# Left-right associativity
+# 100 / 10 * 10 is calculated as
+# (100 / 10) * 10 and not
+# as 100 / (10 * 10)
+print(100 / 10 * 10)
+ 
+# Left-right associativity
+# 5 - 2 + 3 is calculated as
+# (5 - 2) + 3 and not
+# as 5 - (2 + 3)
+print(5 - 2 + 3)
+ 
+# left-right associativity
+print(5 - (2 + 3))
+ 
+# right-left associativity
+# 2 ** 3 ** 2 is calculated as
+# 2 ** (3 ** 2) and not
+# as (2 ** 3) ** 2
+print(2 ** 3 ** 2)
+
+================================================
+
+*** Ternary Operator ***
+
+Ternary operators are also known as conditional expressions are operators that 
+evaluate something based on a condition being true or false. It was added to 
+Python in version 2.5. 
+It simply allows testing a condition in a single line replacing the multiline 
+if-else making the code compact.
+ 
+
+Syntax : 
+
+[on_true] if [expression] else [on_false] 
+Simple Method to use ternary operator: 
+
+# Program to demonstrate conditional operator
+a, b = 10, 20
+ 
+# Copy value of a in min if a < b else copy b
+min = a if a < b else b
+ 
+print(min)
+Output: 
+
+10
+Direct Method by using tuples, Dictionary, and lambda 
+
+# Python program to demonstrate ternary operator
+a, b = 10, 20
+ 
+# Use tuple for selecting an item
+# (if_test_false,if_test_true)[test]
+# if [a<b] is true it return 1, so element with 1 index will print
+# else if [a<b] is false it return 0, so element with 0 index will print
+print( (b, a) [a < b] )
+ 
+# Use Dictionary for selecting an item
+# if [a < b] is true then value of True key will print
+# elif [a<b] is false then value of False key will print
+print({True: a, False: b} [a < b])
+ 
+# lamda is more efficient than above two methods
+# because in lambda  we are assure that
+# only one expression will be evaluated unlike in
+# tuple and Dictionary
+print((lambda: b, lambda: a)[a < b]())
+Output:
+
+10
+10
+10
+Ternary operator can be written as nested if-else: 
+
+# Python program to demonstrate nested ternary operator
+a, b = 10, 20
+ 
+print ("Both a and b are equal" if a == b else "a is greater than b"
+        if a > b else "b is greater than a")
+The above approach can be written as: 
+ 
+
+
+
+
+
+# Python program to demonstrate nested ternary operator
+a, b = 10, 20
+ 
+if a != b:
+    if a > b:
+        print("a is greater than b")
+    else:
+        print("b is greater than a")
+else:
+    print("Both a and b are equal")
+Output:
+
+ b is greater than a
+Important Points: 
+First the given condition is evaluated (a < b), then either a or b is returned 
+based on the Boolean value returned by the condition
+Order of the arguments in the operator is different from other languages like 
+C/C++ (See C/C++ ternary operators). 
+Conditional expressions have the lowest priority amongst all Python operations.
+Method used prior to 2.5 when the ternary operator was not present 
+In an expression like the one given below, the interpreter checks for the 
+expression if this is true then on_true is evaluated, else the on_false is 
+evaluated.
+ 
+
+Syntax : 
+
+'''When condition becomes true, expression [on_false]
+   is not executed and value of "True and [on_true]"
+   is returned.  Else value of "False or [on_false]"
+   is returned.
+   Note that "True and x" is equal to x. 
+   And "False or x" is equal to x. '''
+[expression] and [on_true] or [on_false] 
+Example : 
+
+
+# Program to demonstrate conditional operator
+a, b = 10, 20
+ 
+# If a is less than b, then a is assigned
+# else b is assigned (Note : it doesn't
+# work if a is 0.
+min = a < b and a or b
+ 
+print(min)
+Output:
+
+10
+Note : The only drawback of this method is that on_true must not be zero or 
+False. If this happens on_false will be evaluated always. The reason for that 
+is if the expression is true, the interpreter will check for the on_true, if 
+that will be zero or false, that will force the interpreter to check for 
+on_false to give the final result of the whole expression.
+
+================================================
+
+*** Division Operator ***
+
+Consider the below statements in Python.
+
+# A Python program to demonstrate the use of
+# "//" for integers
+print (5//2)
+print (-5//2)
+Output:
+2
+-3
+The first output is fine, but the second one may be surprised if we are coming 
+Java/C++ world. In Python, the “//” operator works as a floor division for 
+integer and float arguments. However, the operator / returns a float value if 
+one of the arguments is a float (this is similar to C++)
+
+Note:
+
+The “//” operator is used to return the closest integer value which is less 
+than or equal to a specified expression or value. So from the above code, 5//2 
+returns 2. You know that 5/2 is 2.5, the closest integer which is less than or 
+equal is 2[5//2].( it is inverse to the normal maths, in normal maths the 
+value is 3).
+ 
+
+# A Python program to demonstrate use of
+# "/" for floating point numbers
+print (5.0/2)
+print (-5.0/2)
+Output:
+
+2.5
+-2.5
+The real floor division operator is “//”. It returns floor value for both 
+integer and floating point arguments. 
+
+
+# A Python program to demonstrate use of
+# "//" for both integers and floating points
+print (5//2)
+print (-5//2)
+print (5.0//2)
+print (-5.0//2)
+Output:
+2
+-3
+2.0
+-3.0
+
+================================================
+
+*** Operator Overloading ***
+
+Operator Overloading means giving extended meaning beyond their predefined 
+operational meaning. For example operator + is used to add two integers as 
+well as join two strings and merge two lists. It is achievable because ‘+’ 
+operator is overloaded by int class and str class. You might have noticed that 
+the same built-in operator or function shows different behavior for objects of 
+different classes, this is called Operator Overloading. 
+ 
+
+# Python program to show use of
+# + operator for different purposes.
+ 
+print(1 + 2)
+ 
+# concatenate two strings
+print("Geeks"+"For")
+ 
+# Product two numbers
+print(3 * 4)
+ 
+# Repeat the String
+print("Geeks"*4)
+Output: 
+ 
+
+3
+GeeksFor
+12
+GeeksGeeksGeeksGeeks
+How to overload the operators in Python? 
+Consider that we have two objects which are a physical representation of a 
+class (user-defined data type) and we have to add two objects with binary ‘+’ 
+operator it throws an error, because compiler don’t know how to add two 
+objects. So we define a method for an operator and that process is called 
+operator overloading. We can overload all existing operators but we can’t 
+create a new operator. To perform operator overloading, Python provides some 
+special function or magic function that is automatically invoked when it is 
+associated with that particular operator. For example, when we use + operator, 
+the magic method __add__ is automatically invoked in which the operation for + 
+operator is defined.
+Overloading binary + operator in Python : 
+When we use an operator on user defined data types then automatically a 
+special function or magic function associated with that operator is invoked. 
+Changing the behavior of operator is as simple as changing the behavior of 
+method or function. You define methods in your class and operators work 
+according to that behavior defined in methods. When we use + operator, the 
+magic method __add__ is automatically invoked in which the operation for + 
+operator is defined. There by changing this magic method’s code, we can give 
+extra meaning to the + operator. 
+Code 1: 
+ 
+# Python Program illustrate how
+# to overload an binary + operator
+ 
+class A:
+    def __init__(self, a):
+        self.a = a
+ 
+    # adding two objects
+    def __add__(self, o):
+        return self.a + o.a
+ob1 = A(1)
+ob2 = A(2)
+ob3 = A("Geeks")
+ob4 = A("For")
+ 
+print(ob1 + ob2)
+print(ob3 + ob4)
+Output : 
+ 
+
+3
+GeeksFor
+Code 2: 
+# Python Program to perform addition
+# of two complex numbers using binary
+# + operator overloading.
+ 
+class complex:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+ 
+     # adding two objects
+    def __add__(self, other):
+        return self.a + other.a, self.b + other.b
+ 
+Ob1 = complex(1, 2)
+Ob2 = complex(2, 3)
+Ob3 = Ob1 + Ob2
+print(Ob3)
+Output : 
+(3, 5)
+
+Overloading comparison operators in Python : 
+# Python program to overload
+# a comparison operators
+ 
+class A:
+    def __init__(self, a):
+        self.a = a
+    def __gt__(self, other):
+        if(self.a>other.a):
+            return True
+        else:
+            return False
+ob1 = A(2)
+ob2 = A(3)
+if(ob1>ob2):
+    print("ob1 is greater than ob2")
+else:
+    print("ob2 is greater than ob1")
+Output : 
+ 
+
+ob2 is greater than ob1
+Overloading equality and less than operators : 
+ 
+
+
+# Python program to overload equality
+# and less than operators
+ 
+class A:
+    def __init__(self, a):
+        self.a = a
+    def __lt__(self, other):
+        if(self.a<other.a):
+            return "ob1 is lessthan ob2"
+        else:
+            return "ob2 is less than ob1"
+    def __eq__(self, other):
+        if(self.a == other.a):
+            return "Both are equal"
+        else:
+            return "Not equal"
+                 
+ob1 = A(2)
+ob2 = A(3)
+print(ob1 < ob2)
+ 
+ob3 = A(4)
+ob4 = A(4)
+print(ob1 == ob2)
+Output : 
+ 
+
+ob1 is lessthan ob2
+Not equal
+Python magic methods or special functions for operator overloading
+Binary Operators:
+Operator	Magic Method
++	__add__(self, other)
+–	__sub__(self, other)
+*	__mul__(self, other)
+/	__truediv__(self, other)
+//	__floordiv__(self, other)
+%	__mod__(self, other)
+**	__pow__(self, other)
+>>	__rshift__(self, other)
+<<	__lshift__(self, other)
+&	__and__(self, other)
+|	__or__(self, other)
+^	__xor__(self, other)
+Comparison Operators :
+Operator	Magic Method
+<	__LT__(SELF, OTHER)
+>	__GT__(SELF, OTHER)
+<=	__LE__(SELF, OTHER)
+>=	__GE__(SELF, OTHER)
+==	__EQ__(SELF, OTHER)
+!=	__NE__(SELF, OTHER)
+Assignment Operators :
+Operator	Magic Method
+-=	__ISUB__(SELF, OTHER)
++=	__IADD__(SELF, OTHER)
+*=	__IMUL__(SELF, OTHER)
+/=	__IDIV__(SELF, OTHER)
+//=	__IFLOORDIV__(SELF, OTHER)
+%=	__IMOD__(SELF, OTHER)
+**=	__IPOW__(SELF, OTHER)
+>>=	__IRSHIFT__(SELF, OTHER)
+<<=	__ILSHIFT__(SELF, OTHER)
+&=	__IAND__(SELF, OTHER)
+|=	__IOR__(SELF, OTHER)
+^=	__IXOR__(SELF, OTHER)
+Unary Operators :
+Operator	Magic Method
+–	__NEG__(SELF, OTHER)
++	__POS__(SELF, OTHER)
+~	__INVERT__(SELF, OTHER)
+
+================================================
+
+*** 'Any and all' Operator ***
+
+Any and All are two built ins provided in python used for successive And/Or.
+
+Any
+Returns true if any of the items is True. It returns False if empty or all are 
+
+false. Any can be thought of as a sequence of OR operations on the provided 
+iterables.
+It short circuit the execution i.e. stop the execution as soon as the result
+is known.
+
+Syntax : any(list of iterables)
+
+
+# Since all are false, false is returned
+print (any([False, False, False, False]))
+  
+# Here the method will short-circuit at the
+# second item (True) and will return True.
+print (any([False, True, False, False]))
+  
+# Here the method will short-circuit at the
+# first (True) and will return True.
+print (any([True, False, False, False]))
+Output :
+
+False
+True
+True
+ 
+
+All
+Returns true if all of the items are True (or if the iterable is empty). All 
+can be thought of as a sequence of AND operations on the provided iterables. 
+It also short circuit the execution i.e. stop the execution as soon as the 
+result is known.
+
+Syntax : all(list of iterables)
+
+
+# Here all the iterables are True so all
+# will return True and the same will be printed
+print (all([True, True, True, True]))
+  
+# Here the method will short-circuit at the 
+# first item (False) and will return False.
+print (all([False, True, True, False]))
+  
+# This statement will return False, as no
+# True is found in the iterables
+print (all([False, False, False]))
+Output :
+
+True
+False
+False
+Practical Examples
+
+
+# This code explains how can we 
+# use 'any' function on list 
+list1 = []
+list2 = []
+  
+# Index ranges from 1 to 10 to multiply
+for i in range(1,11):
+    list1.append(4*i) 
+  
+# Index to access the list2 is from 0 to 9
+for i in range(0,10):
+    list2.append(list1[i]%5==0)
+  
+print('See whether at least one number is divisible by 5 in list 1=>')
+print(any(list2))
+Output:
+
+See whether at least one number is divisible by 5 in list 1=>
+True
+
+# Illustration of 'all' function in python 3
+  
+# Take two lists 
+list1=[]
+list2=[]
+  
+# All numbers in list1 are in form: 4*i-3
+for i  in range(1,21):
+    list1.append(4*i-3)
+  
+# list2 stores info of odd numbers in list1
+for i in range(0,20):
+    list2.append(list1[i]%2==1)
+  
+print('See whether all numbers in list1 are odd =>')
+print(all(list2))
+Output:
+
+See whether all numbers in list1 are odd =>
+True
+
+================================================
+
+*** Operator Function -1  ***
+
+Python has predefined functions for many mathematical, logical, relational, 
+bitwise etc operations under the module “operator”. Some of the basic 
+functions are covered in this article.
+
+1. add(a, b) :- This functions returns addition of the given arguments.
+Operation – a + b.
+
+2. sub(a, b) :- This functions returns difference of the given arguments.
+Operation – a – b.
+
+3. mul(a, b) :- This functions returns product of the given arguments.
+Operation – a * b.
+
+
+# Python code to demonstrate working of 
+# add(), sub(), mul()
+  
+# importing operator module 
+import operator
+  
+# Initializing variables
+a = 4
+  
+b = 3
+  
+# using add() to add two numbers
+print ("The addition of numbers is :",end="");
+print (operator.add(a, b))
+  
+# using sub() to subtract two numbers
+print ("The difference of numbers is :",end="");
+print (operator.sub(a, b))
+  
+# using mul() to multiply two numbers
+print ("The product of numbers is :",end="");
+print (operator.mul(a, b))
+Output:
+
+
+
+The addition of numbers is :7
+The difference of numbers is :1
+The product of numbers is :12
+4. truediv(a,b) :- This functions returns division of the given arguments.
+Operation – a / b.
+
+5. floordiv(a,b) :- This functions also returns division of the given 
+arguments. But the value is floored value i.e. returns greatest small integer.
+Operation – a // b.
+
+6. pow(a,b) :- This functions returns exponentiation of the given arguments.
+Operation – a ** b.
+
+7. mod(a,b) :- This functions returns modulus of the given arguments.
+Operation – a % b.
+
+
+# Python code to demonstrate working of 
+# truediv(), floordiv(), pow(), mod()
+  
+# importing operator module 
+import operator
+  
+# Initializing variables
+a = 5
+  
+b = 2
+  
+# using truediv() to divide two numbers
+print ("The true division of numbers is : ",end="");
+print (operator.truediv(a,b))
+  
+# using floordiv() to divide two numbers
+print ("The floor division of numbers is : ",end="");
+print (operator.floordiv(a,b))
+  
+# using pow() to exponentiate two numbers
+print ("The exponentiation of numbers is : ",end="");
+print (operator.pow(a,b))
+  
+# using mod() to take modulus of two numbers
+print ("The modulus of numbers is : ",end="");
+print (operator.mod(a,b))
+Output:
+
+The true division of numbers is : 2.5
+The floor division of numbers is : 2
+The exponentiation of numbers is : 25
+The modulus of numbers is : 1
+8. lt(a, b) :- This function is used to check if a is less than b or not. 
+Returns true if a is less than b, else returns false.
+Operation – a < b.
+
+9. le(a, b) :- This function is used to check if a is less than or equal to b 
+or not. Returns true if a is less than or equal to b, else returns false.
+Operation – a <= b.
+
+10. eq(a, b) :- This function is used to check if a is equal to b or not. 
+Returns true if a is equal to b, else returns false.
+Operation – a == b.
+
+# Python code to demonstrate working of 
+# lt(), le() and eq()
+  
+# importing operator module 
+import operator
+  
+# Initializing variables
+a = 3
+  
+b = 3
+  
+# using lt() to check if a is less than b
+if(operator.lt(a,b)):
+       print ("3 is less than 3")
+else : print ("3 is not less than 3")
+  
+# using le() to check if a is less than or equal to b
+if(operator.le(a,b)):
+       print ("3 is less than or equal to 3")
+else : print ("3 is not less than or equal to 3")
+  
+# using eq() to check if a is equal to b
+if (operator.eq(a,b)):
+       print ("3 is equal to 3")
+else : print ("3 is not equal to 3")
+Output:
+
+3 is not less than 3
+3 is less than or equal to 3
+3 is equal to 3
+11. gt(a,b) :- This function is used to check if a is greater than b or not. 
+Returns true if a is greater than b, else returns false.
+Operation – a > b.
+
+12. ge(a,b) :- This function is used to check if a is greater than or equal to 
+b or not. Returns true if a is greater than or equal to b, else returns false.
+Operation – a >= b.
+
+13. ne(a,b) :- This function is used to check if a is not equal to b or is 
+equal. Returns true if a is not equal to b, else returns false.
+Operation – a != b.
+
+
+# Python code to demonstrate working of 
+# gt(), ge() and ne()
+  
+# importing operator module 
+import operator
+  
+# Initializing variables
+a = 4
+  
+b = 3
+  
+# using gt() to check if a is greater than b
+if (operator.gt(a,b)):
+       print ("4 is greater than 3")
+else : print ("4 is not greater than 3")
+  
+# using ge() to check if a is greater than or equal to b
+if (operator.ge(a,b)):
+       print ("4 is greater than or equal to 3")
+else : print ("4 is not greater than or equal to 3")
+  
+# using ne() to check if a is not equal to b
+if (operator.ne(a,b)):
+       print ("4 is not equal to 3")
+else : print ("4 is equal to 3")
+Output:
+
+4 is greater than 3
+4 is greater than or equal to 3
+4 is not equal to 3
+
+================================================
+
+*** Operator Function -2  ***
+
+More functions are discussed in this article.
+
+1. setitem(ob, pos, val) :- This function is used to assign the value at a 
+particular position in the container. 
+Operation – ob[pos] = val
+
+2. delitem(ob, pos) :- This function is used to delete the value at a 
+particular position in the container. 
+Operation – del ob[pos]
+
+3. getitem(ob, pos) :- This function is used to access the value at a 
+particular position in the container. 
+Operation – ob[pos]
+ 
+# Python code to demonstrate working of 
+# setitem(), delitem() and getitem()
+  
+# importing operator module 
+import operator
+  
+# Initializing list
+li = [1, 5, 6, 7, 8]
+  
+# printing original list 
+print ("The original list is : ",end="")
+for i in range(0,len(li)):
+    print (li[i],end=" ")
+  
+print ("\r")
+  
+# using setitem() to assign 3 at 4th position
+operator.setitem(li,3,3)
+  
+# printing modified list after setitem()
+print ("The modified list after setitem() is : ",end="")
+for i in range(0,len(li)):
+    print (li[i],end=" ")
+  
+print ("\r")
+  
+# using delitem() to delete value at 2nd index
+operator.delitem(li,1)
+  
+# printing modified list after delitem()
+print ("The modified list after delitem() is : ",end="")
+for i in range(0,len(li)):
+    print (li[i],end=" ")
+  
+print ("\r")
+  
+# using getitem() to access 4th element
+print ("The 4th element of list is : ",end="")
+print (operator.getitem(li,3))
+Output: 
+ 
+
+The original list is : 1 5 6 7 8 
+The modified list after setitem() is : 1 5 6 3 8 
+The modified list after delitem() is : 1 6 3 8 
+The 4th element of list is : 8
+4. setitem(ob, slice(a,b), vals) :- This function is used to set the values in 
+a particular range in the container. 
+Operation – obj[a:b] = vals
+
+5. delitem(ob, slice(a,b)) :- This function is used to delete the values from 
+a particular range in the container. 
+Operation – del obj[a:b]
+
+6. getitem(ob, slice(a,b)) :- This function is used to access the values in a 
+particular range in the container. 
+Operation – obj[a:b]
+ 
+
+
+# Python code to demonstrate working of 
+# setitem(), delitem() and getitem()
+  
+# importing operator module 
+import operator
+  
+# Initializing list
+li = [1, 5, 6, 7, 8]
+  
+# printing original list 
+print ("The original list is : ",end="")
+for i in range(0,len(li)):
+    print (li[i],end=" ")
+  
+print ("\r")
+  
+# using setitem() to assign 2,3,4 at 2nd,3rd and 4th index
+operator.setitem(li,slice(1,4),[2,3,4])
+  
+# printing modified list after setitem()
+print ("The modified list after setitem() is : ",end="")
+for i in range(0,len(li)):
+    print (li[i],end=" ")
+  
+print ("\r")
+  
+# using delitem() to delete value at 3rd and 4th index
+operator.delitem(li,slice(2,4))
+  
+# printing modified list after delitem()
+print ("The modified list after delitem() is : ",end="")
+for i in range(0,len(li)):
+    print (li[i],end=" ")
+  
+print ("\r")
+  
+# using getitem() to access 1st and 2nd element
+print ("The 1st and 2nd element of list is : ",end="")
+print (operator.getitem(li,slice(0,2)))
+Output: 
+ 
+
+The original list is : 1 5 6 7 8 
+The modified list after setitem() is : 1 2 3 4 8 
+The modified list after delitem() is : 1 2 8 
+The 1st and 2nd element of list is : [1, 2]
+ 
+7. concat(ob1,obj2) :- This function is used to concatenate two containers. 
+Operation – obj1 + obj2
+
+8. contains(ob1,obj2) :- This function is used to check if obj2 in present in 
+obj1. 
+Operation – obj2 in obj1
+ 
+
+
+# Python code to demonstrate working of 
+# concat() and contains()
+  
+# importing operator module 
+import operator
+  
+# Initializing string 1
+s1 = "geeksfor"
+  
+# Initializing string 2
+s2 = "geeks"
+  
+# using concat() to concatenate two strings
+print ("The concatenated string is : ",end="")
+print (operator.concat(s1,s2))
+  
+# using contains() to check if s1 contains s2
+if (operator.contains(s1,s2)):
+       print ("geeksfor contains geeks")
+else : print ("geeksfor does not contain geeks")
+Output: 
+ 
+
+
+
+
+The concatenated string is : geeksforgeeks
+geeksfor contains geeks
+ 9. and_(a,b) :- This function is used to compute bitwise and of the mentioned 
+ arguments. 
+Operation – a & b
+
+10. or_(a,b) :- This function is used to compute bitwise or of the mentioned 
+arguments. 
+Operation – a | b
+
+11. xor(a,b) :- This function is used to compute bitwise xor of the mentioned 
+arguments. 
+Operation – a ^ b
+
+12. invert(a) :- This function is used to compute bitwise inversion of the 
+mentioned argument. 
+Operation – ~ a
+ 
+
+
+# Python code to demonstrate working of 
+# and_(), or_(), xor(), invert()
+  
+# importing operator module 
+import operator
+  
+# Initializing a and b
+  
+a = 1
+  
+b = 0
+  
+# using and_() to display bitwise and operation
+print ("The bitwise and of a and b is : ",end="")
+print (operator.and_(a,b))
+  
+# using or_() to display bitwise or operation
+print ("The bitwise or of a and b is : ",end="")
+print (operator.or_(a,b))
+  
+# using xor() to display bitwise exclusive or operation
+print ("The bitwise xor of a and b is : ",end="")
+print (operator.xor(a,b))
+  
+# using invert() to invert value of a
+operator.invert(a)
+  
+# printing modified value
+print ("The inverted value of a is : ",end="")
+print (operator.invert(a))
+Output: 
+ 
+
+The bitwise and of a and b is : 0
+The bitwise or of a and b is : 1
+The bitwise xor of a and b is : 1
+The inverted value of a is : -2
+
+================================================
+
+*** Difference between == and is operator ***
+
+The Equality operator (==) compares the values of both the operands and checks 
+for value equality. Whereas the ‘is’ operator checks whether both the operands 
+refer to the same object or not (present in the same memory location).
+ 
+# python3 code to
+# illustrate the
+# difference between
+# == and is operator
+# [] is an empty list
+list1 = []
+list2 = []
+list3=list1
+ 
+if (list1 == list2):
+    print("True")
+else:
+    print("False")
+ 
+if (list1 is list2):
+    print("True")
+else:
+    print("False")
+ 
+if (list1 is list3):
+    print("True")
+else:   
+    print("False")
+ 
+list3 = list3 + list2
+ 
+if (list1 is list3):
+    print("True")
+else:   
+    print("False")
+Output: 
+
+True
+False
+True
+False
+The output of the first if the condition is “True” as both list1 and list2 are 
+empty lists.
+Second, if the condition shows “False” because two empty lists are at 
+different memory locations. Hence list1 and list2 refer to different objects. 
+We can check it with id() function in python which returns the “identity” of 
+an object.
+The output of the third if the condition is “True” as both list1 and list3 are 
+pointing to the same object.
+The output of the fourth if the condition is “False” because the concatenation 
+of two lists always produces a new list.
+
+list1 = []
+list2 = []
+ 
+print(id(list1))
+print(id(list2))
+Output: 
+
+139877155242696
+139877155253640
+
+================================================
+
+*** Membership and Identity Operator  ***
+
+Membership Operators
+Membership operators are operators used to validate the membership of a value. 
+It tests for membership in a sequence, such as strings, lists, or tuples. 
+ 
+in operator: The ‘in’ operator is used to check if a value exists in a 
+sequence or not. Evaluates to true if it finds a variable in the specified 
+sequence and false otherwise.
+
+# Python program to illustrate
+# Finding common member in list
+# using 'in' operator
+list1=[1,2,3,4,5]
+list2=[6,7,8,9]
+for item in list1:
+    if item in list2:
+        print("overlapping")     
+else:
+    print("not overlapping")
+Output:
+
+not overlapping
+The same example without using in operator:
+
+# Python program to illustrate
+# Finding common member in list
+# without  using 'in' operator
+ 
+#  Define a function() that takes two lists
+def overlapping(list1,list2):
+ 
+    c=0
+    d=0
+    for i in list1:
+        c+=1
+    for i in list2:
+        d+=1
+    for i in range(0,c):
+        for j in range(0,d):
+            if(list1[i]==list2[j]):
+                return 1
+     return 0
+list1=[1,2,3,4,5]
+list2=[6,7,8,9]
+if(overlapping(list1,list2)):
+    print("overlapping")
+else:
+    print("not overlapping")
+Output:
+
+not overlapping
+‘not in’ operator- Evaluates to true if it does not finds a variable in the 
+specified sequence and false otherwise. 
+
+# Python program to illustrate
+# not 'in' operator
+x = 24
+y = 20
+list = [10, 20, 30, 40, 50 ];
+ 
+if ( x not in list ):
+   print("x is NOT present in given list")
+else:
+   print("x is  present in given list")
+ 
+if ( y in list ):
+   print("y is present in given list")
+else:
+   print("y is NOT present in given list")
+Identity operators
+In Python identity operators are used to determine whether a value is of a 
+certain class or type. They are usually used to determine the type of data a 
+certain variable contains. 
+There are different identity operators such as 
+
+‘is’ operator – Evaluates to true if the variables on either side of the 
+operator point to the same object and false otherwise. 
+
+# Python program to illustrate the use
+# of 'is' identity operator
+x = 5
+if (type(x) is int):
+    print("true")
+else:
+    print("false")
+Output: 
+
+true
+‘is not’ operator – Evaluates to false if the variables on either side of the 
+operator point to the same object and true otherwise. 
+
+# Python program to illustrate the
+# use of 'is not' identity operator
+x = 5.2
+if (type(x) is not int):
+    print("true")
+else:
+    print("false")
+Output:
+true
+
+================================================

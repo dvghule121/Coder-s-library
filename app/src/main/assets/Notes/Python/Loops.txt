@@ -1,0 +1,1118 @@
+*** If - Else ***
+
+There comes situations in real life when we need to make some decisions and 
+based on these decisions, we decide what should we do next. Similar situations 
+arises in programming also where we need to make some decisions and based on 
+these decisions we will execute the next block of code.
+
+Decision making statements in programming languages decides the direction of 
+flow of program execution. Decision making statements available in python are:
+
+if statement
+if..else statements
+nested if statements
+if-elif ladder
+Short Hand if statement
+Short Hand if-else statement
+if statement
+
+if statement is the most simple decision making statement. It is used to 
+decide whether a certain statement or block of statements will be executed or 
+not i.e if a certain condition is true then a block of statement is executed 
+otherwise not.
+
+Syntax:
+
+if condition:           
+   # Statements to execute if
+   # condition is true
+Here, condition after evaluation will be either true or false. if statement 
+accepts boolean values – if the value is true then it will execute the block 
+of statements below it otherwise not. We can use condition with bracket ‘(‘ ‘)
+’ also.
+
+As we know, python uses indentation to identify a block. So the block under an 
+if statement will be identified as shown in the below example:
+
+if condition:
+   statement1
+statement2
+
+# Here if the condition is true, if block 
+# will consider only statement1 to be inside 
+# its block.
+Flowchart:-
+if-statement-in-java
+
+
+# python program to illustrate If statement
+  
+i = 10
+if (i > 15):
+   print ("10 is less than 15")
+print ("I am Not in if")
+Output:
+
+I am Not in if
+As the condition present in the if statement is false. So, the block below the 
+if statement is not executed.
+
+if- else
+
+The if statement alone tells us that if a condition is true it will execute a 
+block of statements and if the condition is false it won’t. But what if we 
+want to do something else if the condition is false. Here comes the else 
+statement. We can use the else statement with if statement to execute a block 
+of code when the condition is false.
+Syntax:
+
+if (condition):
+    # Executes this block if
+    # condition is true
+else:
+    # Executes this block if
+    # condition is false
+Flow Chart:-
+if-else-statement
+
+
+
+
+# python program to illustrate If else statement
+#!/usr/bin/python
+  
+i = 20;
+if (i < 15):
+    print ("i is smaller than 15")
+    print ("i'm in if Block")
+else:
+    print ("i is greater than 15")
+    print ("i'm in else Block")
+print ("i'm not in if and not in else Block")
+
+Output:
+i is greater than 15
+i'm in else Block
+i'm not in if and not in else Block
+The block of code following the else statement is executed as the condition 
+present in the if statement is false after call the statement which is not in 
+block(without spaces).
+
+nested-if
+
+A nested if is an if statement that is the target of another if statement. 
+Nested if statements mean an if statement inside another if statement. Yes, 
+Python allows us to nest if statements within if statements. i.e, we can place 
+an if statement inside another if statement.
+
+Syntax:
+
+if (condition1):
+   # Executes when condition1 is true
+   if (condition2): 
+      # Executes when condition2 is true
+   # if Block is end here
+# if Block is end here
+Flow chart:-
+
+Nested_if
+
+
+# python program to illustrate nested If statement
+#!/usr/bin/python
+i = 10
+if (i == 10):
+    #  First if statement
+    if (i < 15):
+        print ("i is smaller than 15")
+    # Nested - if statement
+    # Will only be executed if statement above
+    # it is true
+    if (i < 12):
+        print ("i is smaller than 12 too")
+    else:
+        print ("i is greater than 15")
+
+Output:
+i is smaller than 15
+i is smaller than 12 too
+if-elif-else ladder
+
+Here, a user can decide among multiple options. The if statements are executed 
+from the top down. As soon as one of the conditions controlling the if is 
+true, the statement associated with that if is executed, and the rest of the 
+ladder is bypassed. If none of the conditions is true, then the final else 
+statement will be executed.
+
+
+
+
+Syntax:-
+
+if (condition):
+    statement
+elif (condition):
+    statement
+.
+.
+else:
+    statement
+Flow Chart:-
+if-else-if-ladder
+
+Example:-
+
+
+# Python program to illustrate if-elif-else ladder
+#!/usr/bin/python
+   
+i = 20
+if (i == 10):
+    print ("i is 10")
+elif (i == 15):
+    print ("i is 15")
+elif (i == 20):
+    print ("i is 20")
+else:
+    print ("i is not present")
+
+Output:
+i is 20
+Short Hand if statement
+
+Whenever there is only a single statement to be executed inside the if block 
+then shorthand if can be used. The statement can be put on the same line as 
+the if statement.
+Syntax:
+
+if condition: statement
+Example:
+
+
+# Python program to illustrate short hand if
+i = 10
+if i < 15: print("i is less than 15")
+Output:
+
+i is less than 15
+Short Hand if-else statement
+
+This can be used to write the if-else statements in a single line where there 
+is only one statement to be executed in both if and else block.
+
+Syntax:
+
+statement_when_True if condition else statement_when_False
+Example:
+
+
+# Python program to illustrate short hand if-else
+i = 10
+print(True) if i < 15 else print(False)
+Output:
+
+True
+
+================================================
+
+*** Chaining Comparison Operator ***
+
+Checking more than two conditions is very common in Programming Languages. Let say we want to check below condition:
+
+a < b < c
+Most common syntax to do it is as follows:
+
+if a < b and b < c :
+   {...}
+In Python, there is a better way to write this using Comparison operator Chaining. The chaining of operators can be written as follows:
+
+if a < b < c :
+    {.....}
+According to associativity and precedence in Python, all comparison operations in Python have the same priority, which is lower than that of any arithmetic, shifting or bitwise operation. Also unlike C, expressions like a < b < c have the interpretation that is conventional in mathematics.
+
+List of comparison operators in Python:
+
+
+
+
+">" | "<" | "==" | ">=" | "<=" | "!=" | "is" ["not"] | ["not"] "in"
+Chaining in Comparison Operators:
+
+Comparisons yield boolean values: True or False.
+Comparisons can be chained arbitrarily. For example:
+x < y <= z is equivalent to x < y and y <= z, 
+except that y is evaluated only once.
+(but in both cases z is not evaluated at all when x < y is found to be false).
+
+Formally, if a, b, c, …, y, z are expressions and op1, op2, …, opN are comparison operators, then a op1 b op2 c … y opN z is equivalent to a op1 b and b op2 c and … y opN z, except that each expression is evaluated at most once.
+Also,
+a op1 b op2 c 
+doesn’t imply any kind of comparison between a and c, so
+
+ a < b > c
+is perfectly legal.
+
+
+# Python code to illustrate
+# chaining comparison operators
+x = 5
+print(1 < x < 10)
+print(10 < x < 20 )
+print(x < 10 < x*10 < 100)
+print(10 > x <= 9)
+print(5 == x > 4)
+Output:
+
+True
+False
+True
+True
+True
+Another Example:
+
+
+# Python code to illustrate
+# chaining comparison operators
+a, b, c, d, e, f = 0, 5, 12, 0, 15, 15
+exp1 = a <= b < c > d is not e is f
+exp2 = a is d > f is not c
+print(exp1)
+print(exp2)
+Output:
+
+True
+False
+
+
+================================================
+
+*** For loop ***
+
+Python For loop is used for sequential traversal i.e. it is used for iterating 
+over an iterable like string, tuple, list, etc. It falls under the category of 
+definite iteration. Definite iterations mean the number of repetitions is 
+specified explicitly in advance. In Python, there is no C style for loop, i.e.
+, for (i=0; i<n; i++). There is “for in” loop which is similar to for each 
+loop in other languages. Let us learn how to use for in loop for sequential 
+traversals. 
+
+Note: In Python, for loops only implements the collection-based iteration.
+
+Syntax:
+
+for var in iterable:
+    # statements
+Flowchart of for loop
+Python For Loop
+
+Here the iterable is a collection of objects like lists, tuples. The indented 
+statements inside the for loops are executed once for each item in an 
+iterable. The variable var takes the value of the next item of the iterable 
+each time through the loop.
+
+
+
+
+Example: Python For Loop using List, Dictionary, String
+
+# Python program to illustrate
+# Iterating over a list
+print("List Iteration")
+l = ["geeks", "for", "geeks"]
+for i in l:
+    print(i)
+ 
+# Iterating over a tuple (immutable)
+print("\nTuple Iteration")
+t = ("geeks", "for", "geeks")
+for i in t:
+    print(i)
+ 
+# Iterating over a String
+print("\nString Iteration")
+s = "Geeks"
+for i in s:
+    print(i)
+ 
+# Iterating over dictionary
+print("\nDictionary Iteration")
+d = dict()
+d['xyz'] = 123
+d['abc'] = 345
+for i in d:
+    print("% s % d" % (i, d[i]))
+Output: 
+
+List Iteration
+geeks
+for
+geeks
+
+Tuple Iteration
+geeks
+for
+geeks
+
+String Iteration
+G
+e
+e
+k
+s
+
+Dictionary Iteration
+xyz 123
+abc 345
+Loop Control Statements
+Loop control statements change execution from its normal sequence. When 
+execution leaves a scope, all automatic objects that were created in that 
+scope are destroyed. Python supports the following control statements.
+
+Continue Statement
+Python continue Statement returns the control to the beginning of the loop.
+
+Example: Python for Loop with Continue Statement
+
+# Prints all letters except 'e' and 's'
+for letter in 'geeksforgeeks':
+    if letter == 'e' or letter == 's':
+        continue
+    print('Current Letter :', letter)
+Output: 
+
+Current Letter : g
+Current Letter : k
+Current Letter : f
+Current Letter : o
+Current Letter : r
+Current Letter : g
+Current Letter : k
+Break Statement
+Python break statement brings control out of the loop.
+
+Example: Python For Loop with Break Statement
+
+for letter in 'geeksforgeeks':
+ 
+    # break the loop as soon it sees 'e'
+    # or 's'
+    if letter == 'e' or letter == 's':
+        break
+ 
+print('Current Letter :', letter)
+Output: 
+
+Current Letter : e
+Pass Statement
+The pass statement to write empty loops. Pass is also used for empty control 
+statements, functions, and classes.
+
+Example: Python For Loop with Pass Statement
+
+# An empty loop
+for letter in 'geeksforgeeks':
+    pass
+print('Last Letter :', letter)
+Output: 
+
+
+
+
+Last Letter : s 
+range() function
+Python range() is a built-in function that is used when a user needs to 
+perform an action a specific number of times. range() in Python(3.x) is just a 
+renamed version of a function called xrange() in Python(2.x). The range() 
+function is used to generate a sequence of numbers. Depending on how many 
+arguments user is passing to the function, user can decide where that series 
+of numbers will begin and end as well as how big the difference will be 
+between one number and the next.range() takes mainly three arguments. 
+
+start: integer starting from which the sequence of integers is to be returned
+stop: integer before which the sequence of integers is to be returned. 
+The range of integers end at stop – 1.
+step: integer value which determines the increment between each integer in the 
+sequence 
+Example: Python for loop with range function
+
+# Python Program to
+# show range() basics
+ 
+# printing a number
+for i in range(10):
+    print(i, end=" ")
+print()
+ 
+# using range for iteration
+l = [10, 20, 30, 40]
+for i in range(len(l)):
+    print(l[i], end=" ")
+print()
+ 
+# performing sum of first 10 numbers
+sum = 0
+for i in range(1, 10):
+    sum = sum + i
+print("Sum of first 10 numbers :", sum)
+Output
+0 1 2 3 4 5 6 7 8 9 
+10 20 30 40 
+Sum of first 10 numbers : 45
+Python for loop with else
+In most of the programming languages (C/C++, Java, etc), the use of else 
+statements has been restricted with the if conditional statements. But Python 
+also allows us to use the else condition with for loops. 
+
+Note: The else block just after for/while is executed only when the loop is 
+NOT terminated by a break statement 
+
+
+# Python program to demonstrate
+# for-else loop
+ 
+for i in range(1, 4):
+    print(i)
+else:  # Executed because no break in for
+    print("No Break\n")
+ 
+for i in range(1, 4):
+    print(i)
+    break
+else:  # Not executed as there is a break
+    print("No Break")
+Output: 
+
+1
+2
+3
+No Break
+
+
+================================================
+
+*** While Loop ***
+
+Python While Loop is used to execute a block of statements repeatedly until a 
+given condition is satisfied. And when the condition becomes false, the line 
+immediately after the loop in the program is executed. While loop falls under 
+the category of indefinite iteration. Indefinite iteration means that the 
+number of times the loop is executed isn’t specified explicitly in advance. 
+
+Syntax: 
+
+while expression:
+    statement(s)
+Statements represent all the statements indented by the same number of 
+character spaces after a programming construct are considered to be part of a 
+single block of code. Python uses indentation as its method of grouping 
+statements. When a while loop is executed, expr is first evaluated in a 
+Boolean context and if it is true, the loop body is executed. Then the expr is 
+checked again, if it is still true then the body is executed again and this 
+continues until the expression becomes false.
+
+Flowchart of While Loop : 
+python while loop
+
+Example 1: Python While Loop
+
+# Python program to illustrate
+# while loop
+count = 0
+while (count < 3):
+    count = count + 1
+    print("Hello Geek")
+Output
+
+
+Hello Geek
+Hello Geek
+Hello Geek
+In the above example, the condition for while will be True as long as the 
+counter variable (count) is less than 3. 
+
+Example 2: Python while loop with list
+
+# checks if list still
+# contains any element
+a = [1, 2, 3, 4]
+ 
+while a:
+    print(a.pop())
+Output
+4
+3
+2
+1
+In the above example, we have run a while loop over a list that will run until 
+there is an element present in the list.
+
+Single statement while block
+Just like the if block, if the while block consists of a single statement we 
+can declare the entire loop in a single line. If there are multiple statements 
+in the block that makes up the loop body, they can be separated by semicolons 
+(;). 
+
+
+# Python program to illustrate
+# Single statement while block
+count = 0
+while (count < 5): count += 1; print("Hello Geek")
+Output: 
+
+Hello Geek
+Hello Geek
+Hello Geek
+Hello Geek
+Hello Geek
+Loop Control Statements
+Loop control statements change execution from its normal sequence. When 
+execution leaves a scope, all automatic objects that were created in that 
+scope are destroyed. Python supports the following control statements.
+
+Continue Statement
+Python Continue Statement returns the control to the beginning of the loop.
+
+Example: Python while loop with continue statement
+
+# Prints all letters except 'e' and 's'
+i = 0
+a = 'geeksforgeeks'
+ 
+while i < len(a):
+    if a[i] == 'e' or a[i] == 's':
+        i += 1
+        continue
+         
+    print('Current Letter :', a[i])
+    i += 1
+Output: 
+
+
+
+Current Letter : g
+Current Letter : k
+Current Letter : f
+Current Letter : o
+Current Letter : r
+Current Letter : g
+Current Letter : k
+Break Statement
+Python Break Statement brings control out of the loop.
+
+Example: Python while loop with break statement
+
+# break the loop as soon it sees 'e'
+# or 's'
+i = 0
+a = 'geeksforgeeks'
+ 
+while i < len(a):
+    if a[i] == 'e' or a[i] == 's':
+        i += 1
+        break
+         
+    print('Current Letter :', a[i])
+    i += 1
+Output: 
+
+Current Letter : g
+Pass Statement
+The Python pass statement to write empty loops. Pass is also used for empty 
+control statements, functions, and classes.
+
+Example: Python while loop with pass statement
+
+# An empty loop
+a = 'geeksforgeeks'
+i = 0
+ 
+while i < len(a):
+    i += 1
+    pass
+   
+print('Value of i :', i)
+Output: 
+
+Value of i : 13
+While loop with else
+As discussed above, while loop executes the block until a condition is 
+satisfied. When the condition becomes false, the statement immediately after 
+the loop is executed. The else clause is only executed when your while 
+condition becomes false. If you break out of the loop, or if an exception is 
+raised, it won’t be executed.
+
+Note: The else block just after for/while is executed only when the loop is 
+NOT terminated by a break statement. 
+
+
+# Python program to demonstrate
+# while-else loop
+ 
+i = 0
+while i < 4:
+    i += 1
+    print(i)
+else:  # Executed because no break in for
+    print("No Break\n")
+ 
+i = 0
+while i < 4:
+    i += 1
+    print(i)
+    break
+else:  # Not executed as there is a break
+    print("No Break")
+Output: 
+
+1
+2
+3
+4
+No Break
+
+1
+Sentinel Controlled Statement
+In this, we don’t use any counter variable because we don’t know that how many 
+times the loop will execute. Here user decides that how many times he wants to 
+execute the loop. For this, we use a sentinel value. A sentinel value is a 
+value that is used to terminate a loop whenever a user enters it, generally, 
+the sentinel value is -1.
+
+Example: Python while loop with user input
+a = int(input('Enter a number (-1 to quit): '))
+ 
+while a != -1:
+    a = int(input('Enter a number (-1 to quit): '))
+Output:
+
+
+
+Explanation:
+
+First, it asks the user to input a number. if the user enters -1 then the loop 
+will not execute
+User enter 6 and the body of the loop executes and again ask for input
+Here user can input many times until he enters -1 to stop the loop
+User can decide how many times he wants to enter input
+
+================================================
+
+*** Break statement ***
+
+Using loops in Python automates and repeats the tasks in an efficient manner. 
+But sometimes, there may arise a condition where you want to exit the loop 
+completely, skip an iteration or ignore that condition. These can be done by 
+loop control statements. Loop control statements change execution from its 
+normal sequence. When execution leaves a scope, all automatic objects that 
+were created in that scope are destroyed. Python supports the following 
+control statements.
+
+Continue statement
+Break statement
+Pass statement
+In this article, the main focus will be on break statement.
+
+Break statement
+Break statement in Python is used to bring the control out of the loop when 
+some external condition is triggered. Break statement is put inside the loop 
+body (generally after if condition).
+
+Break-statement-python
+
+Syntax:
+break
+
+Example:
+# Python program to
+# demonstrate break statement
+  
+s = 'geeksforgeeks'
+# Using for loop
+for letter in s:
+  
+    print(letter)
+    # break the loop as soon it sees 'e'
+    # or 's'
+    if letter == 'e' or letter == 's':
+        break
+  
+print("Out of for loop")
+print()
+  
+i = 0
+  
+# Using while loop
+while True:
+    print(s[i])
+  
+    # break the loop as soon it sees 'e'
+    # or 's'
+    if s[i] == 'e' or s[i] == 's':
+        break
+    i += 1
+  
+print("Out of while loop")
+Output:
+
+g
+e
+Out of for loop
+
+g
+e
+Out of while loop
+In the above example, both the loops are iterating the string ‘geeksforgeeks’ 
+and as soon as they encounter the character ‘e’ or ‘s’, the if condition 
+becomes true and the flow of execution is brought out of the loop.
+
+================================================
+
+*** Continue Statement ***
+
+In this article, we will discuss continue statements in Python for altering 
+the flow of loops.
+
+Usage of Continue Statement
+Loops in Python automates and repeats the tasks in an efficient manner. But 
+sometimes, there may arise a condition where you want to exit the loop 
+completely, skip an iteration or ignore that condition. These can be done by 
+loop control statements. Continue is a type of loop control statement that can 
+alter the flow of the loop. 
+
+Continue statement
+Continue statement is a loop control statement that forces to execute the next 
+iteration of the loop while skipping the rest of the code inside the loop for 
+the current iteration only i.e. when the continue statement is executed in the 
+loop, the code inside the loop following the continue statement will be 
+skipped for the current iteration and the next iteration of the loop will 
+begin.
+
+Syntax: 
+
+continue
+Flowchart of Continue Statement
+Continue-statement-python1
+
+Example: Continue statement in Python
+Consider the situation when you need to write a program which prints the 
+number from 1 to 10 and but not 6. It is specified that you have to do this 
+using loop and only one loop is allowed to use. Here comes the usage of 
+continue statement. What we can do here is we can run a loop from 1 to 10 and 
+every time we have to compare the value of the iterator with 6. If it is equal 
+to 6 we will use the continue statement to continue to the next iteration 
+without printing anything otherwise we will print the value.
+
+Below is the implementation of the above idea:
+
+
+# Python program to
+# demonstrate continue
+# statement
+ 
+# loop from 1 to 10
+for i in range(1, 11):
+ 
+    # If i is equals to 6,
+    # continue to next iteration
+    # without printing
+    if i == 6:
+        continue
+    else:
+        # otherwise print the value
+        # of i
+        print(i, end=" ")
+Output: 
+
+1 2 3 4 5 7 8 9 10 
+Note: The continue statement can be used with any other loop also like while 
+loop in a similar way as it is used with for loop above.
+
+Exercise Problem: 
+
+Given a number n, print triangular pattern. We are allowed to use only one 
+loop.
+
+Input: 7
+Output:
+*
+* * 
+* * *
+* * * *
+* * * * *
+* * * * * *
+* * * * * * *
+
+================================================
+
+*** Pass statement ***
+
+The pass statement is a null statement. But the difference between pass and 
+comment is that comment is ignored by the interpreter whereas pass is not 
+ignored. 
+
+The pass statement is generally used as a placeholder i.e. when the user does 
+not know what code to write. So user simply places pass at that line. 
+Sometimes, pass is used when the user doesn’t want any code to execute. So 
+user can simply place pass where empty code is not allowed, like in loops, 
+function definitions, class definitions, or in if statements. So using pass 
+statement user avoids this error.
+
+Syntax:
+
+pass
+Example 1: Pass statement can be used in empty functions
+
+
+def geekFunction:
+  pass
+Example 2: pass statement can also be used in empty class
+
+
+
+
+
+class geekClass:
+  pass
+Example 3: pass statement can be used in for loop when user doesn’t know what 
+to code inside the loop
+
+
+n = 10
+for i in range(n):
+   
+  # pass can be used as placeholder
+  # when code is to added later
+  pass
+Example 4: pass statement can be used with conditional statements 
+
+
+a = 10
+b = 20
+ 
+if(a<b):
+  pass
+else:
+  print("b<a")
+Example 5: lets take another example in which the pass statement get executed 
+when the condition is true 
+
+
+li =['a', 'b', 'c', 'd']
+ 
+for i in li:
+    if(i =='a'):
+        pass
+    else:
+        print(i)
+Output:
+
+b
+c
+d
+
+================================================
+
+*** Looping techniques ***
+
+Python supports various looping techniques by certain inbuilt functions, in 
+various sequential containers. These methods are primarily very useful in 
+competitive programming and also in various projects which require a specific 
+technique with loops maintaining the overall structure of code.  A lot of time 
+and memory space is been saved as there is no need to declare the extra 
+variables which we declare in the traditional approach of loops.
+
+Where they are used?
+Different looping techniques are primarily useful in the places where we don’t 
+need to actually manipulate the structure and order of the overall containers, 
+rather only print the elements for a single-use instance, no in-place change 
+occurs in the container. This can also be used in instances to save time.
+ 
+
+Different looping techniques using Python data structures  are: 
+
+Using enumerate():  enumerate() is used to loop through the containers 
+printing the index number along with the value present in that particular 
+index.
+ 
+
+# python code to demonstrate working of enumerate()
+ 
+for key, value in enumerate(['The', 'Big', 'Bang', 'Theory']):
+    print(key, value)
+Output:
+
+0 The
+1 Big
+2 Bang
+3 Theory
+
+# python code to demonstrate working of enumerate()
+ 
+for key, value in enumerate(['Geeks', 'for', 'Geeks', 'is', 'the', 'Best', 
+'Coding', 'Platform']):
+    print(value, end=' ')
+Output:
+
+Geeks for Geeks is the Best Coding Platform 
+Using zip(): zip() is used to combine 2 similar containers(list-list or 
+dict-dict) printing the values sequentially. The loop exists only till the 
+smaller container ends. A detailed explanation of zip() and enumerate() can be 
+found here.
+ 
+
+# python code to demonstrate working of zip()
+ 
+# initializing list
+questions = ['name', 'colour', 'shape']
+answers = ['apple', 'red', 'a circle']
+ 
+# using zip() to combine two containers
+# and print values
+for question, answer in zip(questions, answers):
+    print('What is your {0}?  I am {1}.'.format(question, answer))
+Output:
+
+What is your name?  I am apple.
+What is your color?  I am red.
+What is your shape?  I am a circle.
+Using iteritem(): iteritems() is used to loop through the dictionary printing 
+the dictionary key-value pair sequentially.
+Using items(): items() performs the similar task on dictionary as iteritems() 
+but have certain disadvantages when compared with iteritems().
+It is very time-consuming. Calling it on large dictionaries consumes quite a 
+lot of time.
+It takes a lot of memory. Sometimes takes double the memory when called on a 
+dictionary.
+ 
+Example 1:
+
+
+# python code to demonstrate working of iteritems(),items()
+ 
+d = { "geeks" : "for", "only" : "geeks" }
+ 
+# using iteritems to print the dictionary key-value pair
+print ("The key value pair using iteritems is : ")
+for i,j in d.iteritems():
+    print i,j
+     
+# using items to print the dictionary key-value pair
+print ("The key value pair using items is : ")
+for i,j in d.items():
+    print i,j
+Output:
+
+The key value pair using iteritems is : 
+geeks for
+only geeks
+The key value pair using items is : 
+geeks for
+only geeks
+Example 2:
+
+
+# python code to demonstrate working of items()
+ 
+king = {'Akbar': 'The Great', 'Chandragupta': 'The Maurya',
+        'Modi' : 'The Changer'}
+ 
+# using items to print the dictionary key-value pair
+for key, value in king.items():
+    print(key, value)
+Output:
+
+Akbar The Great
+Chandragupta The Maurya
+Modi The Changer
+Using sorted():  sorted() is used to print the container is sorted order. It 
+doesn’t sort the container but just prints the container in sorted order for 1 
+instance. The use of set() can be combined to remove duplicate occurrences.
+Example 1:
+
+
+# python code to demonstrate working of sorted()
+ 
+# initializing list
+lis = [ 1 , 3, 5, 6, 2, 1, 3 ]
+ 
+# using sorted() to print the list in sorted order
+print ("The list in sorted order is : ")
+for i in sorted(lis) :
+    print (i,end=" ")
+     
+print ("\r")
+     
+# using sorted() and set() to print the list in sorted order
+# use of set() removes duplicates.
+print ("The list in sorted order (without duplicates) is : ")
+for i in sorted(set(lis)) :
+    print (i,end=" ")
+Output:
+
+The list in sorted order is : 
+1 1 2 3 3 5 6 
+The list in sorted order (without duplicates) is : 
+1 2 3 5 6 
+Example 2:
+
+# python code to demonstrate working of sorted()
+ 
+# initializing list
+basket = ['guave', 'orange', 'apple', 'pear',
+          'guava', 'banana', 'grape']
+ 
+# using sorted() and set() to print the list
+#  in sorted order
+for fruit in sorted(set(basket)):
+    print(fruit)
+Output:
+
+apple
+banana
+grape
+guava
+guave
+orange
+pear
+Using reversed(): reversed() is used to print the values of the container in 
+the reversed order. It does not reflect any changes to the original list
+ 
+Example 1:
+
+
+# python code to demonstrate working of reversed()
+ 
+# initializing list
+lis = [ 1 , 3, 5, 6, 2, 1, 3 ]
+ 
+ 
+# using revered() to print the list in reversed order
+print ("The list in reversed order is : ")
+for i in reversed(lis) :
+    print (i,end=" ")
+Output:
+
+The list in reversed order is : 
+3 1 2 6 5 3 1 
+Example 2:
+
+
+# python code to demonstrate working of reversed()
+ 
+# using reversed() to print in reverse order
+for i in reversed(range(1, 10, 3)):
+    print (i)
+Output:
+
+7
+4
+1
+These techniques are quick to use and reduce coding effort. for, while loops 
+need the entire structure of the container to be changed.
+These Looping techniques do not require any structural changes to the 
+container. They have keywords that present the exact purpose of usage. 
+Whereas, no pre-predictions or guesses can be made in for, while loop i.e not 
+easily understand the purpose at a glance.
+Looping technique makes the code more concise than using for & while looping.
+
+================================================

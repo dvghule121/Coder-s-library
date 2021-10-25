@@ -1,0 +1,685 @@
+
+*** Checked vs Unchecked Exceptions in Java ***
+
+In Java, there are two types of exceptions:
+1) Checked: are the exceptions that are checked at compile time. If some code within a method throws a checked exception, then the method must either handle the exception or it must specify the exception using throws keyword.
+For example, consider the following Java program that opens file at location “C:\test\a.txt” and prints the first three lines of it. The program doesn’t compile, because the function main() uses FileReader() and FileReader() throws a checked exception FileNotFoundException. It also uses readLine() and close() methods, and these methods also throw checked exception IOException
+import java.io.*;
+  
+class Main {
+    public static void main(String[] args) {
+        FileReader file = new FileReader("C:\\test\\a.txt");
+        BufferedReader fileInput = new BufferedReader(file);
+          
+        // Print first 3 lines of file "C:\test\a.txt"
+        for (int counter = 0; counter < 3; counter++) 
+            System.out.println(fileInput.readLine());
+          
+        fileInput.close();
+    }
+}
+	Output:
+Exception in thread "main" java.lang.RuntimeException: Uncompilable source code - 
+unreported exception java.io.FileNotFoundException; must be caught or declared to be 
+thrown
+    at Main.main(Main.java:5)
+
+
+To fix the above program, we either need to specify list of exceptions using throws, or we need to use try-catch block. We have used throws in the below program. Since FileNotFoundException is a subclass of IOException, we can just specify IOException in the throws list and make the above program compiler-error-free.
+
+
+
+
+import java.io.*;
+  
+class Main {
+    public static void main(String[] args) throws IOException {
+        FileReader file = new FileReader("C:\\test\\a.txt");
+        BufferedReader fileInput = new BufferedReader(file);
+          
+        // Print first 3 lines of file "C:\test\a.txt"
+        for (int counter = 0; counter < 3; counter++) 
+            System.out.println(fileInput.readLine());
+          
+        fileInput.close();
+    }
+}
+	Output: First three lines of file “C:\test\a.txt”
+2) Unchecked are the exceptions that are not checked at compiled time. In C++, all exceptions are unchecked, so it is not forced by the compiler to either handle or specify the exception. It is up to the programmers to be civilized, and specify or catch the exceptions.
+In Java exceptions under Error and RuntimeException classes are unchecked exceptions, everything else under throwable is checked.
+                  +-----------+
+           | Throwable |
+                   +-----------+
+                    /         \
+           /           \
+          +-------+          +-----------+
+          | Error |          | Exception |
+          +-------+          +-----------+
+       /  |  \           / |        \
+         \________/      \______/         \
+                            +------------------+
+    unchecked     checked    | RuntimeException |
+                    +------------------+
+                      /   |    |      \
+                     \_________________/
+                       
+                       unchecked
+
+
+Consider the following Java program. It compiles fine, but it throws ArithmeticException when run. The compiler allows it to compile, because ArithmeticException is an unchecked exception.
+class Main {
+   public static void main(String args[]) {
+      int x = 0;
+      int y = 10;
+      int z = y/x;
+  }
+}
+	Output:
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+    at Main.main(Main.java:5)
+Java Result: 1
+
+==================================================
+
+*** Exception ***
+
+Exceptions in Java
+What is an Exception?
+An exception is an unwanted or unexpected event, which occurs during the execution of a program i.e at run time, that disrupts the normal flow of the program’s instructions.
+Error vs Exception
+Error: An Error indicates serious problem that a reasonable application should not try to catch.
+Exception: Exception indicates conditions that a reasonable application might try to catch.
+
+
+
+
+Exception Hierarchy
+All exception and errors types are sub classes of class Throwable, which is base class of hierarchy.One branch is headed by Exception. This class is used for exceptional conditions that user programs should catch. NullPointerException is an example of such an exception.Another branch,Error are used by the Java run-time system(JVM) to indicate errors having to do with the run-time environment itself(JRE). StackOverflowError is an example of such an error.
+ Exception-in-java1 
+
+For checked vs unchecked exception, see Checked vs Unchecked Exceptions
+How JVM handle an Exception?
+Default Exception Handling : Whenever inside a method, if an exception has occurred, the method creates an Object known as Exception Object and hands it off to the run-time system(JVM). The exception object contains name and description of the exception, and current state of the program where exception has occurred. Creating the Exception Object and handling it to the run-time system is called throwing an Exception.There might be the list of the methods that had been called to get to the method where exception was occurred. This ordered list of the methods is called Call Stack.Now the following procedure will happen.
+* The run-time system searches the call stack to find the method that contains block of code that can handle the occurred exception. The block of the code is called Exception handler.
+* The run-time system starts searching from the method in which exception occurred, proceeds through call stack in the reverse order in which methods were called.
+* If it finds  appropriate handler then it passes the occurred exception to it. Appropriate handler means the type of the exception object thrown matches the type of the exception object it can handle.
+If run-time system searches all the methods on call stack and couldn’t have found the appropriate handler then run-time system handover the Exception Object to default exception handler , which is part of run-time system. This handler prints the exception information in the following format and terminates program abnormally.
+Exception in thread "xxx" Name of Exception : Description
+... ...... ..  // Call Stack
+* See the below diagram to understand the flow of the call stack.
+ call stack 
+
+Example :
+// Java program to demonstrate how exception is thrown.
+class ThrowsExecp{
+      
+    public static void main(String args[]){
+          
+        String str = null;
+        System.out.println(str.length());
+          
+    }
+}
+	Output :
+Exception in thread "main" java.lang.NullPointerException
+    at ThrowsExecp.main(File.java:8)
+
+
+Let us see an example that illustrate how run-time system searches appropriate exception handling code on the call stack :
+// Java program to demonstrate exception is thrown
+// how the runTime system searches th call stack
+// to find appropriate exception handler.
+class ExceptionThrown
+{
+    // It throws the Exception(ArithmeticException).
+    // Appropriate Exception handler is not found within this method.
+    static int divideByZero(int a, int b){
+          
+        // this statement will cause ArithmeticException(/ by zero)
+        int i = a/b; 
+          
+        return i;
+    }
+      
+    // The runTime System searches the appropriate Exception handler
+    // in this method also but couldn't have found. So looking forward
+    // on the call stack.
+    static int computeDivision(int a, int b) {
+          
+        int res =0;
+          
+        try
+        {
+          res = divideByZero(a,b);
+        }
+        // doesn't matches with ArithmeticException
+        catch(NumberFormatException ex)
+        {
+           System.out.println("NumberFormatException is occured"); 
+        }
+        return res;
+    }
+      
+    // In this method found appropriate Exception handler.
+    // i.e. matching catch block.
+    public static void main(String args[]){
+          
+        int a = 1;
+        int b = 0;
+          
+        try
+        {
+            int i = computeDivision(a,b);
+          
+        }
+          
+        // matching ArithmeticException
+        catch(ArithmeticException ex)
+        {
+            // getMessage will print description of exception(here / by zero)
+            System.out.println(ex.getMessage());
+        }
+    }
+}
+	Output :
+/ by zero.
+
+
+
+
+
+
+How Programmer handles an exception?
+Customized Exception Handling : Java exception handling is managed via five keywords: try, catch, throw, throws, and finally. Briefly, here is how they work. Program statements that you think can raise exceptions are contained within a try block. If an exception occurs within the try block, it is thrown. Your code can catch this exception (using catch block) and handle it in some rational manner. System-generated exceptions are automatically thrown by the Java run-time system. To manually throw an exception, use the keyword throw. Any exception that is thrown out of a method must be specified as such by a throws clause. Any code that absolutely must be executed after a try block completes is put in a finally block.
+Detailed Article: Control flow in try catch finally block
+Need of try-catch clause(Customized Exception Handling)
+Consider the following java program.
+// java program to demonstrate 
+// need of try-catch clause
+  
+class GFG {
+    public static void main (String[] args) {
+          
+        // array of size 4.
+        int[] arr = new int[4];
+       
+        // this statement causes an exception
+        int i = arr[4];
+          
+        // the following statement will never execute
+        System.out.println("Hi, I want to execute");
+    }
+}
+	Output :
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 4
+    at GFG.main(GFG.java:9)
+
+
+Explanation : In the above example an array is defined with size i.e. you can access elements only from index 0 to 3. But you trying to access the elements at index 4(by mistake) that’s why it is throwing an exception.In this case, JVM terminates the program abnormally. The statement System.out.println(“Hi, I want to execute”); will never execute. To execute it, we must handled the exception using try-catch. Hence to continue normal flow of the program, we need try-catch clause.
+How to use try-catch clause
+try {
+// block of code to monitor for errors
+// the code you think can raise an exception
+}
+catch (ExceptionType1 exOb) {
+// exception handler for ExceptionType1
+}
+catch (ExceptionType2 exOb) {
+// exception handler for ExceptionType2
+}
+// optional
+finally {
+// block of code to be executed after try block ends
+}
+
+
+Points to remember :
+* In a method, there can be more than one statements that might throw exception, So put all these statements within its own try block and provide separate exception handler within own catch block for each of them.
+* If an exception occurs within the try block, that exception is handled by the exception handler associated with it. To associate exception handler, we must put catch block after it. There can be more than one exception handlers. Each catch block is a exception handler that handles the exception of the type indicated by its argument. The argument, ExceptionType declares the type of the exception that it can handle and must be the name of the class that inherits from Throwable class.
+* For each try block there can be zero or more catch blocks, but only one finally block.
+* The finally block is optional.It always gets executed whether an exception occurred in try block or not . If exception occurs, then it will be executed after try and catch blocks. And if exception does not occur then it will be executed after the try block. The finally block in java is used to put important codes such as clean up code e.g. closing the file or closing the connection.
+Summary
+ Exception
+
+==================================================
+
+*** Throw and Throws ***
+
+throw and throws in Java
+throw
+The throw keyword in Java is used to explicitly throw an exception from a method or any block of code. We can throw either checked or unchecked exception. The throw keyword is mainly used to throw custom exceptions. 
+Syntax: 
+throw Instance
+Example:
+throw new ArithmeticException("/ by zero");
+But this exception i.e, Instance must be of type Throwable or a subclass of Throwable. For example Exception is a sub-class of Throwable and user defined exceptions typically extend Exception class. Unlike C++, data types such as int, char, floats or non-throwable classes cannot be used as exceptions.
+The flow of execution of the program stops immediately after the throw statement is executed and the nearest enclosing try block is checked to see if it has a catch statement that matches the type of exception. If it finds a match, controlled is transferred to that statement otherwise next enclosing try block is checked and so on. If no matching catch is found then the default exception handler will halt the program. 
+
+
+
+
+* Java
+// Java program that demonstrates the use of throw
+class ThrowExcep
+{
+    static void fun()
+    {
+        try
+        {
+            throw new NullPointerException("demo");
+        }
+        catch(NullPointerException e)
+        {
+            System.out.println("Caught inside fun().");
+            throw e; // rethrowing the exception
+        }
+    }
+ 
+    public static void main(String args[])
+    {
+        try
+        {
+            fun();
+        }
+        catch(NullPointerException e)
+        {
+            System.out.println("Caught in main.");
+        }
+    }
+}
+	Output: 
+Caught inside fun().
+Caught in main.
+ 
+Another Example: 
+* Java
+// Java program that demonstrates the use of throw
+class Test
+{
+    public static void main(String[] args)
+    {
+        System.out.println(1/0);
+    }
+}
+	Output: 
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+throws
+throws is a keyword in Java which is used in the signature of method to indicate that this method might throw one of the listed type exceptions. The caller to these methods has to handle the exception using a try-catch block. 
+Syntax:  
+type method_name(parameters) throws exception_list
+exception_list is a comma separated list of all the 
+exceptions which a method might throw.
+In a program, if there is a chance of raising an exception then compiler always warn us about it and compulsorily we should handle that checked exception, Otherwise we will get compile time error saying unreported exception XXX must be caught or declared to be thrown. To prevent this compile time error we can handle the exception in two ways: 
+1. By using try catch
+2. By using throws keyword
+We can use throws keyword to delegate the responsibility of exception handling to the caller (It may be a method or JVM) then caller method is responsible to handle that exception.  
+
+
+
+
+* Java
+// Java program to illustrate error in case
+// of unhandled exception
+class tst
+{
+    public static void main(String[] args)
+    {
+        Thread.sleep(10000);
+        System.out.println("Hello Geeks");
+    }
+}
+	Output: 
+error: unreported exception InterruptedException; must be caught or declared to be thrown
+Explanation: In the above program, we are getting compile time error because there is a chance of exception if the main thread is going to sleep, other threads get the chance to execute main() method which will cause InterruptedException. 
+* Java
+// Java program to illustrate throws
+class tst
+{
+    public static void main(String[] args)throws InterruptedException
+    {
+        Thread.sleep(10000);
+        System.out.println("Hello Geeks");
+    }
+}
+	Output: 
+Hello Geeks
+Explanation: In the above program, by using throws keyword we handled the InterruptedException and we will get the output as Hello Geeks
+Another Example:  
+* Java
+// Java program to demonstrate working of throws
+class ThrowsExecp
+{
+    static void fun() throws IllegalAccessException
+    {
+        System.out.println("Inside fun(). ");
+        throw new IllegalAccessException("demo");
+    }
+    public static void main(String args[])
+    {
+        try
+        {
+            fun();
+        }
+        catch(IllegalAccessException e)
+        {
+            System.out.println("caught in main.");
+        }
+    }
+}
+	Output: 
+Inside fun().
+caught in main.
+Important points to remember about throws keyword: 
+* throws keyword is required only for checked exception and usage of throws keyword for unchecked exception is meaningless.
+* throws keyword is required only to convince compiler and usage of throws keyword does not prevent abnormal termination of program.
+* By the help of throws keyword we can provide information to the caller of the method about the exception.
+
+==================================================
+
+*** Types of Exception ***
+
+Types of Exception in Java with Examples
+ 
+Java defines several types of exceptions that relate to its various class libraries. Java also allows users to define their own exceptions. 
+ exceptions-in-java 
+
+Built-in Exceptions
+ 
+Built-in exceptions are the exceptions which are available in Java libraries. These exceptions are suitable to explain certain error situations. Below is the list of important built-in exceptions in Java. 
+1. ArithmeticException 
+It is thrown when an exceptional condition has occurred in an arithmetic operation.
+2. ArrayIndexOutOfBoundsException 
+It is thrown to indicate that an array has been accessed with an illegal index. The index is either negative or greater than or equal to the size of the array.
+3. ClassNotFoundException 
+This Exception is raised when we try to access a class whose definition is not found
+4. FileNotFoundException 
+This Exception is raised when a file is not accessible or does not open.
+5. IOException 
+It is thrown when an input-output operation failed or interrupted
+6. InterruptedException 
+It is thrown when a thread is waiting, sleeping, or doing some processing, and it is interrupted.
+7. NoSuchFieldException 
+It is thrown when a class does not contain the field (or variable) specified
+8. NoSuchMethodException 
+It is thrown when accessing a method which is not found.
+9. NullPointerException 
+This exception is raised when referring to the members of a null object. Null represents nothing
+10. NumberFormatException 
+This exception is raised when a method could not convert a string into a numeric format.
+11. RuntimeException 
+This represents any exception which occurs during runtime.
+12. StringIndexOutOfBoundsException 
+It is thrown by String class methods to indicate that an index is either negative or greater than the size of the string
+Examples of Built-in Exception: 
+
+
+
+
+   * Arithmetic exception
+   * Java
+// Java program to demonstrate ArithmeticException
+class ArithmeticException_Demo
+{
+    public static void main(String args[])
+    {
+        try {
+            int a = 30, b = 0;
+            int c = a/b;  // cannot divide by zero
+            System.out.println ("Result = " + c);
+        }
+        catch(ArithmeticException e) {
+            System.out.println ("Can't divide a number by 0");
+        }
+    }
+}
+	Output: 
+Can't divide a number by 0
+   * NullPointer Exception
+   * Java
+//Java program to demonstrate NullPointerException
+class NullPointer_Demo
+{
+    public static void main(String args[])
+    {
+        try {
+            String a = null; //null value
+            System.out.println(a.charAt(0));
+        } catch(NullPointerException e) {
+            System.out.println("NullPointerException..");
+        }
+    }
+}
+	Output:
+NullPointerException..
+   * StringIndexOutOfBound Exception
+   * Java
+// Java program to demonstrate StringIndexOutOfBoundsException
+class StringIndexOutOfBound_Demo
+{
+    public static void main(String args[])
+    {
+        try {
+            String a = "This is like chipping "; // length is 22
+            char c = a.charAt(24); // accessing 25th element
+            System.out.println(c);
+        }
+        catch(StringIndexOutOfBoundsException e) {
+            System.out.println("StringIndexOutOfBoundsException");
+        }
+    }
+}
+	Output: 
+StringIndexOutOfBoundsException
+   * FileNotFound Exception
+   * Java
+//Java program to demonstrate FileNotFoundException
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+ class File_notFound_Demo {
+ 
+    public static void main(String args[])  {
+        try {
+ 
+            // Following file does not exist
+            File file = new File("E://file.txt");
+ 
+            FileReader fr = new FileReader(file);
+        } catch (FileNotFoundException e) {
+           System.out.println("File does not exist");
+        }
+    }
+}
+	Output:
+File does not exist
+   * NumberFormat Exception
+   * Java
+// Java program to demonstrate NumberFormatException
+class  NumberFormat_Demo
+{
+    public static void main(String args[])
+    {
+        try {
+            // "akki" is not a number
+            int num = Integer.parseInt ("akki") ;
+ 
+            System.out.println(num);
+        } catch(NumberFormatException e) {
+            System.out.println("Number format exception");
+        }
+    }
+}
+	Output:
+Number format exception
+   * ArrayIndexOutOfBounds Exception
+   * Java
+// Java program to demonstrate ArrayIndexOutOfBoundException
+class ArrayIndexOutOfBound_Demo
+{
+    public static void main(String args[])
+    {
+        try{
+            int a[] = new int[5];
+            a[6] = 9; // accessing 7th element in an array of
+                      // size 5
+        }
+        catch(ArrayIndexOutOfBoundsException e){
+            System.out.println ("Array Index is Out Of Bounds");
+        }
+    }
+}
+	Output: 
+Array Index is Out Of Bounds
+User-Defined Exceptions
+Sometimes, the built-in exceptions in Java are not able to describe a certain situation. In such cases, user can also create exceptions which are called ‘user-defined Exceptions’. 
+Following steps are followed for the creation of user-defined Exception. 
+   * The user should create an exception class as a subclass of Exception class. Since all the exceptions are subclasses of Exception class, the user should also make his class a subclass of it. This is done as: 
+class MyException extends Exception
+   * We can write a default constructor in his own exception class. 
+MyException(){}
+   * We can also create a parameterized constructor with a string as a parameter. 
+We can use this to store exception details. We can call super class(Exception) constructor from this and send the string there. 
+MyException(String str)
+{
+   super(str);
+}
+      * To raise exception of user-defined type, we need to create an object to his exception class and throw it using throw clause, as: 
+MyException me = new MyException(“Exception details”);
+throw me;
+      * The following program illustrates how to create own exception class MyException.
+      * Details of account numbers, customer names, and balance amounts are taken in the form of three arrays.
+      * In main() method, the details are displayed using a for-loop. At this time, check is done if in any account the balance amount is less than the minimum balance amount to be apt in the account.
+      * If it is so, then MyException is raised and a message is displayed “Balance amount is less”.
+      * Java
+// Java program to demonstrate user defined exception
+ 
+// This program throws an exception whenever balance
+// amount is below Rs 1000
+class MyException extends Exception
+{
+    //store account information
+    private static int accno[] = {1001, 1002, 1003, 1004};
+ 
+    private static String name[] =
+                 {"Nish", "Shubh", "Sush", "Abhi", "Akash"};
+ 
+    private static double bal[] =
+         {10000.00, 12000.00, 5600.0, 999.00, 1100.55};
+ 
+    // default constructor
+    MyException() {        }
+ 
+    // parameterized constructor
+    MyException(String str) { super(str); }
+ 
+    // write main()
+    public static void main(String[] args)
+    {
+        try  {
+            // display the heading for the table
+            System.out.println("ACCNO" + "\t" + "CUSTOMER" +
+                                           "\t" + "BALANCE");
+ 
+            // display the actual account information
+            for (int i = 0; i < 5 ; i++)
+            {
+                System.out.println(accno[i] + "\t" + name[i] +
+                                               "\t" + bal[i]);
+ 
+                // display own exception if balance < 1000
+                if (bal[i] < 1000)
+                {
+                    MyException me =
+                       new MyException("Balance is less than 1000");
+                    throw me;
+                }
+            }
+        } //end of try
+ 
+        catch (MyException e) {
+            e.printStackTrace();
+        }
+    }
+}
+	RunTime Error 
+MyException: Balance is less than 1000
+    at MyException.main(fileProperty.java:36)
+Output:  
+ACCNO    CUSTOMER    BALANCE
+1001    Nish    10000.0
+1002    Shubh    12000.0
+1003    Sush    5600.0
+1004    Abhi    999.0
+
+==================================================
+
+*** User - Defined Custom Exception ***
+
+User-defined Custom Exception in Java
+
+
+Java provides us facility to create our own exceptions which are basically derived classes of Exception. For example MyException in below code extends the Exception class.
+We pass the string to the constructor of the super class- Exception which is obtained using “getMessage()” function on the object created.
+// A Class that represents use-defined expception
+class MyException extends Exception
+{
+    public MyException(String s)
+    {
+        // Call constructor of parent Exception
+        super(s);
+    }
+}
+  
+// A Class that uses above MyException
+public class Main
+{
+    // Driver Program
+    public static void main(String args[])
+    {
+        try
+        {
+            // Throw an object of user defined exception
+            throw new MyException("GeeksGeeks");
+        }
+        catch (MyException ex)
+        {
+            System.out.println("Caught");
+  
+            // Print the message from MyException object
+            System.out.println(ex.getMessage());
+        }
+    }
+}
+	Output:
+Caught
+GeeksGeeks
+In the above code, constructor of MyException requires a string as its argument. The string is passed to parent class Exception’s constructor using super(). The constructor of Exception class can also be called without a parameter and call to super is not mandatory.
+// A Class that represents use-defined expception
+class MyException extends Exception
+{
+  
+}
+  
+// A Class that uses above MyException
+public class setText
+{
+    // Driver Program
+    public static void main(String args[])
+    {
+        try
+        {
+            // Throw an object of user defined exception
+            throw new MyException();
+        }
+        catch (MyException ex)
+        {
+            System.out.println("Caught");
+            System.out.println(ex.getMessage());
+        }
+    }
+}
+	Output:
+Caught
+null
+
+==================================================

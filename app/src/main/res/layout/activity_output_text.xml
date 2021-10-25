@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C8FFFCB5"
+    tools:context=".Output_text">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="15dp"
+        android:textDirection="locale"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notes_title"
+        app:layout_constraintVertical_bias="0.026">
+
+        <TextView
+            android:id="@+id/content_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:paddingStart="5dp"
+            android:paddingLeft="2dp"
+            android:paddingTop="15dp"
+            android:paddingRight="2dp"
+            android:text="TextView"
+            android:textAlignment="inherit"
+            android:textColor="#222121" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/notes_title"
+        android:layout_width="247dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="5dp"
+        android:text="NOTES"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

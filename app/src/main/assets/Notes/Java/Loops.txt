@@ -1,0 +1,1501 @@
+﻿***  Loops in Java  ***
+
+Looping in programming languages is a feature which facilitates the execution of a set of instructions/functions repeatedly while some condition evaluates to true.
+Java provides three ways for executing the loops. While all the ways provide similar basic functionality, they differ in their syntax and condition checking time.
+while loop: A while loop is a control flow statement that allows code to be executed repeatedly based on a given Boolean condition. The while loop can be thought of as a repeating if statement.
+Syntax :
+while (boolean condition)
+{
+   loop statements...
+}
+1. 
+Flowchart:
+ while loop 
+   1. While loop starts with the checking of condition. If it evaluated to true, then the loop body statements are executed otherwise first statement following the loop is executed. For this reason it is also called Entry control loop
+   2. Once the condition is evaluated to true, the statements in the loop body are executed. Normally the statements contain an update value for the variable being processed for the next iteration.
+   3. When the condition becomes false, the loop terminates which marks the end of its life cycle.
+// Java program to illustrate while loop
+class whileLoopDemo
+{
+    public static void main(String args[])
+    {
+        int x = 1;
+  
+        // Exit when x becomes greater than 4
+        while (x <= 4)
+        {
+            System.out.println("Value of x:" + x);
+  
+            // Increment the value of x for
+            // next iteration
+            x++;
+        }
+    }
+}
+	
+
+Output:
+Value of x:1
+Value of x:2
+Value of x:3
+Value of x:4
+   2. for loop: for loop provides a concise way of writing the loop structure. Unlike a while loop, a for statement consumes the initialization, condition and increment/decrement in one line thereby providing a shorter, easy to debug structure of looping.
+Syntax:
+
+
+for (initialization condition; testing condition; 
+                              increment/decrement)
+{
+    statement(s)
+}
+   3. 
+Flowchart:
+ for-loop-in-java 
+      1. Initialization condition: Here, we initialize the variable in use. It marks the start of a for loop. An already declared variable can be used or a variable can be declared, local to loop only.
+      2. Testing Condition: It is used for testing the exit condition for a loop. It must return a boolean value. It is also an Entry Control Loop as the condition is checked prior to the execution of the loop statements.
+      3. Statement execution: Once the condition is evaluated to true, the statements in the loop body are executed.
+      4. Increment/ Decrement: It is used for updating the variable for next iteration.
+      5. Loop termination:When the condition becomes false, the loop terminates marking the end of its life cycle.
+// Java program to illustrate for loop.
+class forLoopDemo
+{
+    public static void main(String args[])
+    {
+        // for loop begins when x=2
+        // and runs till x <=4
+        for (int x = 2; x <= 4; x++)
+            System.out.println("Value of x:" + x);
+    }
+}
+	
+
+Output:
+Value of x:2
+Value of x:3
+Value of x:4
+
+
+Enhanced For loop
+Java also includes another version of for loop introduced in Java 5. Enhanced for loop provides a simpler way to iterate through the elements of a collection or array. It is inflexible and should be used only when there is a need to iterate through the elements in sequential manner without knowing the index of currently processed element.
+Also note that the object/variable is immutable when enhanced for loop is used i.e it ensures that the values in the array can not be modified, so it can be said as read only loop where you can’t update the values as opposite to other loops where values can be modified.
+We recommend using this form of the for statement instead of the general form whenever possible.(as per JAVA doc.)
+Syntax:
+for (T element:Collection obj/array)
+{
+    statement(s)
+}
+      4. 
+Lets take an example to demonstrate how enhanced for loop can be used to simpify the work. Suppose there is an array of names and we want to print all the names in that array. Let’s see the difference with these two examples
+Enhanced for loop simplifies the work as follows-
+// Java program to illustrate enhanced for loop
+public class enhancedforloop
+{
+    public static void main(String args[])
+    {
+        String array[] = {"Ron", "Harry", "Hermoine"};
+  
+        //enhanced for loop
+        for (String x:array)
+        {
+            System.out.println(x);
+        }
+  
+        /* for loop for same function
+        for (int i = 0; i < array.length; i++)
+        {
+            System.out.println(array[i]);
+        }
+        */
+    }
+}
+	
+
+Output:
+Ron
+Harry
+Hermoine
+         5. do while: do while loop is similar to while loop with only difference that it checks for condition after executing the statements, and therefore is an example of Exit Control Loop.
+Syntax:
+do
+{
+    statements..
+}
+while (condition);
+         6. 
+Flowchart:
+ do-while 
+
+
+            1. do while loop starts with the execution of the statement(s). There is no checking of any condition for the first time.
+            2. After the execution of the statements, and update of the variable value, the condition is checked for true or false value. If it is evaluated to true, next iteration of loop starts.
+            3. When the condition becomes false, the loop terminates which marks the end of its life cycle.
+            4. It is important to note that the do-while loop will execute its statements atleast once before any condition is checked, and therefore is an example of exit control loop.
+// Java program to illustrate do-while loop
+class dowhileloopDemo
+{
+    public static void main(String args[])
+    {
+        int x = 21;
+        do
+        {
+            // The line will be printed even
+            // if the condition is false
+            System.out.println("Value of x:" + x);
+            x++;
+        }
+        while (x < 20);
+    }
+}
+	
+
+Output:
+Value of x: 21
+            7. Pitfalls of Loops
+            1. Infinite loop: One of the most common mistakes while implementing any sort of looping is that that it may not ever exit, that is the loop runs for infinite time. This happens when the condition fails for some reason.
+Examples:
+//Java program to illustrate various pitfalls.
+public class LooppitfallsDemo
+{
+    public static void main(String[] args)
+    {
+  
+        // infinite loop because condition is not apt
+        // condition should have been i>0.
+        for (int i = 5; i != 0; i -= 2)
+        {
+            System.out.println(i);
+        }
+        int x = 5;
+  
+        // infinite loop because update statement
+        // is not provided.
+        while (x == 5)
+        {
+            System.out.println("In the loop");
+        }
+    }
+}
+	               2. Another pitfall is that you might be adding something into you collection object through loop and you can run out of memory. If you try and execute the below program, after some time, out of memory exception will be thrown.
+//Java program for out of memory exception.
+import java.util.ArrayList;
+public class Integer1
+{
+    public static void main(String[] args)
+    {
+        ArrayList<Integer> ar = new ArrayList<>();
+        for (int i = 0; i < Integer.MAX_VALUE; i++)
+        {
+            ar.add(i);
+        }
+    }
+}
+	
+
+Output:
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+at java.util.Arrays.copyOf(Unknown Source)
+at java.util.Arrays.copyOf(Unknown Source)
+at java.util.ArrayList.grow(Unknown Source)
+at java.util.ArrayList.ensureCapacityInternal(Unknown Source)
+at java.util.ArrayList.add(Unknown Source)
+               3. at article.Integer1.main(Integer1.java:9)
+
+==================================================
+
+*** Decision Making ***
+
+Decision Making in Java (if, if-else, switch, break, continue, jump)
+Decision Making in programming is similar to decision making in real life. In programming also we face some situations where we want a certain block of code to be executed when some condition is fulfilled.
+A programming language uses control statements to control the flow of execution of program based on certain conditions. These  are used to cause the flow of execution to advance and branch based on changes to the state of a program.
+Java’s Selection statements:
+* if
+* if-else
+* nested-if
+* if-else-if
+* switch-case
+* jump – break, continue, return
+These statements allow you to control the flow of your program’s execution based upon conditions known only during run time.
+if: if statement is the most simple decision making statement. It is used to decide whether a certain statement or block of statements will be executed or not i.e if a certain condition is true then a block of statement is executed otherwise not.
+Syntax:
+if(condition) 
+{
+   // Statements to execute if
+   // condition is true
+}
+
+
+Here, condition after evaluation will be either true or false. if statement accepts boolean values – if the value is true then it will execute the block of statements under it.
+If we do not provide the curly braces ‘{‘ and ‘}’ after if( condition ) then by default if statement will consider the immediate one statement to be inside its block. For example,
+if(condition)
+   statement1;
+   statement2;
+
+
+// Here if the condition is true, if block 
+// will consider only statement1 to be inside 
+   * // its block.
+Flow chart:
+ if-statement-in-java 
+Example:
+// Java program to illustrate If statement
+class IfDemo
+{
+    public static void main(String args[])
+    {
+        int i = 10;
+  
+        if (i > 15)
+            System.out.println("10 is less than 15");
+  
+        // This statement will be executed
+        // as if considers one statement by default
+        System.out.println("I am Not in if");
+    }
+}
+	
+
+Output:
+
+
+I am Not in if
+      * if-else: The if statement alone tells us that if a condition is true it will execute a block of statements and if the condition is false it won’t. But what if we want to do something else if the condition is false. Here comes the else statement. We can use the else statement with if statement to execute a block of code when the condition is false.
+Syntax:
+if (condition)
+{
+    // Executes this block if
+    // condition is true
+}
+else
+{
+    // Executes this block if
+    // condition is false
+}
+      * 
+ if-else-statement 
+Example:
+// Java program to illustrate if-else statement
+class IfElseDemo
+{
+    public static void main(String args[])
+    {
+        int i = 10;
+  
+        if (i < 15)
+            System.out.println("i is smaller than 15");
+        else
+            System.out.println("i is greater than 15");
+    }
+}
+	         * 
+Output:
+i is smaller than 15
+nested-if: A nested if is an if statement that is the target of another if or else. Nested if statements means an if statement inside an if statement. Yes, java allows us to nest if statements within if statements. i.e, we can place an if statement inside another if statement.
+Syntax:
+if (condition1) 
+{
+   // Executes when condition1 is true
+   if (condition2) 
+   {
+      // Executes when condition2 is true
+   }
+}
+            * 
+ nested-if 
+Example:
+// Java program to illustrate nested-if statement
+class NestedIfDemo
+{
+    public static void main(String args[])
+    {
+        int i = 10;
+  
+        if (i == 10)
+        {
+            // First if statement
+            if (i < 15)
+                System.out.println("i is smaller than 15");
+  
+            // Nested - if statement
+            // Will only be executed if statement above
+            // it is true
+            if (i < 12)
+                System.out.println("i is smaller than 12 too");
+            else
+                System.out.println("i is greater than 15");
+        }
+    }
+}
+	
+
+Output:
+i is smaller than 15
+i is smaller than 12 too
+               * if-else-if ladder: Here, a user can decide among multiple options.The if statements are executed from the top down. As soon as one of the conditions controlling the if is true, the statement associated with that if is executed, and the rest of the ladder is bypassed. If none of the conditions is true, then the final else statement will be executed.
+if (condition)
+    statement;
+else if (condition)
+    statement;
+.
+.
+else
+    statement;
+               * 
+ if-else-if-ladder 
+Example:
+
+
+// Java program to illustrate if-else-if ladder
+class ifelseifDemo
+{
+    public static void main(String args[])
+    {
+        int i = 20;
+  
+        if (i == 10)
+            System.out.println("i is 10");
+        else if (i == 15)
+            System.out.println("i is 15");
+        else if (i == 20)
+            System.out.println("i is 20");
+        else
+            System.out.println("i is not present");
+    }
+}
+	
+
+Output:
+i is 20
+                  * switch-case The switch statement is a multiway branch statement. It provides an easy way to dispatch execution to different parts of code based on the value of the expression.
+Syntax:
+switch (expression)
+{
+  case value1:
+    statement1;
+    break;
+  case value2:
+    statement2;
+    break;
+  .
+  .
+  case valueN:
+    statementN;
+    break;
+  default:
+    statementDefault;
+                  * }
+                  1. Expression can be of type byte, short, int char or an enumeration. Beginning with JDK7, expression can also be of type String.
+                  2. Dulplicate case values are not allowed.
+                  3. The default statement is optional.
+                  4. The break statement is used inside the switch to terminate a statement sequence.
+                  5. The break statement is optional. If omitted, execution will continue on into the next case.
+                  *  switch-case-in-java 
+Example:
+// Java program to illustrate switch-case
+class SwitchCaseDemo
+{
+    public static void main(String args[])
+    {
+        int i = 9;
+        switch (i)
+        {
+        case 0:
+            System.out.println("i is zero.");
+            break;
+        case 1:
+            System.out.println("i is one.");
+            break;
+        case 2:
+            System.out.println("i is two.");
+            break;
+        default:
+            System.out.println("i is greater than 2.");
+        }
+    }
+}
+	
+
+Output:
+i is greater than 2.
+                     *                      * jump: Java supports three jump statement: break, continue and return. These three statements transfer control to other part of the program.
+                     1. Break: In Java, break is majorly used for:
+                     * Terminate a sequence in a switch statement (discussed above).
+                     * To exit a loop.
+                     * Used as a “civilized” form of goto.
+                     2. Using break to exit a Loop
+Using break, we can force immediate termination of a loop, bypassing the conditional expression and any remaining code in the body of the loop.
+Note: Break, when used inside a set of nested loops, will only break out of the innermost loop.
+ using-break-to-exit-a-loop-in-java 
+Example:
+// Java program to illustrate using
+// break to exit a loop
+class BreakLoopDemo
+{
+    public static void main(String args[])
+    {
+        // Initially loop is set to run from 0-9
+        for (int i = 0; i < 10; i++)
+        {
+            // terminate loop when i is 5.
+            if (i == 5)
+                break;
+  
+            System.out.println("i: " + i);
+        }
+        System.out.println("Loop complete.");
+    }
+}
+	
+
+Output:
+i: 0
+i: 1
+i: 2
+i: 3
+i: 4
+Loop complete.
+
+
+Using break as a Form of Goto
+Java does not have a goto statement because it provides a way to branch in an arbitrary and unstructured manner. Java uses label. A Label is use to identifies a block of code.
+Syntax:
+label:
+{
+  statement1;
+  statement2;
+  statement3;
+  .
+  .
+                        3. }
+Now, break statement can be use to jump out of target block.
+Note: You cannot break to any label which is not defined for an enclosing block.
+Syntax:
+
+
+break label;
+Example:
+// Java program to illustrate using break with goto
+class BreakLabelDemo
+{
+    public static void main(String args[])
+    {
+        boolean t = true;
+  
+        // label first
+        first:
+        {
+            // Illegal statement here as label second is not
+            // introduced yet break second;
+            second:
+            {
+                third:
+                {
+                    // Before break
+                    System.out.println("Before the break statement");
+  
+                    // break will take the control out of
+                    // second label
+                    if (t)
+                        break second;
+                    System.out.println("This won't execute.");
+                }
+                System.out.println("This won't execute.");
+            }
+  
+            // First block
+            System.out.println("This is after second block.");
+        }
+    }
+}
+	
+
+Output:
+Before the break.
+This is after second block.
+                           4.                            5. Continue: Sometimes it is useful to force an early iteration of a loop. That is, you might want to continue running the loop but stop processing the remainder of the code in its body for this particular iteration. This is, in effect, a goto just past the body of the loop, to the loop’s end. The continue statement performs such an action.
+ continue-in-java 
+Example:
+// Java program to illustrate using
+// continue in an if statement
+class ContinueDemo
+{
+    public static void main(String args[])
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            // If the number is even
+            // skip and continue
+            if (i%2 == 0)
+                continue;
+  
+            // If number is odd, print it
+            System.out.print(i + " ");
+        }
+    }
+}
+	
+
+Output:
+1 3 5 7 9 
+                                                 7. Return:The return statement is used to explicitly return from a method. That is, it causes a program control to transfer back to the caller of the method.
+Example:
+// Java program to illustrate using return
+class Return
+{
+    public static void main(String args[])
+    {
+        boolean t = true;
+        System.out.println("Before the return.");
+      
+        if (t)
+            return;
+  
+        // Compiler will bypass every statement 
+        // after return
+        System.out.println("This won't execute.");
+    }
+}
+	                                 
+Output:
+Before the return.
+
+=================================================
+
+*** For Loop ***
+
+Java For loop with Examples
+
+
+Loops in Java come into use when we need to repeatedly execute a block of statements. 
+Java for loop provides a concise way of writing the loop structure. The for statement consumes the initialization, condition and increment/decrement in one line thereby providing a shorter, easy to debug structure of looping.
+ 
+  
+
+Syntax: 
+ 
+for (initialization expr; test expr; update exp)
+{
+     // body of the loop
+     // statements we want to execute
+}
+The various parts of the For loop are: 
+ 
+1. Initialization Expression: In this expression, we have to initialize the loop counter to some value. 
+Example: 
+ 
+
+
+
+
+int i=1;
+
+
+2. Test Expression: In this expression, we have to test the condition. If the condition evaluates to true then, we will execute the body of the loop and go to update expression. Otherwise, we will exit from the for loop. 
+Example: 
+ 
+i <= 10
+
+
+3. Update Expression: After executing the loop body, this expression increments/decrements the loop variable by some value. 
+Example: 
+ 
+i++;
+
+
+How does a For loop execute? 
+ 
+1. Control falls into the for loop. Initialization is done
+2. The flow jumps to Condition
+3. Condition is tested. 
+   1. If Condition yields true, the flow goes into the Body
+   2. If Condition yields false, the flow goes outside the loop
+4. The statements inside the body of the loop get executed.
+5. The flow goes to the Updation
+6. Updation takes place and the flow goes to Step 3 again
+7. The for loop has ended and the flow has gone outside.
+Flow chart for loop (For Control Flow): 
+ 
+  
+
+Example 1: This program will try to print “Hello World” 5 times. 
+ 
+* Java
+// Java program to illustrate for loop
+class forLoopDemo {
+    public static void main(String args[])
+    {
+        // Writing a for loop
+        // to print Hello World 5 times
+        for (int i = 1; i <= 5; i++)
+            System.out.println("Hello World");
+    }
+}
+	Output:
+
+
+Hello World
+Hello World
+Hello World
+Hello World
+Hello World
+Dry-Running Example 1: The program will execute in the following manner. 
+ 
+1. Program starts.
+2. i is initialized with value 1.
+3. Condition is checked. 1 <= 5 yields true.
+  3.a) "Hello World" gets printed 1st time.
+  3.b) Updation is done. Now i = 2.
+4. Condition is checked. 2 <= 5 yields true.
+  4.a) "Hello World" gets printed 2nd time.
+  4.b) Updation is done. Now i = 3.
+5. Condition is checked. 3 <= 5 yields true.
+  5.a) "Hello World" gets printed 3rd time
+  5.b) Updation is done. Now i = 4.
+6. Condition is checked. 4 <= 5 yields true.
+  6.a) "Hello World" gets printed 4th time
+  6.b) Updation is done. Now i = 5.
+7. Condition is checked. 5 <= 5 yields true.
+  7.a) "Hello World" gets printed 5th time
+  7.b) Updation is done. Now i = 6.
+8. Condition is checked. 6 <= 5 yields false.
+9. Flow goes outside the loop. Program terminates.
+Example 2: The following program prints the sum of x ranging from 1 to 20. 
+ 
+
+
+
+
+* Java
+// Java program to illustrate for loop.
+class forLoopDemo {
+    public static void main(String args[])
+    {
+        int sum = 0;
+  
+        // for loop begins
+        // and runs till x <= 20
+        for (int x = 1; x <= 20; x++) {
+            sum = sum + x;
+        }
+        System.out.println("Sum: " + sum);
+    }
+}
+	Output: 
+Sum: 210
+ 
+Enhanced For Loop or Java For-Each loop
+Java also includes another version of for loop introduced in Java 5. Enhanced for loop provides a simpler way to iterate through the elements of a collection or array. It is inflexible and should be used only when there is a need to iterate through the elements in a sequential manner without knowing the index of the currently processed element.
+Note: The object/variable is immutable when enhanced for loop is used i.e it ensures that the values in the array can not be modified, so it can be said as a read-only loop where you can’t update the values as opposed to other loops where values can be modified. 
+Syntax:
+ 
+for (T element:Collection obj/array)
+{
+    // loop body
+    // statement(s)
+}
+Let’s take an example to demonstrate how enhanced for loop can be used to simplify the work. Suppose there is an array of names and we want to print all the names in that array. Let’s see the difference between these two examples by this simple implementation: 
+ 
+* Java
+// Java program to illustrate enhanced for loop
+  
+public class enhancedforloop {
+  
+    public static void main(String args[])
+    {
+        String array[] = { "Ron", "Harry", "Hermoine" };
+  
+        // enhanced for loop
+        for (String x : array) {
+            System.out.println(x);
+        }
+  
+        /* for loop for same function 
+        for (int i = 0; i < array.length; i++) 
+        { 
+            System.out.println(array[i]); 
+        } 
+        */
+    }
+}
+	Output: 
+Ron
+Harry
+Hermoine
+ 
+Recommendation: Use this form of statement instead of the general form whenever possible. (as per JAVA doc.) 
+ 
+1. Loops in Java
+2. For Loop in Java | Important points
+3. Understanding for loops in Java
+4. Java while loop with Examples
+5. Java do-while loop with Examples
+6. For-each loop in Java
+7. Difference between for and while loop in C, C++, Java
+8. Difference between for and do-while loop in C, C++, Java
+
+==================================================
+
+*** For - each loop ***
+
+For-each loop in Java 
+Prerequisite: Decision making in Java
+For-each is another array traversing technique like for loop, while loop, do-while loop introduced in Java5. 
+ 
+* It starts with the keyword for like a normal for-loop.
+* Instead of declaring and initializing a loop counter variable, you declare a variable that is the same type as the base type of the array, followed by a colon, which is then followed by the array name.
+* In the loop body, you can use the loop variable you created rather than using an indexed array element. 
+
+* It’s commonly used to iterate over an array or a Collections class (eg, ArrayList)
+ 
+ 
+Syntax: 
+for (type var : array) 
+{ 
+    statements using var;
+}
+is equivalent to: 
+ 
+for (int i=0; i<arr.length; i++) 
+{ 
+    type var = arr[i];
+    statements using var;
+}
+ 
+
+
+
+
+   * Java
+// Java program to illustrate
+// for-each loop
+class For_Each    
+{
+    public static void main(String[] arg)
+    {
+        {
+            int[] marks = { 125, 132, 95, 116, 110 };
+             
+            int highest_marks = maximum(marks);
+            System.out.println("The highest score is " + highest_marks);
+        }
+    }
+    public static int maximum(int[] numbers)
+    {
+        int maxSoFar = numbers[0];
+         
+        // for each loop
+        for (int num : numbers)
+        {
+            if (num > maxSoFar)
+            {
+                maxSoFar = num;
+            }
+        }
+    return maxSoFar;
+    }
+}
+	Output: 
+ 
+The highest score is 132
+Limitations of for-each loop 
+       decision-making
+   1. For-each loops are not appropriate when you want to modify the array:
+
+for (int num : marks) 
+{
+    // only changes num, not the array element
+    num = num*2; 
+}
+       2. For-each loops do not keep track of index. So we can not obtain array index using For-Each loop 
+ 
+for (int num : numbers) 
+{ 
+    if (num == target) 
+    {
+        return ???;   // do not know the index of num
+    }
+}
+        3.  For-each only iterates forward over the array in single steps 
+ 
+// cannot be converted to a for-each loop
+for (int i=numbers.length-1; i>0; i--) 
+{
+      System.out.println(numbers[i]);
+}
+        4. For-each cannot process two decision making statements at once 
+ 
+// cannot be easily converted to a for-each loop 
+for (int i=0; i<numbers.length; i++) 
+{
+    if (numbers[i] == arr[i]) 
+    { ...
+    } 
+}
+        5. For-each also has some performance overhead over simple iteration: 
+      * Java
+/*package whatever //do not write package name here */
+ 
+import java.io.*;
+import java.util.*;
+ 
+class GFG {
+    public static void main (String[] args) {
+        List<Integer> list = new ArrayList<>();
+        long startTime;
+        long endTime;
+        for (int i = 0; i < 1000000; i++) {
+            list.add(i);
+        }
+        // Type 1
+        startTime = Calendar.getInstance().getTimeInMillis();
+        for (int i : list) {
+            int a = i;
+        }
+        endTime = Calendar.getInstance().getTimeInMillis();
+        System.out.println("For each loop :: " + (endTime - startTime) + " ms");
+         
+        // Type 2
+        startTime = Calendar.getInstance().getTimeInMillis();
+        for (int j = 0; j < list.size(); j++) {
+            int a = list.get(j);
+        }
+        endTime = Calendar.getInstance().getTimeInMillis();
+        System.out.println("Using collection.size() :: " + (endTime - startTime) + " ms");
+         
+        // Type 3
+        startTime = Calendar.getInstance().getTimeInMillis();
+        int size = list.size();
+        for (int j = 0; j < size; j++) {
+            int a = list.get(j);
+        }
+        endTime = Calendar.getInstance().getTimeInMillis();
+        System.out.println("By calculating collection.size() first :: " + (endTime - startTime) + " ms");
+     
+        // Type 4
+        startTime = Calendar.getInstance().getTimeInMillis();
+        for(int j = list.size()-1; j >= 0; j--) {
+            int a = list.get(j);
+        }
+        endTime = Calendar.getInstance().getTimeInMillis();
+        System.out.println("Using [int j = list.size(); j > size ; j--] :: " + (endTime - startTime) + " ms");
+    }
+}
+ 
+// This code is contributed by Ayush Choudhary @gfg(code_ayush)
+
+==================================================
+
+*** While Loop ***
+
+Java while loop with Examples
+
+
+Loops in Java come into use when we need to repeatedly execute a block of statements.
+Java while loop is a control flow statement that allows code to be executed repeatedly based on a given Boolean condition. The while loop can be thought of as a repeating if statement.
+  
+
+Syntax:
+while (test_expression)
+{
+   // statements
+ 
+  update_expression;
+}
+The various parts of the While loop are:
+
+
+
+
+1. Test Expression: In this expression we have to test the condition. If the condition evaluates to true then we will execute the body of the loop and go to update expression. Otherwise, we will exit from the while loop.
+Example:
+i <= 10
+2. Update Expression: After executing the loop body, this expression increments/decrements the loop variable by some value.
+Example:
+i++;
+How does a While loop executes?
+   1. Control falls into the while loop.
+   2. The flow jumps to Condition
+   3. Condition is tested.
+   1. If Condition yields true, the flow goes into the Body.
+   2. If Condition yields false, the flow goes outside the loop
+   4. The statements inside the body of the loop get executed.
+   5. Updation takes place.
+   6. Control flows back to Step 2.
+   7. The do-while loop has ended and the flow has gone outside.
+Flow chart while loop (for Control Flow):
+  
+
+Example 1: This program will try to print “Hello World” 5 times.
+// Java program to illustrate while loop.
+  
+class whileLoopDemo {
+    public static void main(String args[])
+    {
+        // initialization expression
+        int i = 1;
+  
+        // test expression
+        while (i < 6) {
+            System.out.println("Hello World");
+  
+            // update expression
+            i++;
+        }
+    }
+}
+	Output:
+Hello World
+Hello World
+Hello World
+Hello World
+Hello World
+
+
+Dry-Running Example 1: The program will execute in the following manner.
+1. Program starts.
+2. i is initialized with value 1.
+3. Condition is checked. 1 < 6 yields true.
+  3.a) "Hello World" gets printed 1st time.
+  3.b) Updation is done. Now i = 2.
+4. Condition is checked. 2 < 6 yields true.
+  4.a) "Hello World" gets printed 2nd time.
+  4.b) Updation is done. Now i = 3.
+5. Condition is checked. 3 < 6 yields true.
+  5.a) "Hello World" gets printed 3rd time
+  5.b) Updation is done. Now i = 4.
+6. Condition is checked. 4 < 6 yields true.
+  6.a) "Hello World" gets printed 4th time
+  6.b) Updation is done. Now i = 5.
+7. Condition is checked. 5 < 6 yields true.
+  7.a) "Hello World" gets printed 5th time
+  7.b) Updation is done. Now i = 6.
+8. Condition is checked. 6 < 6 yields false.
+9. Flow goes outside the loop. Program terminates.
+
+
+Example 2: This program will find the summation of numbers from 1 to 10.
+// Java program to illustrate while loop
+  
+class whileLoopDemo {
+    public static void main(String args[])
+    {
+        int x = 1, sum = 0;
+  
+        // Exit when x becomes greater than 4
+        while (x <= 10) {
+            // summing up x
+            sum = sum + x;
+  
+            // Increment the value of x for
+            // next iteration
+            x++;
+        }
+        System.out.println("Summation: " + sum);
+    }
+}
+	Output:
+Summation: 55
+
+==================================================
+
+*** Break Statement ***
+
+
+
+Break Statement is a loop control statement that is used to terminate the loop. As soon as the break statement is encountered from within a loop, the loop iterations stop there, and control returns from the loop immediately to the first statement after the loop. 
+Syntax: 
+break;
+Basically, break statements are used in situations when we are not sure about the actual number of iterations for the loop or we want to terminate the loop based on some condition.  
+  
+
+Break: In Java, the break is majorly used for: 
+* Terminate a sequence in a switch statement (discussed above).
+* To exit a loop.
+* Used as a “civilized” form of goto.
+Using break to exit a Loop
+
+
+
+
+Using break, we can force immediate termination of a loop, bypassing the conditional expression and any remaining code in the body of the loop. 
+Note: Break, when used inside a set of nested loops, will only break out of the innermost loop.  
+ using-break-to-exit-a-loop-in-java 
+
+Example:
+* Java
+// Java program to illustrate using
+// break to exit a loop
+class BreakLoopDemo {
+    public static void main(String args[])
+    {
+        // Initially loop is set to run from 0-9
+        for (int i = 0; i < 10; i++) {
+            // terminate loop when i is 5.
+            if (i == 5)
+                break;
+  
+            System.out.println("i: " + i);
+        }
+        System.out.println("Loop complete.");
+    }
+}
+	Output: 
+i: 0
+i: 1
+i: 2
+i: 3
+i: 4
+Loop complete.
+Using break as a Form of Goto
+Java does not have a goto statement because it provides a way to branch in an arbitrary and unstructured manner. Java uses the label. A Label is used to identifies a block of code. 
+Syntax: 
+label:
+{
+  statement1;
+  statement2;
+  statement3;
+  .
+  .
+}
+Now, break statement can be use to jump out of target block. 
+Note: You cannot break to any label which is not defined for an enclosing block. 
+Syntax:  
+break label;
+Example: 
+* Java
+// Java program to illustrate 
+// using break with goto
+class BreakLabelDemo {
+    public static void main(String args[])
+    {
+        boolean t = true;
+  
+    // label first
+    first : {
+        
+    // Illegal statement here 
+    // as label second is not
+    // introduced yet break second;
+    second : {
+    third : {
+        // Before break
+        System.out.println("Before the break statement");
+  
+        // break will take the control out of
+        // second label
+        if (t)
+            break second;
+        System.out.println("This won't execute.");
+    }
+        System.out.println("This won't execute.");
+    }
+  
+        // First block
+        System.out.println("This is after second block.");
+    }
+    }
+}
+	Output: 
+Before the break statement.
+This is after the second block.
+
+==================================================
+
+*** Continue Statement ***
+
+Suppose a person wants code to execute for the values as per the code is designed to be executed but forcefully the same user wants to skip out the execution for which code should have been executed as designed above but will not as per the demand of the user. In simpler words, it is a decision-making problem as per the demand of the user.
+Real-Life Example:
+  
+
+Consider a man is climbing up to go to his house in between there are 11 stairs. Being in hurry to climb up he directly stepped onto 3 staircases and then 4, 5, 6, 7, 8, 9 and jumps to last one. During this he missed out staircase 1st, 2nd and 10th and he completed the goal to reach his house. He continued his journey skipping staircase of. his choices. 
+In computers, it interprets staircases which is/are supposed to be skipped as ‘continue’. The action to miss out execution which are supposed to be executed, is interpreted as continue statement be it any programming language.
+
+
+
+
+Continue statement is often used inside in programming languages inside loops control structures. Inside the loop, when a continue statement is encountered the control directly jumps to the beginning of the loop for the next iteration instead of executing the statements of the current iteration. The continue statement is used when we want to skip a particular condition and continue the rest execution. Java continue statement is used for all type od loops but it is generally used in for, while, and do-while loops.
+* In the case of for loop, the continue keyword force control to jump immediately to the update statement.
+* Whereas in the case of a while loop or do-while loop, control immediately jumps to the Boolean expression.
+Syntax: continue keyword along with a semicolon
+continue;
+Flow Chart of Continue Statement
+  
+
+The above flowchart is most important for the understanding of this keyword. Always remember the condition is always placed inside diamond boxes and statements in rectangular boxes. Now jumping onto the implementation part
+Case 1: Continue statement inside for loop
+In this program, illustration for how to use the continue statement within For loop. When the value of ‘i’ becomes 10 or 12, the continue statement plays its role and skip their execution but for other values of’ ‘i’ the loop will run smoothly.
+* Java
+// Java Program to illustrate the use of continue statement
+ 
+// Importing Classes/Files
+import java.util.*;
+public class GFG {
+ 
+    // Main driver method
+    public static void main(String args[])
+    {
+        // For loop for iteration
+        for (int i = 0; i <= 15; i++) {
+ 
+            // Check condition for continue
+            if (i == 10 || i == 12) {
+ 
+                // Using continue statement to skip the
+                // execution of loop when i==10 or i==12
+                continue;
+            }
+            // Printing elements to show continue statement
+            System.out.print(i + " ");
+        }
+    }
+}
+	Output :
+
+
+
+
+0 1 2 3 4 5 6 7 8 9 11 13 14 15
+Case 2: Continue statement inside while loop
+In the above program, we give example, how to use the continue statement within the While loop. When the value of count becomes 7 or 15, the continue statement plays its role and skip their execution but for other values of the count, the loop will run smoothly.
+* Java
+// Java Program to illustrate the use of continue statement
+// inside the While loop
+public class GFG {
+ 
+    // Main driver method
+    public static void main(String args[])
+    {
+        // Initializing a variable say it count  to a value
+        // greater than the value greater among the loop
+        // values
+        int count = 20;
+ 
+        // While loop for iteration
+        while (count >= 0) {
+            if (count == 7 || count == 15) {
+                count--;
+                // Decrementing variable initialized above
+ 
+                // Showing continue execution inside loop
+                // skipping when count==7 or count==15
+                continue;
+            }
+ 
+            // Printing values after continue statement
+            System.out.print(count + " ");
+ 
+            // Decrementing the count variable
+            count--;
+        }
+    }
+}
+	Output:
+20 19 18 17 16 14 13 12 11 10 9 8 6 5 4 3 2 1 0
+Case 3: Continue statement inside do while loop
+In the above program, we give example, how to use the continue statement within the do-While loop. When the value of i becomes 4 or 18, the continue statement plays its role and skip their execution but for other values of i, the loop will run smoothly.
+* Java
+// Java Program to illustrate the use of continue statement
+// inside the Do-While loop
+ 
+// Importing generic Classes/Files
+import java.util.*;
+ 
+public class GFG {
+ 
+    // Main driver method
+    public static void main(String[] args)
+    {
+        // Creating and Initializing a variable
+        int i = 0;
+ 
+        // Do-While loop for iteration
+        do {
+            if (i == 4 || i == 18) {
+ 
+                // Incrementing loop variable by 2
+                i += 2;
+ 
+                // Illustrating continue statement skipping
+                // the execution  when i==7 or i==15
+                continue;
+            }
+ 
+            // Printing to showcase continue affect
+            System.out.println(i);
+ 
+            // Incrementing variable by 2
+            i += 2;
+ 
+            // Condition check
+        } while (i <= 35);
+    }
+}
+	Output:
+0
+2
+6
+8
+10
+12
+14
+16
+20
+22
+24
+26
+28
+30
+32
+34
+Case 4: Continue statement inside Inner loop(Nested Loop)
+In the above program, we give example, how to use the continue statement within Nested loops. When the value of i becomes 3 and j become 2, the continue statement plays its role and skip their execution but for other values of i and j, the loop will run smoothly.
+* Java
+// Java Program to illustrate the use of continue statement
+// inside an inner loop or simply nested loops
+ 
+// Importing generic Classes/Files
+import java.util.*;
+ 
+public class GFG {
+ 
+    // Main drive method
+    public static void main(String[] args)
+    {
+        // Outer loop for iteration
+        for (int i = 1; i <= 4; i++) {
+ 
+            // Inner loop for iteration
+            for (int j = 1; j <= 3; j++) {
+                if (i == 3 && j == 2) {
+ 
+                    // Continue statement in inner loop to
+                    // skip the execution when i==3 and j==2
+ 
+                    continue;
+                }
+ 
+                // Print elements to showcase keyword affect
+                System.out.println(i + " * " + j);
+            }
+        }
+    }
+}
+	Output: 
+1 * 1
+1 * 2
+1 * 3
+2 * 1
+2 * 2
+2 * 3
+3 * 1
+3 * 3
+4 * 1
+4 * 2
+4 * 3
+
+==================================================
+
+*** Switch Statement ***
+
+
+The switch statement is a multi-way branch statement. It provides an easy way to dispatch execution to different parts of code based on the value of the expression. Basically, the expression can be byte, short, char, and int primitive data types. Beginning with JDK7, it also works with enumerated types ( Enums in java), the String class and Wrapper classes.
+Syntax of Switch-case : 
+ 
+// switch statement 
+switch(expression)
+{
+   // case statements
+   // values must be of same type of expression
+   case value1 :
+      // Statements
+      break; // break is optional
+   
+   case value2 :
+      // Statements
+      break; // break is optional
+   
+   // We can have any number of case statements
+   // below is default statement, used when none of the cases is true. 
+   // No break is needed in the default case.
+   default : 
+      // Statements
+}
+
+
+
+
+
+
+
+
+
+
+Flow Diagram of Switch-case : 
+ 
+ Flow Diagram of Switch-Case statement 
+
+Some Important rules for switch statements : 
+ 
+* Duplicate case values are not allowed.
+* The value for a case must be of the same data type as the variable in the switch. 
+* The value for a case must be a constant or a literal. Variables are not allowed.
+* The break statement is used inside the switch to terminate a statement sequence.
+* The break statement is optional. If omitted, execution will continue on into the next case.
+* The default statement is optional and can appear anywhere inside the switch block. In case, if it is not at the end, then a break statement must be kept after the default statement to omit the execution of the next case statement.
+Examples:
+Consider the following java program, it declares an int named day whose value represents a day(1-7). The code displays the name of the day, based on the value of the day, using the switch statement.
+ 
+
+
+
+
+* Java
+// Java program to demonstrate switch case
+// with primitive(int) data type
+public class Test {
+    public static void main(String[] args)
+    {
+        int day = 5;
+        String dayString;
+  
+        // switch statement with int data type
+        switch (day) {
+        case 1:
+            dayString = "Monday";
+            break;
+        case 2:
+            dayString = "Tuesday";
+            break;
+        case 3:
+            dayString = "Wednesday";
+            break;
+        case 4:
+            dayString = "Thursday";
+            break;
+        case 5:
+            dayString = "Friday";
+            break;
+        case 6:
+            dayString = "Saturday";
+            break;
+        case 7:
+            dayString = "Sunday";
+            break;
+        default:
+            dayString = "Invalid day";
+        }
+        System.out.println(dayString);
+    }
+}
+	Output: 
+ 
+Friday
+
+
+ 
+Omitting the break statement
+As break statement is optional. If we omit the break, execution will continue on into the next case. It is sometimes desirable to have multiple cases without break statements between them. For example, consider the updated version of the above program, it also displays whether a day is a weekday or a weekend day.
+ 
+* Java
+// Java program to demonstrate switch case
+// with multiple cases without break statements
+public class Test {
+    public static void main(String[] args)
+    {
+        int day = 2;
+        String dayType;
+        String dayString;
+  
+        switch (day) {
+        case 1:
+            dayString = "Monday";
+            break;
+        case 2:
+            dayString = "Tuesday";
+            break;
+        case 3:
+            dayString = "Wednesday";
+            break;
+        case 4:
+            dayString = "Thursday";
+            break;
+        case 5:
+            dayString = "Friday";
+            break;
+        case 6:
+            dayString = "Saturday";
+            break;
+        case 7:
+            dayString = "Sunday";
+            break;
+        default:
+            dayString = "Invalid day";
+        }
+  
+        switch (day) {
+        // multiple cases without break statements
+  
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+            dayType = "Weekday";
+            break;
+        case 6:
+        case 7:
+            dayType = "Weekend";
+            break;
+  
+        default:
+            dayType = "Invalid daytype";
+        }
+  
+        System.out.println(dayString + " is a " + dayType);
+    }
+}
+	Output: 
+ 
+Tuesday is a Weekday
+
+
+ 
+Nested Switch Case statements
+We can use a switch as part of the statement sequence of an outer switch. This is called a nested switch. Since a switch statement defines its own block, no conflicts arise between the case constants in the inner switch and those in the outer switch. For example: 
+ 
+* Java
+// Java program to demonstrate
+// nested switch case statement
+public class Test {
+    public static void main(String[] args)
+    {
+        String Branch = "CSE";
+        int year = 2;
+  
+        switch (year) {
+        case 1:
+            System.out.println("elective courses : Advance english, Algebra");
+            break;
+        case 2:
+            switch (Branch) // nested switch
+            {
+            case "CSE":
+            case "CCE":
+                System.out.println("elective courses : Machine Learning, Big Data");
+                break;
+  
+            case "ECE":
+                System.out.println("elective courses : Antenna Engineering");
+                break;
+  
+            default:
+                System.out.println("Elective courses : Optimization");
+            }
+        }
+    }
+}
+	Output: 
+ 
+elective courses : Machine Learning, Big Data
+
+==================================================
+

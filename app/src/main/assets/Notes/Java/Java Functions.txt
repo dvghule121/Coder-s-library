@@ -1,0 +1,3005 @@
+*** Strings ***
+
+Strings in Java are Objects that are backed internally by a char array. Since arrays are immutable(cannot grow), Strings are immutable as well. 
+Whenever a change to a String is made, an entirely new String is created. 
+
+Syntax:  
+
+           <String_Type> <string_variable> = "<sequence_of_string>"; 
+
+
+Example:  
+
+        String str = "Geeks";
+
+
+code:  
+            
+// Java code to illustrate String
+import java.io.*;
+import java.lang.*;
+ 
+class Test {
+    public static void main(String[] args)
+    {
+        // Declare String without using new operator
+        String s = "GeeksforGeeks";
+ 
+        // Prints the String.
+        System.out.println("String s = " + s);
+ 
+        // Declare String using new operator
+        String s1 = new String("GeeksforGeeks");
+ 
+        // Prints the String.
+        System.out.println("String s1 = " + s1);
+    }
+}
+
+
+
+Creating a String:
+
+There are two ways to create a string in Java: 
+
+ 1)String literal :
+
+              String s = “GeeksforGeeks”;
+
+ 2)Using new keyword
+
+              String s = new String (“GeeksforGeeks”);
+
+
+Constructor in String :
+
+1) String(byte[] byte_arr) – Construct a new String by decoding the byte array. It uses the platform’s default character set for decoding.
+Example:
+
+       byte[] b_arr = {71, 101, 101, 107, 115};
+       String s_byte =new String(b_arr); //Geeks
+
+
+2) String(byte[] byte_arr, Charset char_set) – Construct a new String by decoding the byte array. It uses the char_set for decoding.
+Example:
+       byte[] b_arr = {71, 101, 101, 107, 115};
+       Charset cs = Charset.defaultCharset();
+       String s_byte_char = new String(b_arr, cs); //Geeks
+
+
+3)String(byte[] byte_arr, String char_set_name) – Construct a new String by decoding the byte array. It uses the char_set_name for decoding.
+It looks similar to the above constructs and they appear before similar functions but it takes the String(which contains char_set_name) as parameter while the above constructor takes CharSet.
+Example:
+       byte[] b_arr = {71, 101, 101, 107, 115};
+       String s = new String(b_arr, "US-ASCII"); //Geeks
+
+
+4)String(byte[] byte_arr, int start_index, int length) – Construct a new string from the bytes array depending on the start_index(Starting location) and length(number of characters from starting location).
+Example:
+       byte[] b_arr = {71, 101, 101, 107, 115};
+       String s = new String(b_arr, 1, 3); // eek
+
+
+5)String(byte[] byte_arr, int start_index, int length, Charset char_set) – Construct a new string from the bytes array depending on the start_index(Starting location) and length(number of characters from starting location).Uses char_set for decoding.
+Example:
+       byte[] b_arr = {71, 101, 101, 107, 115};
+       Charset cs = Charset.defaultCharset();
+        String s = new String(b_arr, 1, 3, cs); // eek
+
+
+6)String(byte[] byte_arr, int start_index, int length, String char_set_name) – Construct a new string from the bytes array depending on the start_index(Starting location) and length(number of characters from starting location).Uses char_set_name for decoding.
+Example:
+       byte[] b_arr = {71, 101, 101, 107, 115};
+       String s = new String(b_arr, 1, 4, "US-ASCII"); // eeks
+
+
+7)String(char[] char_arr) – Allocates a new String from the given Character array
+Example:
+       char char_arr[] = {'G', 'e', 'e', 'k', 's'};
+        String s = new String(char_arr); //Geeks
+
+
+8)String(char[] char_array, int start_index, int count) – Allocates a String from a given character array but choose count characters from the start_index.
+Example:
+        char char_arr[] = {'G', 'e', 'e', 'k', 's'};
+        String s = new String(char_arr , 1, 3); //eek
+
+
+9)String(int[] uni_code_points, int offset, int count) – Allocates a String from a uni_code_array but choose count characters from the start_index.
+Example:
+       int[] uni_code = {71, 101, 101, 107, 115};
+       String s = new String(uni_code, 1, 3); //eek
+
+
+10)String(StringBuffer s_buffer) – Allocates a new string from the string in s_buffer
+Example:
+       StringBuffer s_buffer = new StringBuffer("Geeks");
+       String s = new String(s_buffer); //Geeks
+
+
+11)String(StringBuilder s_builder) – Allocates a new string from the string in s_builder
+Example:
+       StringBuilder s_builder = new StringBuilder("Geeks");
+       String s = new String(s_builder); //Geeks
+
+
+Methods in Strings :
+
+1)int length(): Returns the number of characters in the String.
+      "GeeksforGeeks".length();  // returns 13
+
+2)Char charAt(int i): Returns the character at ith index.
+      "GeeksforGeeks".charAt(3); // returns  ‘k’
+
+3)String substring (int i): Return the substring from the ith  index character to end.
+      "GeeksforGeeks".substring(3); // returns “ksforGeeks”
+
+4)String substring (int i, int j): Returns the substring from i to j-1 index.
+      "GeeksforGeeks".substring(2, 5); // returns “eks”
+
+5)String concat( String str): Concatenates specified string to the end of this string.
+       String s1 = ”Geeks”;
+       String s2 = ”forGeeks”;
+       String output = s1.concat(s2); // returns “GeeksforGeeks”
+
+6)int indexOf (String s): Returns the index within the string of the first occurrence of the specified string.
+      String s = ”Learn Share Learn”;
+      int output = s.indexOf(“Share”); // returns 6
+
+7)int indexOf (String s, int i): Returns the index within the string of the first occurrence of the specified string, starting at the specified index.
+      String s = ”Learn Share Learn”;
+      int output = s.indexOf("ea",3);// returns 13
+
+8)Int lastIndexOf( String s): Returns the index within the string of the last occurrence of the specified string.
+      String s = ”Learn Share Learn”;
+      int output = s.lastIndexOf("a"); // returns 14
+
+9)boolean equals( Object otherObj): Compares this string to the specified object.
+      Boolean out = “Geeks”.equals(“Geeks”); // returns true
+      Boolean out = “Geeks”.equals(“geeks”); // returns false\\   
+
+10)boolean  equalsIgnoreCase (String anotherString): Compares string to another string, ignoring case considerations.
+      Boolean out= “Geeks”.equalsIgnoreCase(“Geeks”); // returns true
+      Boolean out = “Geeks”.equalsIgnoreCase(“geeks”); // returns true
+
+11)int compareTo( String anotherString): Compares two string lexicographically.
+ int out = s1.compareTo(s2);  // where s1 ans s2 are
+                             // strings to be compared
+
+ This returns difference s1-s2. If :
+ out < 0  // s1 comes before s2
+ out = 0  // s1 and s2 are equal.
+ out > 0   // s1 comes after s2.
+
+12)int compareToIgnoreCase( String anotherString): Compares two string lexicographically, ignoring case considerations.
+ int out = s1.compareToIgnoreCase(s2);  
+// where s1 ans s2 are 
+// strings to be compared
+
+ This returns difference s1-s2. If :
+ out < 0  // s1 comes before s2
+ out = 0   // s1 and s2 are equal.
+ out > 0   // s1 comes after s2.
+Note- In this case, it will not consider case of a letter (it will ignore whether it is uppercase or lowercase).
+
+13)String toLowerCase(): Converts all the characters in the String to lower case.
+      String word1 = “HeLLo”;
+      String word3 = word1.toLowerCase(); // returns “hello"
+     
+14)String toUpperCase(): Converts all the characters in the String to upper case.
+     String word1 = “HeLLo”;
+     String word2 = word1.toUpperCase(); // returns “HELLO”
+
+16)String trim(): Returns the copy of the String, by removing whitespaces at both ends. It does not affect whitespaces in the middle.
+     String word1 = “ Learn Share Learn “;
+     String word2 = word1.trim(); // returns “Learn Share Learn”
+ 
+17)String replace (char oldChar, char newChar): Returns new string by replacing all occurrences of oldChar with newChar.
+     String s1 = “feeksforfeeks“;
+     String s2 = “feeksforfeeks”.replace(‘f’ ,’g’); // returns “geeksgorgeeks”
+
+================================================
+
+*** Arrays ***
+
+An array is a group of like-typed variables that are referred to by a common name. Arrays in Java work differently than they do in C/C++. Following are some important points about Java arrays.
+
+In Java all arrays are dynamically allocated.(discussed below)
+Since arrays are objects in Java, we can find their length using the object property length. This is different from C/C++ where we find length using sizeof.
+A Java array variable can also be declared like other variables with [] after the data type.
+The variables in the array are ordered and each have an index beginning from 0.
+Java array can be also be used as a static field, a local variable or a method parameter.
+The size of an array must be specified by an int or short value and not long.
+The direct superclass of an array type is Object.
+Every array type implements the interfaces Cloneable and java.io.Serializable.
+Array can contain primitives (int, char, etc.) as well as object (or non-primitive) references of a class depending on the definition of the array. In case of primitive data types, the actual values are stored in contiguous memory locations. In case of objects of a class, the actual objects are stored in heap segment.
+
+Arrays
+
+Creating, Initializing, and Accessing an Array
+
+One-Dimensional Arrays :
+The general form of a one-dimensional array declaration is
+
+type var-name[];
+OR
+type[] var-name;
+An array declaration has two components: the type and the name. type declares the element type of the array. The element type determines the data type of each element that comprises the array. Like an array of integers, we can also create an array of other primitive data types like char, float, double, etc. or user-defined data types (objects of a class). Thus, the element type for the array determines what type of data the array will hold.
+Example:
+
+// both are valid declarations
+int intArray[]; 
+or int[] intArray; 
+
+byte byteArray[];
+short shortsArray[];
+boolean booleanArray[];
+long longArray[];
+float floatArray[];
+double doubleArray[];
+char charArray[];
+
+// an array of references to objects of
+// the class MyClass (a class created by
+// user)
+MyClass myClassArray[]; 
+
+Object[]  ao,        // array of Object
+Collection[] ca;  // array of Collection
+                     // of unknown type
+Although the first declaration above establishes the fact that intArray is an array variable, no actual array exists. It merely tells the compiler that this variable (intArray) will hold an array of the integer type. To link intArray with an actual, physical array of integers, you must allocate one using new and assign it to intArray.
+
+Instantiating an Array in Java
+
+When an array is declared, only a reference of array is created. To actually create or give memory to array, you create an array like this:The general form of new as it applies to one-dimensional arrays appears as follows:
+
+var-name = new type [size];
+Here, type specifies the type of data being allocated, size specifies the number of elements in the array, and var-name is the name of array variable that is linked to the array. That is, to use new to allocate an array, you must specify the type and number of elements to allocate.
+
+Example:
+
+int intArray[];    //declaring array
+intArray = new int[20];  // allocating memory to array
+OR
+
+int[] intArray = new int[20]; // combining both statements in one
+Note :
+
+
+
+
+The elements in the array allocated by new will automatically be initialized to zero (for numeric types), false (for boolean), or null (for reference types).Refer Default array values in Java
+Obtaining an array is a two-step process. First, you must declare a variable of the desired array type. Second, you must allocate the memory that will hold the array, using new, and assign it to the array variable. Thus, in Java all arrays are dynamically allocated.
+Array Literal
+
+In a situation, where the size of the array and variables of array are already known, array literals can be used.
+
+ int[] intArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 }; 
+ // Declaring array literal
+The length of this array determines the length of the created array.
+There is no need to write the new int[] part in the latest versions of Java
+Accessing Java Array Elements using for Loop
+
+Each element in the array is accessed via its index. The index begins with 0 and ends at (total array size)-1. All the elements of array can be accessed using Java for Loop.
+
+ 
+// accessing the elements of the specified array
+for (int i = 0; i < arr.length; i++)
+  System.out.println("Element at index " + i + 
+                                " : "+ arr[i]);
+Implementation:
+
+
+// Java program to illustrate creating an array
+// of integers,  puts some values in the array,
+// and prints each value to standard output.
+  
+class GFG 
+{
+    public static void main (String[] args) 
+    {         
+      // declares an Array of integers.
+      int[] arr;
+          
+      // allocating memory for 5 integers.
+      arr = new int[5];
+          
+      // initialize the first elements of the array
+      arr[0] = 10;
+          
+      // initialize the second elements of the array
+      arr[1] = 20;
+          
+      //so on...
+      arr[2] = 30;
+      arr[3] = 40;
+      arr[4] = 50;
+          
+      // accessing the elements of the specified array
+      for (int i = 0; i < arr.length; i++)
+         System.out.println("Element at index " + i + 
+                                      " : "+ arr[i]);          
+    }
+}
+Output:
+
+Element at index 0 : 10
+Element at index 1 : 20
+Element at index 2 : 30
+Element at index 3 : 40
+Element at index 4 : 50
+You can also access java arrays using foreach loops
+Blank Diagram - Page 1 (10)
+
+
+
+Arrays of Objects
+
+An array of objects is created just like an array of primitive type data items in the following way.
+
+ Student[] arr = new Student[7]; //student is a user-defined class
+The studentArray contains seven memory spaces each of size of student class in which the address of seven Student objects can be stored.The Student objects have to be instantiated using the constructor of the Student class and their references should be assigned to the array elements in the following way.
+
+
+Student[] arr = new Student[5];
+
+// Java program to illustrate creating an array of
+// objects
+  
+class Student
+{
+    public int roll_no;
+    public String name;
+    Student(int roll_no, String name)
+    {
+        this.roll_no = roll_no;
+        this.name = name;
+    }
+}
+  
+// Elements of the array are objects of a class Student.
+public class GFG
+{
+    public static void main (String[] args)
+    {
+        // declares an Array of integers.
+        Student[] arr;
+  
+        // allocating memory for 5 objects of type Student.
+        arr = new Student[5];
+  
+        // initialize the first elements of the array
+        arr[0] = new Student(1,"aman");
+  
+        // initialize the second elements of the array
+        arr[1] = new Student(2,"vaibhav");
+  
+        // so on...
+        arr[2] = new Student(3,"shikar");
+        arr[3] = new Student(4,"dharmesh");
+        arr[4] = new Student(5,"mohit");
+  
+        // accessing the elements of the specified array
+        for (int i = 0; i < arr.length; i++)
+            System.out.println("Element at " + i + " : " +
+                        arr[i].roll_no +" "+ arr[i].name);
+    }
+}
+Output:
+
+Element at 0 : 1 aman
+Element at 1 : 2 vaibhav
+Element at 2 : 3 shikar
+Element at 3 : 4 dharmesh
+Element at 4 : 5 mohit
+
+
+What happens if we try to access element outside the array size?
+
+JVM throws ArrayIndexOutOfBoundsException to indicate that array has been accessed with an illegal index. The index is either negative or greater than or equal to size of array.
+
+
+class GFG
+{
+    public static void main (String[] args)
+    {
+        int[] arr = new int[2];
+        arr[0] = 10;
+        arr[1] = 20;
+  
+        for (int i = 0; i <= arr.length; i++)
+            System.out.println(arr[i]);
+    }
+}
+Runtime error
+
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 2
+    at GFG.main(File.java:12)
+Output:
+
+10
+20
+Multidimensional Arrays
+
+Multidimensional arrays are arrays of arrays with each element of the array holding the reference of other array. These are also known as Jagged Arrays. A multidimensional array is created by appending one set of square brackets ([]) per dimension. Examples:
+
+int[][] intArray = new int[10][20]; //a 2D array or matrix
+int[][][] intArray = new int[10][20][10]; //a 3D array
+
+class multiDimensional
+{
+    public static void main(String args[])
+    {
+        // declaring and initializing 2D array
+        int arr[][] = { {2,7,9},{3,6,1},{7,4,2} };
+  
+        // printing 2D array
+        for (int i=0; i< 3 ; i++)
+        {
+            for (int j=0; j < 3 ; j++)
+                System.out.print(arr[i][j] + " ");
+  
+            System.out.println();
+        }
+    }
+}
+Output:
+
+2 7 9 
+3 6 1 
+7 4 2 
+Blank Diagram - Page 1 (13)
+
+Passing Arrays to Methods
+
+
+
+
+Like variables, we can also pass arrays to methods.For example, below program pass array to method sum for calculating sum of array’s values.
+
+
+// Java program to demonstrate 
+// passing of array to method
+  
+class Test
+{    
+    // Driver method
+    public static void main(String args[]) 
+    {
+        int arr[] = {3, 1, 2, 5, 4};
+          
+        // passing array to method m1
+        sum(arr);
+      
+    }
+  
+    public static void sum(int[] arr) 
+    {
+        // getting sum of array values
+        int sum = 0;
+          
+        for (int i = 0; i < arr.length; i++)
+            sum+=arr[i];
+          
+        System.out.println("sum of array values : " + sum);
+    }
+}
+Output :
+
+sum of array values : 15
+Returning Arrays from Methods
+
+As usual, a method can also return an array. For example, below program returns an array from method m1.
+
+
+// Java program to demonstrate 
+// return of array from method
+  
+class Test
+{    
+    // Driver method
+    public static void main(String args[]) 
+    {
+        int arr[] = m1();
+          
+        for (int i = 0; i < arr.length; i++)
+            System.out.print(arr[i]+" ");
+      
+    }
+  
+    public static int[] m1() 
+    {
+        // returning  array
+        return new int[]{1,2,3};
+    }
+}
+Output:
+
+1 2 3
+
+
+
+Class Objects for Arrays
+
+Every array has an associated Class object, shared with all other arrays with the same component type.
+
+
+// Java program to demonstrate 
+// Class Objects for Arrays
+  
+class Test
+{ 
+    public static void main(String args[]) 
+    {
+        int intArray[] = new int[3];
+        byte byteArray[] = new byte[3];
+        short shortsArray[] = new short[3];
+          
+        // array of Strings
+        String[] strArray = new String[3];
+          
+        System.out.println(intArray.getClass());
+        System.out.println(intArray.getClass().getSuperclass());
+        System.out.println(byteArray.getClass());
+        System.out.println(shortsArray.getClass());
+        System.out.println(strArray.getClass());
+    }
+}
+Output:
+
+class [I
+class java.lang.Object
+class [B
+class [S
+class [Ljava.lang.String;
+Explanation :
+
+The string “[I” is the run-time type signature for the class object “array with component type int“.
+The only direct superclass of any array type is java.lang.Object.
+The string “[B” is the run-time type signature for the class object “array with component type byte“.
+The string “[S” is the run-time type signature for the class object “array with component type short“.
+The string “[L” is the run-time type signature for the class object “array with component type of a Class”. The Class name is then followed.
+Array Members
+
+
+
+
+Now as you know that arrays are object of a class and direct superclass of arrays is class Object.The members of an array type are all of the following:
+
+The public final field length, which contains the number of components of the array. length may be positive or zero.
+All the members inherited from class Object; the only method of Object that is not inherited is its clone method.
+The public method clone(), which overrides clone method in class Object and throws no checked exceptions.
+Cloning of arrays
+
+When you clone a single dimensional array, such as Object[], a “deep copy” is performed with the new array containing copies of the original array’s elements as opposed to references.
+
+// Java program to demonstrate 
+// cloning of one-dimensional arrays
+  
+class Test
+{    
+    public static void main(String args[]) 
+    {
+        int intArray[] = {1,2,3};
+          
+        int cloneArray[] = intArray.clone();
+          
+        // will print false as deep copy is created
+        // for one-dimensional array
+        System.out.println(intArray == cloneArray);
+          
+        for (int i = 0; i < cloneArray.length; i++) {
+            System.out.print(cloneArray[i]+" ");
+        }
+    }
+}
+Output:
+
+false
+1 2 3
+Blank Diagram - Page 1 (11)
+
+A clone of a multi-dimensional array (like Object[][]) is a “shallow copy” however, which is to say that it creates only a single new array with each element array a reference to an original element array, but subarrays are shared.
+
+// Java program to demonstrate 
+// cloning of multi-dimensional arrays
+  
+class Test
+{    
+    public static void main(String args[]) 
+    {
+        int intArray[][] = {{1,2,3},{4,5}};
+          
+        int cloneArray[][] = intArray.clone();
+          
+        // will print false
+        System.out.println(intArray == cloneArray);
+          
+        // will print true as shallow copy is created
+        // i.e. sub-arrays are shared
+        System.out.println(intArray[0] == cloneArray[0]);
+        System.out.println(intArray[1] == cloneArray[1]);
+          
+    }
+}
+Output:
+
+false
+true
+true
+
+================================================
+
+*** Methods ***
+
+A method is a collection of statements that perform some specific task and return the result to the caller. A method can perform some specific task without returning anything. Methods allow us to reuse the code without retyping the code. In Java, every method must be part of some class which is different from languages like C, C++, and Python. 
+
+Methods are time savers and help us to reuse the code without retyping the code. 
+ 
+
+Method Declaration
+
+In general, method declarations has six components :  
+
+Modifier-: Defines access type of the method i.e. from where it can be accessed in your application. In Java, there 4 types of access specifiers. 
+public: accessible in all classes in your application.
+protected: accessible within the class in which it is defined and in its subclass(es)
+private: accessible only within the class in which it is defined.
+default (declared/defined without using any modifier): accessible within the same class and package within which its class is defined.
+The return type: The data type of the value returned by the method or void if does not return a value.
+Method Name: the rules for field names apply to method names as well, but the convention is a little different.
+Parameter list: Comma separated list of the input parameters are defined, preceded with their data type, within the enclosed parenthesis. If there are no parameters, you must use empty parentheses ().
+Exception list: The exceptions you expect by the method can throw, you can specify these exception(s).
+Method body: it is enclosed between braces. The code you need to be executed to perform your intended operations.
+methods in java
+
+
+
+
+Method signature: It consists of the method name and a parameter list (number of parameters, type of the parameters and order of the parameters). The return type and exceptions are not considered as part of it. 
+
+Method Signature of above function:  
+
+ max(int x, int y) 
+How to name a Method?: A method name is typically a single word that should be a verb in lowercase or multi-word, that begins with a verb in lowercase followed by an adjective, noun….. After the first word, the first letter of each word should be capitalized. For example, findSum, 
+computeMax, setX and getX
+
+Generally, A method has a unique name within the class in which it is defined but sometimes a method might have the same name as other method names within the same class as method overloading is allowed in Java.
+ 
+
+Calling a method
+
+The method needs to be called for using its functionality. There can be three situations when a method is called: 
+A method returns to the code that invoked it when:  
+
+It completes all the statements in the method
+It reaches a return statement
+Throws an exception
+
+// Program to illustrate methodsin java
+import java.io.*;
+ 
+class Addition {
+     
+    int sum = 0;
+     
+    public int addTwoInt(int a, int b){
+         
+        // adding two integer value.
+        sum = a + b;
+         
+        //returning summation of two values.
+        return sum;
+    }
+     
+}
+ 
+class GFG {
+    public static void main (String[] args) {
+     
+        // creating an instance of Addition class
+        Addition add = new Addition();
+         
+        // calling addTwoInt() method to add two integer using instance created
+        // in above step.
+        int s = add.addTwoInt(1,2);
+        System.out.println("Sum of two integer values :"+ s);
+         
+    }
+}
+Output : 
+
+Sum of two integer values :3
+See the below example to understand method call in detail : 
+
+
+
+
+
+// Java program to illustrate different ways of calling a method
+import java.io.*;
+ 
+class Test
+{
+    public static int i = 0;
+    // constructor of class which counts
+    //the number of the objects of the class.
+    Test()
+    {
+        i++;
+         
+    }
+    // static method is used to access static members of the class
+    // and for getting total no of objects
+    // of the same class created so far
+    public static int get()
+    {
+        // statements to be executed....
+        return i;
+    }
+ 
+    // Instance method calling object directly
+    // that is created inside another class 'GFG'.
+    // Can also be called by object directly created in the same class
+    // and from another method defined in the same class
+    // and return integer value as return type is int.
+    public int m1()
+    {
+        System.out.println("Inside the method m1 by object of GFG class");
+         
+        // calling m2() method within the same class.
+        this.m2();
+         
+        // statements to be executed if any
+        return 1;
+    }
+ 
+    // It doesn't return anything as
+    // return type is 'void'.
+    public void m2()
+    {
+ 
+        System.out.println("In method m2 came from method m1");
+    }
+}
+ 
+class GFG
+{
+    public static void main(String[] args)
+    {
+        // Creating an instance of the class
+        Test obj = new Test();
+         
+        // Calling the m1() method by the object created in above step.
+        int i = obj.m1();
+        System.out.println("Control returned after method m1 :" + i);
+         
+        // Call m2() method
+        // obj.m2();
+        int no_of_objects = Test.get();
+         
+        System.out.print("No of instances created till now : ");
+        System.out.println(no_of_objects);
+         
+    }
+}
+Output : 
+
+Inside the method m1 by object of GFG class
+In method m2 came from method m1
+Control returned after method m1 :1
+No of instances created till now : 1
+Control flow of the above program: 
+
+methods in java
+
+Memory allocation for methods calls
+
+Methods calls are implemented through a stack. Whenever a method is called a stack frame is created within the stack area and after that, the arguments passed to and the local variables and value to be returned by this called method are stored in this stack frame and when execution of the called method is finished, the allocated stack frame would be deleted. There is a stack pointer register that tracks the top of the stack which is adjusted accordingly.
+
+
+
+
+
+
+Parameter Passing Techniques in Java with Examples
+
+There are different ways in which parameter data can be passed into and out of methods and functions. Let us assume that a function B() is called from another function A(). In this case A is called the “caller function” and B is called the “called function or callee function”. Also, the arguments which A sends to B are called actual arguments and the parameters of B are called formal arguments.
+ 
+
+Types of parameters:
+
+ 
+
+Formal Parameter : A variable and its type as they appear in the prototype of the function or method. 
+Syntax: 
+ 
+function_name(datatype variable_name)
+Actual Parameter : The variable or expression corresponding to a formal parameter that appears in the function or method call in the calling environment. 
+Syntax: 
+ 
+func_name(variable name(s)); 
+Important methods of Parameter Passing
+
+1. Pass By Value: Changes made to formal parameter do not get transmitted back to the caller. Any modifications to the formal parameter variable inside the called function or method affect only the separate storage location and will not be reflected in the actual parameter in the calling environment. This method is also called as call by value.
+Java in fact is strictly call by value.
+ 
+
+
+
+
+
+Example: 
+ 
+
+
+// Java program to illustrate
+// Call by Value
+ 
+// Callee
+class CallByValue {
+ 
+    // Function to change the value
+    // of the parameters
+    public static void Example(int x, int y)
+    {
+        x++;
+        y++;
+    }
+}
+ 
+// Caller
+public class Main {
+    public static void main(String[] args)
+    {
+ 
+        int a = 10;
+        int b = 20;
+ 
+        // Instance of class is created
+        CallByValue object = new CallByValue();
+ 
+        System.out.println("Value of a: " + a
+                           + " & b: " + b);
+ 
+        // Passing variables in the class function
+        object.Example(a, b);
+ 
+        // Displaying values after
+        // calling the function
+        System.out.println("Value of a: "
+                           + a + " & b: " + b);
+    }
+}
+Output: 
+Value of a: 10 & b: 20
+Value of a: 10 & b: 20
+ 
+
+Shortcomings: 
+
+Inefficiency in storage allocation
+For objects and arrays, the copy semantics are costly
+2. Call by reference(aliasing): Changes made to formal parameter do get transmitted back to the caller through parameter passing. Any changes to the formal parameter are reflected in the actual parameter in the calling environment as formal parameter receives a reference (or pointer) to the actual data. This method is also called as call by reference. This method is efficient in both time and space.
+ 
+
+
+
+ 
+
+
+// Java program to illustrate
+// Call by Reference
+ 
+// Callee
+class CallByReference {
+ 
+    int a, b;
+ 
+    // Function to assign the value
+    // to the class variables
+    CallByReference(int x, int y)
+    {
+        a = x;
+        b = y;
+    }
+ 
+    // Changing the values of class variables
+    void ChangeValue(CallByReference obj)
+    {
+        obj.a += 10;
+        obj.b += 20;
+    }
+}
+ 
+// Caller
+public class Main {
+ 
+    public static void main(String[] args)
+    {
+ 
+        // Instance of class is created
+        // and value is assigned using constructor
+        CallByReference object
+            = new CallByReference(10, 20);
+ 
+        System.out.println("Value of a: "
+                           + object.a
+                           + " & b: "
+                           + object.b);
+ 
+        // Changing values in class function
+        object.ChangeValue(object);
+ 
+        // Displaying values
+        // after calling the function
+        System.out.println("Value of a: "
+                           + object.a
+                           + " & b: "
+                           + object.b);
+    }
+}
+ 
+
+Output: 
+Value of a: 10 & b: 20
+Value of a: 20 & b: 40
+
+
+
+
+
+Returning Multiple values in Java
+
+
+
+Java doesn’t support multi-value returns. We can use following solutions to return multiple values.
+
+ 
+
+If all returned elements are of same type
+
+We can return an array in Java. Below is a Java program to demonstrate the same.
+
+
+// A Java program to demonstrate that a method
+// can return multiple values of same type by
+// returning an array
+class Test {
+    // Returns an array such that first element
+    // of array is a+b, and second element is a-b
+    static int[] getSumAndSub(int a, int b)
+    {
+        int[] ans = new int[2];
+        ans[0] = a + b;
+        ans[1] = a - b;
+  
+        // returning array of elements
+        return ans;
+    }
+  
+    // Driver method
+    public static void main(String[] args)
+    {
+        int[] ans = getSumAndSub(100, 50);
+        System.out.println("Sum = " + ans[0]);
+        System.out.println("Sub = " + ans[1]);
+    }
+}
+Output:
+
+
+Sum = 150
+Sub = 50
+ 
+
+If returned elements are of different types
+
+Using Pair (If there are only two returned values)
+We can use Pair in Java to return two values.
+
+// Returning a pair of values from a function
+import javafx.util.Pair;
+  
+class GfG {
+    public static Pair<Integer, String> getTwo()
+    {
+        return new Pair<Integer, String>(10, "GeeksforGeeks");
+    }
+  
+    // Return multiple values from a method in Java 8
+    public static void main(String[] args)
+    {
+        Pair<Integer, String> p = getTwo();
+        System.out.println(p.getKey() + " " + p.getValue());
+    }
+}
+If there are more than two returned values
+We can encapsulate all returned types into a class and then return an object of that class.
+
+Let us have a look at the following code.
+
+
+// A Java program to demonstrate that we can return
+// multiple values of different types by making a class
+// and returning an object of class.
+  
+// A class that is used to store and return
+// three members of different types
+class MultiDivAdd {
+    int mul; // To store multiplication
+    double div; // To store division
+    int add; // To store addition
+    MultiDivAdd(int m, double d, int a)
+    {
+        mul = m;
+        div = d;
+        add = a;
+    }
+}
+  
+class Test {
+    static MultiDivAdd getMultDivAdd(int a, int b)
+    {
+        // Returning multiple values of different
+        // types by returning an object
+        return new MultiDivAdd(a * b, (double)a / b, (a + b));
+    }
+  
+    // Driver code
+    public static void main(String[] args)
+    {
+        MultiDivAdd ans = getMultDivAdd(10, 20);
+        System.out.println("Multiplication = " + ans.mul);
+        System.out.println("Division = " + ans.div);
+        System.out.println("Addition = " + ans.add);
+    }
+}
+Output:
+Multiplication = 200
+Division = 0.5
+Addition = 30
+Returning list of Object Class
+
+
+// Java program to demonstrate return of
+// multiple values from a function using
+// list Object class.
+import java.util.*;
+  
+class GfG {
+    public static List<Object> getDetails()
+    {
+        String name = "Geek";
+        int age = 35;
+        char gender = 'M';
+  
+        return Arrays.asList(name, age, gender);
+    }
+  
+    // Driver code
+    public static void main(String[] args)
+    {
+        List<Object> person = getDetails();
+        System.out.println(person);
+    }
+}
+Output:
+[Geek, 35, M]
+
+
+
+
+
+
+
+Different ways of Method Overloading in Java  
+
+
+Difficulty Level : Basic
+Last Updated : 05 Feb, 2021
+Prerequisite: Overloading 
+Java can distinguish the methods with different method signatures. i.e. the methods can have the same name but with different parameters list (i.e. the number of the parameters, the order of the parameters, and data types of the parameters) within the same class. 
+ 
+
+Overloaded methods are differentiated based on the number and type of the parameters passed as an argument to the methods.
+You can not define more than one method with the same name, Order and the type of the arguments. It would be a compiler error.
+The compiler does not consider the return type while differentiating the overloaded method. But you cannot declare two methods with the same signature and different return type. It will throw a compile-time error. 
+If both methods have the same parameter types, but different return type, then it is not possible. (Java SE 8 Edition, §8.4.2)
+Why do we need Method Overloading?
+
+If we need to do some kind of the operation with different ways i.e. for different inputs. In the example described below, we are doing the addition operation for different inputs. It is hard to find many meaningful names for a single action. 
+ 
+
+Different ways of doing overloading methods
+
+Method overloading can be done by changing: 
+
+
+
+
+The number of parameters in two methods.
+The data types of the parameters of methods.
+The Order of the parameters of methods.
+Method 1: By changing the number of parameters. 
+
+
+import java.io.*;
+ 
+class Addition {
+ 
+    // adding two integer values.
+    public int add(int a, int b)
+    {
+ 
+        int sum = a + b;
+        return sum;
+    }
+ 
+    // adding three integer values.
+    public int add(int a, int b, int c)
+    {
+ 
+        int sum = a + b + c;
+        return sum;
+    }
+}
+ 
+class GFG {
+    public static void main(String[] args)
+    {
+ 
+        Addition ob = new Addition();
+ 
+        int sum1 = ob.add(1, 2);
+        System.out.println("sum of the two integer value :"
+                           + sum1);
+        int sum2 = ob.add(1, 2, 3);
+        System.out.println(
+            "sum of the three integer value :" + sum2);
+    }
+}
+Output
+sum of the two integer value :3
+sum of the three integer value :6
+ 
+
+Method 2: By changing the Data types of the parameters 
+
+
+import java.io.*;
+ 
+class Addition {
+ 
+    // adding three integer values.
+    public int add(int a, int b, int c)
+    {
+ 
+        int sum = a + b + c;
+        return sum;
+    }
+ 
+    // adding three double values.
+    public double add(double a, double b, double c)
+    {
+ 
+        double sum = a + b + c;
+        return sum;
+    }
+}
+ 
+class GFG {
+    public static void main(String[] args)
+    {
+ 
+        Addition ob = new Addition();
+ 
+        int sum2 = ob.add(1, 2, 3);
+        System.out.println(
+            "sum of the three integer value :" + sum2);
+        double sum3 = ob.add(1.0, 2.0, 3.0);
+        System.out.println("sum of the three double value :"
+                           + sum3);
+    }
+}
+Output
+sum of the three integer value :6
+sum of the three double value :6.0
+ 
+
+Method 3: By changing the Order of the parameters 
+
+
+import java.io.*;
+ 
+class Geek {
+ 
+    public void geekIdentity(String name, int id)
+    {
+ 
+        System.out.println("geekName :" + name + " "
+                           + "Id :" + id);
+    }
+ 
+    public void geekIdentity(int id, String name)
+    {
+ 
+        System.out.println("Id :" + id + " "
+                           + "geekName :" + name);
+    }
+}
+ 
+class GFG {
+    public static void main(String[] args)
+    {
+ 
+        Geek geek = new Geek();
+ 
+        geek.geekIdentity("Mohit", 1);
+        geek.geekIdentity("shubham", 2);
+    }
+}
+Output
+
+
+geekName :Mohit Id :1
+geekName :shubham Id :2
+ 
+
+What happens when method signature is the same and the return type is different?
+
+The compiler will give an error as the return value alone is not sufficient for the compiler to figure out which function it has to call. More details:Java Language Specification: §8.4.2.
+Only if both methods have different parameter types (so, they have a different signature), then Method overloading is possible. 
+
+
+// Example to show error when method signature is same
+// and return type is different.
+import java.io.*;
+ 
+class Addition {
+    // adding two integer value.
+    public int add(int a, int b)
+    {
+ 
+        int sum = a + b;
+        return sum;
+    }
+ 
+    // adding three integer value.
+    public double add(int a, int b)
+    {
+        double sum = a + b + 0.0;
+        return sum;
+    }
+}
+ 
+class GFG {
+    public static void main(String[] args)
+    {
+        try {
+            Addition ob = new Addition();
+ 
+            int sum1 = ob.add(1, 2);
+            System.out.println(
+                "sum of the two integer value :" + sum1);
+ 
+            int sum2 = ob.add(1, 2);
+            System.out.println(
+                "sum of the three integer value :" + sum2);
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+Output:  
+
+16: error: method add(int,int) is already defined in class Addition
+    public double add(int a, int b)
+                  ^
+1 error
+
+================================================
+
+*** Object Oriented Programming ***
+
+
+Classes and Objects in Java
+
+ 
+Classes and Objects are basic concepts of Object Oriented Programming which revolve around the real life entities.
+
+Class
+A class is a user defined blueprint or prototype from which objects are created.  It represents the set of properties or methods that are common to all objects of one type. In general, class declarations can include these components, in order: 
+
+Modifiers: A class can be public or has default access (Refer this for details).
+class keyword: class keyword is used to create a class.
+Class name: The name should begin with an initial letter (capitalized by convention).
+Superclass(if any): The name of the class’s parent (superclass), if any, preceded by the keyword extends. A class can only extend (subclass) one parent.
+Interfaces(if any): A comma-separated list of interfaces implemented by the class, if any, preceded by the keyword implements. A class can implement more than one interface.
+Body: The class body surrounded by braces, { }.
+Constructors are used for initializing new objects. Fields are variables that provides the state of the class and its objects, and methods are used to implement the behavior of the class and its objects.
+There are various types of classes that are used in real time applications such as nested classes, anonymous classes, lambda expressions. 
+
+Object
+It is a basic unit of Object-Oriented Programming and represents the real life entities.  A typical Java program creates many objects, which as you know, interact by invoking methods. An object consists of : 
+
+State: It is represented by attributes of an object. It also reflects the properties of an object.
+Behavior: It is represented by methods of an object. It also reflects the response of an object with other objects.
+Identity: It gives a unique name to an object and enables one object to interact with other objects.
+Example of an object: dog
+
+
+
+
+Blank Diagram - Page 1 (5)
+
+Objects correspond to things found in the real world. For example, a graphics program may have objects such as “circle”, “square”, “menu”. An online shopping system might have objects such as “shopping cart”, “customer”, and “product”. 
+ 
+
+Declaring Objects (Also called instantiating a class)
+When an object of a class is created, the class is said to be instantiated. All the instances share the attributes and the behavior of the class. But the values of those attributes, i.e. the state are unique for each object. A single class may have any number of instances.
+
+Example: 
+
+Blank Diagram - Page 1 (3)
+
+As we declare variables like (type name;). This notifies the compiler that we will use name to refer to data whose type is type. With a primitive variable, this declaration also reserves the proper amount of memory for the variable. So for reference variable, type must be strictly a concrete class name. In general, we can’t create objects of an abstract class or an interface.  
+
+Dog tuffy;
+If we declare reference variable(tuffy) like this, its value will be undetermined(null) until an object is actually created and assigned to it. Simply declaring a reference variable does not create an object.
+ 
+
+Initializing an object
+The new operator instantiates a class by allocating memory for a new object and returning a reference to that memory. The new operator also invokes the class constructor. 
+
+
+
+
+// Class Declaration
+ 
+public class Dog
+{
+    // Instance Variables
+    String name;
+    String breed;
+    int age;
+    String color;
+ 
+    // Constructor Declaration of Class
+    public Dog(String name, String breed,
+                   int age, String color)
+    {
+        this.name = name;
+        this.breed = breed;
+        this.age = age;
+        this.color = color;
+    }
+ 
+    // method 1
+    public String getName()
+    {
+        return name;
+    }
+ 
+    // method 2
+    public String getBreed()
+    {
+        return breed;
+    }
+ 
+    // method 3
+    public int getAge()
+    {
+        return age;
+    }
+ 
+    // method 4
+    public String getColor()
+    {
+        return color;
+    }
+ 
+    @Override
+    public String toString()
+    {
+        return("Hi my name is "+ this.getName()+
+               ".\nMy breed,age and color are " +
+               this.getBreed()+"," + this.getAge()+
+               ","+ this.getColor());
+    }
+ 
+    public static void main(String[] args)
+    {
+        Dog tuffy = new Dog("tuffy","papillon", 5, "white");
+        System.out.println(tuffy.toString());
+    }
+}
+Output: 
+
+Hi my name is tuffy.
+My breed,age and color are papillon,5,white
+This class contains a single constructor. We can recognize a constructor because its declaration uses the same name as the class and it has no return type. The Java compiler differentiates the constructors based on the number and the type of the arguments. The constructor in the Dog class takes four arguments. The following statement provides “tuffy”,”papillon”,5,”white” as values for those arguments:
+Dog tuffy = new Dog("tuffy","papillon",5, "white");
+The result of executing this statement can be illustrated as :
+Untitled
+
+Note : All classes have at least one constructor. If a class does not explicitly declare any, the Java compiler automatically provides a no-argument constructor, also called the default constructor. This default constructor calls the class parent’s no-argument constructor (as it contain only one statement i.e super();), or the Object class constructor if the class has no other parent (as Object class is parent of all classes either directly or indirectly). 
+
+ 
+Ways to create object of a class
+There are four ways to create objects in java.Strictly speaking there is only one way(by using new keyword),and the rest internally use new keyword. 
+
+Using new keyword: It is the most common and general way to create object in java. Example:
+// creating object of class Test
+Test t = new Test();
+Using Class.forName(String className) method: There is a pre-defined class in java.lang package with name Class. The forName(String className) method returns the Class object associated with the class with the given string name.We have to give the fully qualified name for a class. On calling new Instance() method on this Class object returns new instance of the class with the given string name.
+// creating object of public class Test
+// consider class Test present in com.p1 package
+Test obj = (Test)Class.forName("com.p1.Test").newInstance();
+Using clone() method: clone() method is present in Object class. It creates and returns a copy of the object.
+        
+// creating object of class Test
+Test t1 = new Test();
+
+// creating clone of above object
+Test t2 = (Test)t1.clone();
+Deserialization: De-serialization is technique of reading an object from the saved state in a file. Refer Serialization/De-Serialization in java
+            
+FileInputStream file = new FileInputStream(filename);
+ObjectInputStream in = new ObjectInputStream(file);
+Object obj = in.readObject();
+Creating multiple objects by one type only (A good practice) 
+In real-time, we need different objects of a class in different methods. Creating a number of references for storing them is not a good practice and therefore we declare a static reference variable and use it whenever required. In this case, wastage of memory is less. The objects that are not referenced anymore will be destroyed by Garbage Collector of java. Example:
+          
+Test test = new Test();
+test = new Test();
+In inheritance system, we use parent class reference variable to store a sub-class object. In this case, we can switch into different subclass objects using same referenced variable. Example:
+class Animal {}
+
+class Dog extends Animal {}
+class Cat extends Animal {}
+
+public class Test
+{
+    // using Dog object
+    Animal obj = new Dog();
+
+    // using Cat object
+    obj = new Cat();
+}
+       
+Anonymous objects
+
+Anonymous objects are the objects that are instantiated but are not stored in a reference variable.  
+
+They are used for immediate method calling.
+They will be destroyed after method calling.
+They are widely used in different libraries. For example, in AWT libraries, they are used to perform some action on capturing an event(eg a key press).
+In the example below, when a key is button(referred by the btn) is pressed, we are simply creating anonymous object of EventHandler class for just calling handle method.
+btn.setOnAction(new EventHandler()
+{
+    public void handle(ActionEvent event)
+    {
+        System.out.println("Hello World!");
+    }
+});
+
+
+
+****************************************************************** Inheritance ******************************************************************************
+
+Inheritance in Java
+
+Inheritance is an important pillar of OOP(Object-Oriented Programming). It is the mechanism in java by which one class is allowed to inherit the features(fields and methods) of another class. 
+
+Important terminology: 
+
+Super Class: The class whose features are inherited is known as superclass(or a base class or a parent class).
+Sub Class: The class that inherits the other class is known as a subclass(or a derived class, extended class, or child class). The subclass can add its own fields and methods in addition to the superclass fields and methods.
+Reusability: Inheritance supports the concept of “reusability”, i.e. when we want to create a new class and there is already a class that includes some of the code that we want, we can derive our new class from the existing class. By doing this, we are reusing the fields and methods of the existing class.
+How to use inheritance in Java
+
+The keyword used for inheritance is extends. 
+
+Syntax : 
+
+
+
+
+class derived-class extends base-class  
+{  
+   //methods and fields  
+}  
+Example: In the below example of inheritance, class Bicycle is a base class, class MountainBike is a derived class that extends Bicycle class and class Test is a driver class to run program. 
+
+
+// Java program to illustrate the
+// concept of inheritance
+ 
+// base class
+class Bicycle {
+    // the Bicycle class has two fields
+    public int gear;
+    public int speed;
+ 
+    // the Bicycle class has one constructor
+    public Bicycle(int gear, int speed)
+    {
+        this.gear = gear;
+        this.speed = speed;
+    }
+ 
+    // the Bicycle class has three methods
+    public void applyBrake(int decrement)
+    {
+        speed -= decrement;
+    }
+ 
+    public void speedUp(int increment)
+    {
+        speed += increment;
+    }
+ 
+    // toString() method to print info of Bicycle
+    public String toString()
+    {
+        return ("No of gears are " + gear + "\n"
+                + "speed of bicycle is " + speed);
+    }
+}
+ 
+// derived class
+class MountainBike extends Bicycle {
+ 
+    // the MountainBike subclass adds one more field
+    public int seatHeight;
+ 
+    // the MountainBike subclass has one constructor
+    public MountainBike(int gear, int speed,
+                        int startHeight)
+    {
+        // invoking base-class(Bicycle) constructor
+        super(gear, speed);
+        seatHeight = startHeight;
+    }
+ 
+    // the MountainBike subclass adds one more method
+    public void setHeight(int newValue)
+    {
+        seatHeight = newValue;
+    }
+ 
+    // overriding toString() method
+    // of Bicycle to print more info
+    @Override public String toString()
+    {
+        return (super.toString() + "\nseat height is "
+                + seatHeight);
+    }
+}
+ 
+// driver class
+public class Test {
+    public static void main(String args[])
+    {
+ 
+        MountainBike mb = new MountainBike(3, 100, 25);
+        System.out.println(mb.toString());
+    }
+}
+Output
+No of gears are 3
+speed of bicycle is 100
+seat height is 25
+In the above program, when an object of MountainBike class is created, a copy of all methods and fields of the superclass acquire memory in this object. That is why by using the object of the subclass we can also access the members of a superclass. 
+
+Please note that during inheritance only the object of the subclass is created, not the superclass. For more, refer Java Object Creation of Inherited Class. 
+
+Illustrative image of the program: 
+ 
+
+f
+
+In practice, inheritance and polymorphism are used together in java to achieve fast performance and readability of code.
+
+Types of Inheritance in Java
+
+
+
+
+Below are the different types of inheritance which are supported by Java. 
+
+1. Single Inheritance: In single inheritance, subclasses inherit the features of one superclass. In the image below, class A serves as a base class for the derived class B.
+
+
+// Java program to illustrate the
+// concept of single inheritance
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+ 
+class one {
+    public void print_geek()
+    {
+        System.out.println("Geeks");
+    }
+}
+ 
+class two extends one {
+    public void print_for() { System.out.println("for"); }
+}
+// Driver class
+public class Main {
+    public static void main(String[] args)
+    {
+        two g = new two();
+        g.print_geek();
+        g.print_for();
+        g.print_geek();
+    }
+}
+Output
+Geeks
+for
+Geeks
+Single_Inheritance
+
+2. Multilevel Inheritance: In Multilevel Inheritance, a derived class will be inheriting a base class and as well as the derived class also act as the base class to other class. In the below image, class A serves as a base class for the derived class B, which in turn serves as a base class for the derived class C. In Java, a class cannot directly access the grandparent’s members.
+
+
+// Java program to illustrate the
+// concept of Multilevel inheritance
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+ 
+class one {
+    public void print_geek()
+    {
+        System.out.println("Geeks");
+    }
+}
+ 
+class two extends one {
+    public void print_for() { System.out.println("for"); }
+}
+ 
+class three extends two {
+    public void print_geek()
+    {
+        System.out.println("Geeks");
+    }
+}
+ 
+// Drived class
+public class Main {
+    public static void main(String[] args)
+    {
+        three g = new three();
+        g.print_geek();
+        g.print_for();
+        g.print_geek();
+    }
+}
+Output
+Geeks
+for
+Geeks
+Multilevel_Inheritance
+
+3. Hierarchical Inheritance: In Hierarchical Inheritance, one class serves as a superclass (base class) for more than one subclass. In the below image, class A serves as a base class for the derived class B, C and D.
+
+
+// Java program to illustrate the
+// concept of Hierarchical  inheritance
+ 
+class A {
+    public void print_A() { System.out.println("Class A"); }
+}
+ 
+class B extends A {
+    public void print_B() { System.out.println("Class B"); }
+}
+ 
+class C extends A {
+    public void print_C() { System.out.println("Class C"); }
+}
+ 
+class D extends A {
+    public void print_D() { System.out.println("Class D"); }
+}
+ 
+// Driver Class
+public class Test {
+    public static void main(String[] args)
+    {
+        B obj_B = new B();
+        obj_B.print_A();
+        obj_B.print_B();
+ 
+        C obj_C = new C();
+        obj_C.print_A();
+        obj_C.print_C();
+ 
+        D obj_D = new D();
+        obj_D.print_A();
+        obj_D.print_D();
+    }
+}
+Output
+Class A
+Class B
+Class A
+Class C
+Class A
+Class D
+
+Hierarchical Inheritance
+
+ 
+
+
+
+
+4. Multiple Inheritance (Through Interfaces): In Multiple inheritances, one class can have more than one superclass and inherit features from all parent classes. Please note that Java does not support multiple inheritances with classes. In java, we can achieve multiple inheritances only through Interfaces. In the image below, Class C is derived from interface A and B.
+
+
+// Java program to illustrate the
+// concept of Multiple inheritance
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+ 
+interface one {
+    public void print_geek();
+}
+ 
+interface two {
+    public void print_for();
+}
+ 
+interface three extends one, two {
+    public void print_geek();
+}
+class child implements three {
+    @Override public void print_geek()
+    {
+        System.out.println("Geeks");
+    }
+ 
+    public void print_for() { System.out.println("for"); }
+}
+ 
+// Drived class
+public class Main {
+    public static void main(String[] args)
+    {
+        child c = new child();
+        c.print_geek();
+        c.print_for();
+        c.print_geek();
+    }
+}
+Output
+Geeks
+for
+Geeks
+Multiple_Inheritance
+
+5. Hybrid Inheritance(Through Interfaces): It is a mix of two or more of the above types of inheritance. Since java doesn’t support multiple inheritances with classes, hybrid inheritance is also not possible with classes. In java, we can achieve hybrid inheritance only through Interfaces.
+ 
+
+hybrid
+
+Important facts about inheritance in Java 
+
+Default superclass: Except Object class, which has no superclass, every class has one and only one direct superclass (single inheritance). In the absence of any other explicit superclass, every class is implicitly a subclass of the Object class.
+Superclass can only be one: A superclass can have any number of subclasses. But a subclass can have only one superclass. This is because Java does not support multiple inheritances with classes. Although with interfaces, multiple inheritances are supported by java.
+Inheriting Constructors: A subclass inherits all the members (fields, methods, and nested classes) from its superclass. Constructors are not members, so they are not inherited by subclasses, but the constructor of the superclass can be invoked from the subclass.
+Private member inheritance: A subclass does not inherit the private members of its parent class. However, if the superclass has public or protected methods(like getters and setters) for accessing its private fields, these can also be used by the subclass.
+Java IS-A type of Relationship.
+
+IS-A is a way of saying: This object is a type of that object. Let us see how the extends keyword is used to achieve inheritance.
+
+public class SolarSystem {
+}
+public class Earth extends SolarSystem {
+}
+public class Mars extends SolarSystem {
+}
+public class Moon extends Earth {
+}
+Now, based on the above example, in Object-Oriented terms, the following are true:-
+
+SolarSystem the superclass of Earth class.
+SolarSystem the superclass of Mars class.
+Earth and Mars are subclasses of SolarSystem class.
+Moon is the subclass of both Earth and SolarSystem classes.
+
+class SolarSystem {
+}
+class Earth extends SolarSystem {
+}
+class Mars extends SolarSystem {
+}
+public class Moon extends Earth {
+    public static void main(String args[])
+    {
+        SolarSystem s = new SolarSystem();
+        Earth e = new Earth();
+        Mars m = new Mars();
+ 
+        System.out.println(s instanceof SolarSystem);
+        System.out.println(e instanceof Earth);
+        System.out.println(m instanceof SolarSystem);
+    }
+}
+Output
+true
+true
+true
+What all can be done in a Subclass?
+
+In sub-classes we can inherit members as is, replace them, hide them, or supplement them with new members: 
+
+The inherited fields can be used directly, just like any other fields.
+We can declare new fields in the subclass that are not in the superclass.
+The inherited methods can be used directly as they are.
+We can write a new instance method in the subclass that has the same signature as the one in the superclass, thus overriding it (as in the example above, toString() method is overridden).
+We can write a new static method in the subclass that has the same signature as the one in the superclass, thus hiding it.
+We can declare new methods in the subclass that are not in the superclass.
+We can write a subclass constructor that invokes the constructor of the superclass, either implicitly or by using the keyword super.
+
+
+**********************************************************************Encapsulation in java **************************************************************************  
+
+Encapsulation in Java
+
+Encapsulation is defined as the wrapping up of data under a single unit. It is the mechanism that binds together code and the data it manipulates. Another way to think about encapsulation is, it is a protective shield that prevents the data from being accessed by the code outside this shield. 
+ 
+
+Technically in encapsulation, the variables or data of a class is hidden from any other class and can be accessed only through any member function of its own class in which it is declared.
+As in encapsulation, the data in a class is hidden from other classes using the data hiding concept which is achieved by making the members or methods of a class private, and the class is exposed to the end-user or the world without providing any details behind implementation using the abstraction concept, so it is also known as a combination of data-hiding and abstraction.
+Encapsulation can be achieved by Declaring all the variables in the class as private and writing public methods in the class to set and get the values of variables
+Encapsulation
+
+The program to access variables of the class EncapsulateDemo is shown below:  
+
+
+// Java program to demonstrate encapsulation
+class Encapsulate {
+    // private variables declared
+    // these can only be accessed by
+    // public methods of class
+    private String geekName;
+    private int geekRoll;
+    private int geekAge;
+ 
+    // get method for age to access
+    // private variable geekAge
+    public int getAge() { return geekAge; }
+ 
+    // get method for name to access
+    // private variable geekName
+    public String getName() { return geekName; }
+ 
+    // get method for roll to access
+    // private variable geekRoll
+    public int getRoll() { return geekRoll; }
+ 
+    // set method for age to access
+    // private variable geekage
+    public void setAge(int newAge) { geekAge = newAge; }
+ 
+    // set method for name to access
+    // private variable geekName
+    public void setName(String newName)
+    {
+        geekName = newName;
+    }
+ 
+    // set method for roll to access
+    // private variable geekRoll
+    public void setRoll(int newRoll) { geekRoll = newRoll; }
+}
+ 
+public class TestEncapsulation {
+    public static void main(String[] args)
+    {
+        Encapsulate obj = new Encapsulate();
+ 
+        // setting values of the variables
+        obj.setName("Harsh");
+        obj.setAge(19);
+        obj.setRoll(51);
+ 
+        // Displaying values of the variables
+        System.out.println("Geek's name: " + obj.getName());
+        System.out.println("Geek's age: " + obj.getAge());
+        System.out.println("Geek's roll: " + obj.getRoll());
+ 
+        // Direct access of geekRoll is not possible
+        // due to encapsulation
+        // System.out.println("Geek's roll: " +
+        // obj.geekName);
+    }
+}
+Output
+Geek's name: Harsh
+Geek's age: 19
+Geek's roll: 51
+In the above program, the class Encapsulate is encapsulated as the variables are declared as private. The get methods like getAge() , getName() , getRoll() are set as public, these methods are used to access these variables. The setter methods like setName(), setAge(), setRoll() are also declared as public and are used to set the values of the variables.
+
+
+
+
+Advantages of Encapsulation:  
+
+Data Hiding: The user will have no idea about the inner implementation of the class. It will not be visible to the user how the class is storing values in the variables. The user will only know that we are passing the values to a setter method and variables are getting initialized with that value.
+Increased Flexibility: We can make the variables of the class read-only or write-only depending on our requirement. If we wish to make the variables read-only then we have to omit the setter methods like setName(), setAge(), etc. from the above program or if we wish to make the variables as write-only then we have to omit the get methods like getName(), getAge(), etc. from the above program
+Reusability: Encapsulation also improves the re-usability and is easy to change with new requirements.
+Testing code is easy: Encapsulated code is easy to test for unit testing.
+
+
+*********************************************************************polymorphism*************************************************************************************
+Polymorphism in Java
+
+The word polymorphism means having many forms. In simple words, we can define polymorphism as the ability of a message to be displayed in more than one form.
+
+Real life example of polymorphism: A person at the same time can have different characteristic. Like a man at the same time is a father, a husband, an employee. So the same person posses different behavior in different situations. This is called polymorphism.
+
+Polymorphism is considered one of the important features of Object-Oriented Programming. Polymorphism allows us to perform a single action in different ways. In other words, polymorphism allows you to define one interface and have multiple implementations. The word “poly” means many and “morphs” means forms, So it means many forms.
+
+In Java polymorphism is mainly divided into two types:
+
+Compile time Polymorphism
+Runtime Polymorphism
+1. Compile-time polymorphism: It is also known as static polymorphism. This type of polymorphism is achieved by function overloading or operator overloading. But Java doesn’t support the Operator Overloading.
+
+
+
+
+
+
+Method Overloading: When there are multiple functions with same name but different parameters then these functions are said to be overloaded. Functions can be overloaded by change in number of arguments or/and change in type of arguments.
+
+Example: By using different types of arguments
+
+
+// Java program for Method overloading
+  
+class MultiplyFun {
+  
+    // Method with 2 parameter
+    static int Multiply(int a, int b)
+    {
+        return a * b;
+    }
+  
+    // Method with the same name but 2 double parameter
+    static double Multiply(double a, double b)
+    {
+        return a * b;
+    }
+}
+  
+class Main {
+    public static void main(String[] args)
+    {
+  
+        System.out.println(MultiplyFun.Multiply(2, 4));
+  
+        System.out.println(MultiplyFun.Multiply(5.5, 6.3));
+    }
+}
+Output:
+8
+34.65
+Example 2: By using different numbers of arguments
+
+
+// Java program for Method overloading
+  
+class MultiplyFun {
+  
+    // Method with 2 parameter
+    static int Multiply(int a, int b)
+    {
+        return a * b;
+    }
+  
+    // Method with the same name but 3 parameter
+    static int Multiply(int a, int b, int c)
+    {
+        return a * b * c;
+    }
+}
+  
+class Main {
+    public static void main(String[] args)
+    {
+        System.out.println(MultiplyFun.Multiply(2, 4));
+  
+        System.out.println(MultiplyFun.Multiply(2, 7, 3));
+    }
+}
+Output:
+8
+42
+2. Runtime polymorphism: It is also known as Dynamic Method Dispatch. It is a process in which a function call to the overridden method is resolved at Runtime. This type of polymorphism is achieved by Method Overriding.
+
+Method overriding, on the other hand, occurs when a derived class has a definition for one of the member functions of the base class. That base function is said to be overridden.
+
+Example:
+
+
+// Java program for Method overriding
+  
+class Parent {
+  
+    void Print()
+    {
+        System.out.println("parent class");
+    }
+}
+  
+class subclass1 extends Parent {
+  
+    void Print()
+    {
+        System.out.println("subclass1");
+    }
+}
+  
+class subclass2 extends Parent {
+  
+    void Print()
+    {
+        System.out.println("subclass2");
+    }
+}
+  
+class TestPolymorphism3 {
+    public static void main(String[] args)
+    {
+  
+        Parent a;
+  
+        a = new subclass1();
+        a.Print();
+  
+        a = new subclass2();
+        a.Print();
+    }
+}
+Output:
+subclass1
+subclass2
+
+
+
+
+*******************************************************Abstraction in java ********************************************************************************************
+
+
+Abstraction in Java
+
+Data Abstraction is the property by virtue of which only the essential details are displayed to the user. The trivial or the non-essentials units are not displayed to the user. Ex: A car is viewed as a car rather than its individual components.
+
+Data Abstraction may also be defined as the process of identifying only the required characteristics of an object ignoring the irrelevant details. The properties and behaviours of an object differentiate it from other objects of similar type and also help in classifying/grouping the objects.
+
+Consider a real-life example of a man driving a car. The man only knows that pressing the accelerators will increase the speed of a car or applying brakes will stop the car, but he does not know about how on pressing the accelerator the speed is actually increasing, he does not know about the inner mechanism of the car or the implementation of the accelerator, brakes, etc in the car. This is what abstraction is. 
+
+In java, abstraction is achieved by interfaces and abstract classes. We can achieve 100% abstraction using interfaces.
+
+Abstract classes and Abstract methods :  
+
+
+
+
+An abstract class is a class that is declared with an abstract keyword.
+An abstract method is a method that is declared without implementation.
+An abstract class may or may not have all abstract methods. Some of them can be concrete methods
+A method defined abstract must always be redefined in the subclass, thus making overriding compulsory OR either make the subclass itself abstract.
+Any class that contains one or more abstract methods must also be declared with an abstract keyword.
+There can be no object of an abstract class. That is, an abstract class can not be directly instantiated with the new operator.
+An abstract class can have parameterized constructors and the default constructor is always present in an abstract class.
+When to use abstract classes and abstract methods with an example
+
+There are situations in which we will want to define a superclass that declares the structure of a given abstraction without providing a complete implementation of every method. That is, sometimes we will want to create a superclass that only defines a generalization form that will be shared by all of its subclasses, leaving it to each subclass to fill in the details.
+
+Consider a classic “shape” example, perhaps used in a computer-aided design system or game simulation. The base type is “shape” and each shape has a color, size and so on. From this, specific types of shapes are derived(inherited)-circle, square, triangle and so on — each of which may have additional characteristics and behaviors. For example, certain shapes can be flipped. Some behaviors may be different, such as when you want to calculate the area of a shape. The type hierarchy embodies both the similarities and differences between the shapes.
+ 
+
+
+
+
+// Java program to illustrate the
+// concept of Abstraction
+abstract class Shape {
+    String color;
+ 
+    // these are abstract methods
+    abstract double area();
+    public abstract String toString();
+ 
+    // abstract class can have constructor
+    public Shape(String color)
+    {
+        System.out.println("Shape constructor called");
+        this.color = color;
+    }
+ 
+    // this is a concrete method
+    public String getColor() { return color; }
+}
+class Circle extends Shape {
+    double radius;
+ 
+    public Circle(String color, double radius)
+    {
+ 
+        // calling Shape constructor
+        super(color);
+        System.out.println("Circle constructor called");
+        this.radius = radius;
+    }
+ 
+    @Override double area()
+    {
+        return Math.PI * Math.pow(radius, 2);
+    }
+ 
+    @Override public String toString()
+    {
+        return "Circle color is " + super.getColor()
+            + "and area is : " + area();
+    }
+}
+class Rectangle extends Shape {
+ 
+    double length;
+    double width;
+ 
+    public Rectangle(String color, double length,
+                     double width)
+    {
+        // calling Shape constructor
+        super(color);
+        System.out.println("Rectangle constructor called");
+        this.length = length;
+        this.width = width;
+    }
+ 
+    @Override double area() { return length * width; }
+ 
+    @Override public String toString()
+    {
+        return "Rectangle color is " + super.getColor()
+            + "and area is : " + area();
+    }
+}
+public class Test {
+    public static void main(String[] args)
+    {
+        Shape s1 = new Circle("Red", 2.2);
+        Shape s2 = new Rectangle("Yellow", 2, 4);
+ 
+        System.out.println(s1.toString());
+        System.out.println(s2.toString());
+    }
+}
+Output
+Shape constructor called
+Circle constructor called
+Shape constructor called
+Rectangle constructor called
+Circle color is Redand area is : 15.205308443374602
+Rectangle color is Yellowand area is : 8.0
+
+Encapsulation vs Data Abstraction:
+Encapsulation is data hiding(information hiding) while Abstraction is detailed hiding(implementation hiding).
+While encapsulation groups together data and methods that act upon the data, data abstraction deal with exposing the interface to the user and hiding the details of implementation.
+
+Advantages of Abstraction:
+It reduces the complexity of viewing the things.
+Avoids code duplication and increases reusability.
+Helps to increase the security of an application or program as only important details are provided to the user
+
+
+
+************************************************************overriding in java***********************************************************************************
+
+Overriding in Java
+
+In any object-oriented programming language, Overriding is a feature that allows a subclass or child class to provide a specific implementation of a method that is already provided by one of its super-classes or parent classes. When a method in a subclass has the same name, same parameters or signature, and same return type(or sub-type) as a method in its super-class, then the method in the subclass is said to override the method in the super-class.
+
+overriding in java
+
+Method overriding is one of the way by which java achieve Run Time Polymorphism.The version of a method that is executed will be determined by the object that is used to invoke it. If an object of a parent class is used to invoke the method, then the version in the parent class will be executed, but if an object of the subclass is used to invoke the method, then the version in the child class will be executed. In other words, it is the type of the object being referred to (not the type of the reference variable) that determines which version of an overridden method will be executed.
+
+
+
+
+
+// A Simple Java program to demonstrate
+// method overriding in java
+  
+// Base Class
+class Parent {
+    void show()
+    {
+        System.out.println("Parent's show()");
+    }
+}
+  
+// Inherited class
+class Child extends Parent {
+    // This method overrides show() of Parent
+    @Override
+    void show()
+    {
+        System.out.println("Child's show()");
+    }
+}
+  
+// Driver class
+class Main {
+    public static void main(String[] args)
+    {
+        // If a Parent type reference refers
+        // to a Parent object, then Parent's
+        // show is called
+        Parent obj1 = new Parent();
+        obj1.show();
+  
+        // If a Parent type reference refers
+        // to a Child object Child's show()
+        // is called. This is called RUN TIME
+        // POLYMORPHISM.
+        Parent obj2 = new Child();
+        obj2.show();
+    }
+}
+Output:
+Parent's show()
+Child's show()
+ 
+
+
+
+
+Rules for method overriding:
+
+Overriding and Access-Modifiers : The access modifier for an overriding method can allow more, but not less, access than the overridden method. For example, a protected instance method in the super-class can be made public, but not private, in the subclass. Doing so, will generate compile-time error.
+
+// A Simple Java program to demonstrate
+// Overriding and Access-Modifiers
+  
+class Parent {
+    // private methods are not overridden
+    private void m1()
+    {
+        System.out.println("From parent m1()");
+    }
+  
+    protected void m2()
+    {
+        System.out.println("From parent m2()");
+    }
+}
+  
+class Child extends Parent {
+    // new m1() method
+    // unique to Child class
+    private void m1()
+    {
+        System.out.println("From child m1()");
+    }
+  
+    // overriding method
+    // with more accessibility
+    @Override
+    public void m2()
+    {
+        System.out.println("From child m2()");
+    }
+}
+  
+// Driver class
+class Main {
+    public static void main(String[] args)
+    {
+        Parent obj1 = new Parent();
+        obj1.m2();
+        Parent obj2 = new Child();
+        obj2.m2();
+    }
+}
+Output:
+From parent m2()
+From child m2()
+ 
+
+Final methods can not be overridden : If we don’t want a method to be overridden, we declare it as final. Please see Using final with Inheritance .
+// A Java program to demonstrate that
+// final methods cannot be overridden
+  
+class Parent {
+    // Can't be overridden
+    final void show() {}
+}
+  
+class Child extends Parent {
+    // This would produce error
+    void show() {}
+}
+Output:
+
+13: error: show() in Child cannot override show() in Parent
+    void show() {  }
+         ^
+  overridden method is final
+Static methods can not be overridden(Method Overriding vs Method Hiding) : When you define a static method with same signature as a static method in base class, it is known as method hiding.
+The following table summarizes what happens when you define a method with the same signature as a method in a super-class.
+
+ 	Superclass Instance Method	Superclass Static Method
+Subclass Instance Method	Overrides	Generates a compile-time error
+Subclass Static Method	Generates a compile-time error	Hides
+
+// Java program to show that
+// if the static method is redefined by
+// a derived class, then it is not
+// overriding, it is hiding
+  
+class Parent {
+    // Static method in base class
+    // which will be hidden in subclass
+    static void m1()
+    {
+        System.out.println("From parent "
+                           + "static m1()");
+    }
+  
+    // Non-static method which will
+    // be overridden in derived class
+    void m2()
+    {
+        System.out.println("From parent "
+                           + "non-static(instance) m2()");
+    }
+}
+  
+class Child extends Parent {
+    // This method hides m1() in Parent
+    static void m1()
+    {
+        System.out.println("From child static m1()");
+    }
+  
+    // This method overrides m2() in Parent
+    @Override
+    public void m2()
+    {
+        System.out.println("From child "
+                           + "non-static(instance) m2()");
+    }
+}
+  
+// Driver class
+class Main {
+    public static void main(String[] args)
+    {
+        Parent obj1 = new Child();
+  
+        // As per overriding rules this
+        // should call to class Child static
+        // overridden method. Since static
+        // method can not be overridden, it
+        // calls Parent's m1()
+        obj1.m1();
+  
+        // Here overriding works
+        // and Child's m2() is called
+        obj1.m2();
+    }
+}
+Output:
+From parent static m1()
+From child non-static(instance) m2()
+ 
+
+Private methods can not be overridden : Private methods cannot be overridden as they are bonded during compile time. Therefore we can’t even override private methods in a subclass.(See this for details).
+ 
+
+
+
+
+The overriding method must have same return type (or subtype) : From Java 5.0 onwards it is possible to have different return type for a overriding method in child class, but child’s return type should be sub-type of parent’s return type. This phenomena is known as covariant return type.
+ 
+
+Invoking overridden method from sub-class : We can call parent class method in overriding method using super keyword.
+
+// A Java program to demonstrate that overridden
+// method can be called from sub-class
+  
+// Base Class
+class Parent {
+    void show()
+    {
+        System.out.println("Parent's show()");
+    }
+}
+  
+// Inherited class
+class Child extends Parent {
+    // This method overrides show() of Parent
+    @Override
+    void show()
+    {
+        super.show();
+        System.out.println("Child's show()");
+    }
+}
+  
+// Driver class
+class Main {
+    public static void main(String[] args)
+    {
+        Parent obj = new Child();
+        obj.show();
+    }
+}
+Output:
+Parent's show()
+Child's show()
+Overriding and constructor : We can not override constructor as parent and child class can never have constructor with same name(Constructor name must always be same as Class name).
+
+Overriding and Exception-Handling : Below are two rules to note when overriding methods related to exception-handling.
+Rule#1 : If the super-class overridden method does not throw an exception, subclass overriding method can only throws the unchecked exception, throwing checked exception will lead to compile-time error.
+/* Java program to demonstrate overriding when 
+  superclass method does not declare an exception
+*/
+  
+class Parent {
+    void m1()
+    {
+        System.out.println("From parent m1()");
+    }
+  
+    void m2()
+    {
+        System.out.println("From parent  m2()");
+    }
+}
+  
+class Child extends Parent {
+    @Override
+    // no issue while throwing unchecked exception
+    void m1() throws ArithmeticException
+    {
+        System.out.println("From child m1()");
+    }
+  
+    @Override
+    // compile-time error
+    // issue while throwin checked exception
+    void m2() throws Exception
+    {
+        System.out.println("From child m2");
+    }
+}
+Output:
+
+error: m2() in Child cannot override m2() in Parent
+    void m2() throws Exception{ System.out.println("From child m2");}
+         ^
+  overridden method does not throw Exception
+Rule#2 : If the super-class overridden method does throws an exception, subclass overriding method can only throw same, subclass exception. Throwing parent exception in Exception hierarchy will lead to compile time error.Also there is no issue if subclass overridden method is not throwing any exception.
+// Java program to demonstrate overriding when
+// superclass method does declare an exception
+  
+class Parent {
+    void m1() throws RuntimeException
+    {
+        System.out.println("From parent m1()");
+    }
+}
+  
+class Child1 extends Parent {
+    @Override
+    // no issue while throwing same exception
+    void m1() throws RuntimeException
+    {
+        System.out.println("From child1 m1()");
+    }
+}
+class Child2 extends Parent {
+    @Override
+    // no issue while throwing subclass exception
+    void m1() throws ArithmeticException
+    {
+        System.out.println("From child2 m1()");
+    }
+}
+class Child3 extends Parent {
+    @Override
+    // no issue while not throwing any exception
+    void m1()
+    {
+        System.out.println("From child3 m1()");
+    }
+}
+class Child4 extends Parent {
+    @Override
+    // compile-time error
+    // issue while throwing parent exception
+    void m1() throws Exception
+    {
+        System.out.println("From child4 m1()");
+    }
+}
+Output:
+
+error: m1() in Child4 cannot override m1() in Parent
+    void m1() throws Exception
+         ^
+  overridden method does not throw Exception
+ 
+
+Overriding and abstract method: Abstract methods in an interface or abstract class are meant to be overridden in derived concrete classes otherwise a compile-time error will be thrown.
+ 
+
+Overriding and synchronized/strictfp method : The presence of synchronized/strictfp modifier with method have no effect on the rules of overriding, i.e. it’s possible that a synchronized/strictfp method can override a non synchronized/strictfp one and vice-versa.
+Note :
+
+In C++, we need virtual keyword to achieve overriding or Run Time Polymorphism. In Java, methods are virtual by default.
+We can have multilevel method-overriding.
+
+// A Java program to demonstrate
+// multi-level overriding
+  
+// Base Class
+class Parent {
+    void show()
+    {
+        System.out.println("Parent's show()");
+    }
+}
+  
+// Inherited class
+class Child extends Parent {
+    // This method overrides show() of Parent
+    void show() { System.out.println("Child's show()"); }
+}
+  
+// Inherited class
+class GrandChild extends Child {
+    // This method overrides show() of Parent
+    void show()
+    {
+        System.out.println("GrandChild's show()");
+    }
+}
+  
+// Driver class
+class Main {
+    public static void main(String[] args)
+    {
+        Parent obj1 = new GrandChild();
+        obj1.show();
+    }
+}
+Output:
+GrandChild's show()
+Overriding vs Overloading :
+Overloading is about same method have different signatures. Overriding is about same method, same signature but different classes connected through inheritance.
+OverridingVsOverloading
+
+Overloading is an example of compiler-time polymorphism and overriding is an example of run time polymorphism.
+
+*********************************************************************overloading****************************************************************************************
+
+
+Overloading in Java
+
+Overloading allows different methods to have the same name, but different signatures where the signature can differ by the number of input parameters or type of input parameters or both. Overloading is related to compile-time (or static) polymorphism.
+
+
+// Java program to demonstrate working of method
+// overloading in Java.
+  
+public class Sum {
+  
+    // Overloaded sum(). This sum takes two int parameters
+    public int sum(int x, int y)
+    {
+        return (x + y);
+    }
+  
+    // Overloaded sum(). This sum takes three int parameters
+    public int sum(int x, int y, int z)
+    {
+        return (x + y + z);
+    }
+  
+    // Overloaded sum(). This sum takes two double parameters
+    public double sum(double x, double y)
+    {
+        return (x + y);
+    }
+  
+    // Driver code
+    public static void main(String args[])
+    {
+        Sum s = new Sum();
+        System.out.println(s.sum(10, 20));
+        System.out.println(s.sum(10, 20, 30));
+        System.out.println(s.sum(10.5, 20.5));
+    }
+}
+Output :
+
+30
+60
+31.0
+
+
+
+Question Arises:
+Q. What if the exact prototype does not match with arguments.
+Ans.
+Priority wise, compiler take these steps:
+
+Type Conversion but to higher type(in terms of range) in same family.
+Type conversion to next higher family(suppose if there is no long data type available for an int data type, then it will search for the float data type).
+Let’s take an example to clear the concept:-
+
+
+class Demo {
+    public void show(int x)
+    {
+        System.out.println("In int" + x);
+    }
+    public void show(String s)
+    {
+        System.out.println("In String" + s);
+    }
+    public void show(byte b)
+    {
+        System.out.println("In byte" + b);
+    }
+}
+class UseDemo {
+    public static void main(String[] args)
+    {
+        byte a = 25;
+        Demo obj = new Demo();
+        obj.show(a); // it will go to
+        // byte argument
+        obj.show("hello"); // String
+        obj.show(250); // Int
+        obj.show('A'); // Since char is
+        // not available, so the datatype
+        // higher than char in terms of
+        // range is int.
+        obj.show("A"); // String
+        obj.show(7.5); // since float datatype
+// is not available and so it's higher
+// datatype, so at this step their
+// will be an error.
+}
+}
+What is the advantage?
+We don’t have to create and remember different names for functions doing the same thing. For example, in our code, if overloading was not supported by Java, we would have to create method names like sum1, sum2, … or sum2Int, sum3Int, … etc.
+
+
+
+
+Can we overload methods on return type?
+We cannot overload by return type. This behavior is same in C++. Refer this for details
+
+
+public class Main {
+    public int foo() { return 10; }
+  
+    // compiler error: foo() is already defined
+    public char foo() { return 'a'; }
+  
+    public static void main(String args[])
+    {
+    }
+}
+However, Overloading methods on return type are possible in cases where the data type of the function being called is explicitly specified. Look at the examples below :
+
+
+// Java program to demonstrate the working of method
+// overloading in static methods
+public class Main {
+  
+    public static int foo(int a) { return 10; }
+    public static char foo(int a, int b) { return 'a'; }
+  
+    public static void main(String args[])
+    {
+        System.out.println(foo(1));
+        System.out.println(foo(1, 2));
+    }
+}
+Output:
+
+10
+a
+
+// Java program to demonstrate working of method
+// overloading in  methods
+class A {
+    public int foo(int a) { return 10; }
+  
+    public char foo(int a, int b) { return 'a'; }
+}
+  
+public class Main {
+  
+    public static void main(String args[])
+    {
+        A a = new A();
+        System.out.println(a.foo(1));
+        System.out.println(a.foo(1, 2));
+    }
+}
+Output:
+
+10
+a
+Can we overload static methods?
+The answer is ‘Yes’. We can have two ore more static methods with same name, but differences in input parameters. For example, consider the following Java program. Refer this for details.
+
+Can we overload methods that differ only by static keyword?
+We cannot overload two methods in Java if they differ only by static keyword (number of parameters and types of parameters is same). See following Java program for example. Refer this for details.
+
+Can we overload main() in Java?
+Like other static methods, we can overload main() in Java. Refer overloading main() in Java for more details.
+
+
+// A Java program with overloaded main()
+import java.io.*;
+  
+public class Test {
+  
+    // Normal main()
+    public static void main(String[] args)
+    {
+        System.out.println("Hi Geek (from main)");
+        Test.main("Geek");
+    }
+  
+    // Overloaded main methods
+    public static void main(String arg1)
+    {
+        System.out.println("Hi, " + arg1);
+        Test.main("Dear Geek", "My Geek");
+    }
+    public static void main(String arg1, String arg2)
+    {
+        System.out.println("Hi, " + arg1 + ", " + arg2);
+    }
+}
+Output :
+
+Hi Geek (from main)
+Hi, Geek
+Hi, Dear Geek, My Geek
+Does Java support Operator Overloading?
+Unlike C++, Java doesn’t allow user-defined overloaded operators. Internally Java overloads operators, for example, + is overloaded for concatenation.
+
+What is the difference between Overloading and Overriding?
+
+Overloading is about same function have different signatures. Overriding is about same function, same signature but different classes connected through inheritance.
+OverridingVsOverloading
+Overloading is an example of compiler time polymorphism and overriding is an example of run time polymorphism.
+
+================================================
+
+*** Constructors ***
+
+Constructors in Java
+Difficulty Level : Easy
+Last Updated : 20 Jun, 2021
+Constructors are used to initialize the object’s state. Like methods, a constructor also contains a collection of statements(i.e. instructions) that are executed at the time of Object creation.
+Need of Constructor 
+Think of a Box. If we talk about a box class then it will have some class variables (say length, breadth, and height). But when it comes to creating its object(i.e Box will now exist in the computer’s memory), then can a box be there with no value defined for its dimensions. The answer is no. 
+So constructors are used to assign values to the class variables at the time of object creation, either explicitly done by the programmer or by Java itself (default constructor).
+When is a Constructor called? 
+Each time an object is created using a new() keyword, at least one constructor (it could be the default constructor) is invoked to assign initial values to the data members of the same class.
+A constructor is invoked at the time of object or instance creation. For Example: 
+ 
+
+class Geek
+{   
+  .......
+
+  // A Constructor
+  new Geek() {}
+
+  .......
+}
+
+// We can create an object of the above class
+// using the below statement. This statement
+// calls above constructor.
+Geek obj = new Geek(); 
+Rules for writing Constructor: 
+ 
+
+Constructor(s) of a class must have the same name as the class name in which it resides.
+A constructor in Java can not be abstract, final, static and Synchronized.
+Access modifiers can be used in constructor declaration to control its access i.e which other class can call the constructor.
+ 
+
+Types of constructor
+
+There are two types of constructor in Java: 
+ 
+
+
+
+
+1. No-argument constructor: A constructor that has no parameter is known as the default constructor. If we don’t define a constructor in a class, then the compiler creates default constructor(with no arguments) for the class. And if we write a constructor with arguments or no-arguments then the compiler does not create a default constructor. 
+Default constructor provides the default values to the object like 0, null, etc. depending on the type.
+ 
+
+
+// Java Program to illustrate calling a
+// no-argument constructor
+import java.io.*;
+ 
+class Geek
+{
+    int num;
+    String name;
+ 
+    // this would be invoked while an object
+    // of that class is created.
+    Geek()
+    {
+        System.out.println("Constructor called");
+    }
+}
+ 
+class GFG
+{
+    public static void main (String[] args)
+    {
+        // this would invoke default constructor.
+        Geek geek1 = new Geek();
+ 
+        // Default constructor provides the default
+        // values to the object like 0, null
+        System.out.println(geek1.name);
+        System.out.println(geek1.num);
+    }
+}
+Output
+Constructor called
+null
+0
+2. Parameterized Constructor: A constructor that has parameters is known as parameterized constructor. If we want to initialize fields of the class with your own values, then use a parameterized constructor.
+ 
+
+
+// Java Program to illustrate calling of
+// parameterized constructor.
+import java.io.*;
+ 
+class Geek
+{
+    // data members of the class.
+    String name;
+    int id;
+ 
+    // constructor would initialize data members
+    // with the values of passed arguments while
+    // object of that class created.
+    Geek(String name, int id)
+    {
+        this.name = name;
+        this.id = id;
+    }
+}
+ 
+class GFG
+{
+    public static void main (String[] args)
+    {
+        // this would invoke the parameterized constructor.
+        Geek geek1 = new Geek("adam", 1);
+        System.out.println("GeekName :" + geek1.name +
+                           " and GeekId :" + geek1.id);
+    }
+}
+Output
+GeekName :adam and GeekId :1
+
+Does constructor return any value?
+
+There are no “return value” statements in the constructor, but the constructor returns the current class instance. We can write ‘return’ inside a constructor.
+ 
+
+Constructor Overloading
+
+Like methods, we can overload constructors for creating objects in different ways. Compiler differentiates constructors on the basis of numbers of parameters, types of the parameters and order of the parameters. 
+ 
+
+
+// Java Program to illustrate constructor overloading
+// using same task (addition operation ) for different
+// types of arguments.
+import java.io.*;
+ 
+class Geek
+{
+    // constructor with one argument
+    Geek(String name)
+    {
+        System.out.println("Constructor with one " +
+                      "argument - String : " + name);
+    }
+ 
+    // constructor with two arguments
+    Geek(String name, int age)
+    {
+ 
+        System.out.println("Constructor with two arguments : " +
+                " String and Integer : " + name + " "+ age);
+ 
+    }
+ 
+    // Constructor with one argument but with different
+    // type than previous..
+    Geek(long id)
+    {
+        System.out.println("Constructor with one argument : " +
+                                            "Long : " + id);
+    }
+}
+ 
+class GFG
+{
+    public static void main(String[] args)
+    {
+        // Creating the objects of the class named 'Geek'
+        // by passing different arguments
+ 
+        // Invoke the constructor with one argument of
+        // type 'String'.
+        Geek geek2 = new Geek("Shikhar");
+ 
+        // Invoke the constructor with two arguments
+        Geek geek3 = new Geek("Dharmesh", 26);
+ 
+        // Invoke the constructor with one argument of
+        // type 'Long'.
+        Geek geek4 = new Geek(325614567);
+    }
+}
+Output
+Constructor with one argument - String : Shikhar
+Constructor with two arguments :  String and Integer : Dharmesh 26
+Constructor with one argument : Long : 325614567
+Output: 
+ 
+
+Constructor with one argument - String : Shikhar
+Constructor with two arguments - String and Integer : Dharmesh 26
+Constructor with one argument - Long : 325614567
+
+
+How constructors are different from methods in Java? 
+
+Constructor(s) must have the same name as the class within which it defined while it is not necessary for the method in java.
+Constructor(s) do not return any type while method(s) have the return type or void if does not return any value.
+Constructor is called only once at the time of Object creation while method(s) can be called any numbers of time.
+
+================================================

@@ -1,0 +1,309 @@
+Python Functions
+ 
+
+Python Functions is a block of related statements designed to perform a computational, logical, or evaluative task. The idea is to put some commonly or repeatedly done tasks together and make a function so that instead of writing the same code again and again for different inputs, we can do the function calls to reuse code contained in it over and over again. 
+
+Functions can be both built-in or user-defined. It helps the program to be concise, non-repetitive, and organized.
+
+-------------------------------------------------
+                    CODE                           
+-------------------------------------------------
+Syntax: 
+-------------------------------------------------
+def function_name(parameters):
+    """docstring"""
+    statement(s)
+    return expression
+-------------------------------------------------
+
+
+Creating a Function
+We can create a  Python function using the def keyword.
+
+
+-------------------------------------------------
+                    CODE                           
+-------------------------------------------------
+Example: Python Creating Function
+-------------------------------------------------
+
+# A simple Python function
+ 
+def fun():
+  print("Welcome to GFG")
+
+-------------------------------------------------
+
+
+Calling a  Function
+After creating a function we can call it by using the name of the function followed by parenthesis containing parameters of that particular function.
+
+
+-------------------------------------------------
+                     CODE                           
+-------------------------------------------------
+Example: Python Calling Function
+-------------------------------------------------
+# A simple Python function
+ 
+def fun():
+  print("Welcome to GFG")
+         
+# Driver code to call a function
+fun()
+-------------------------------------------------
+
+
+-------------------------------------------------
+                     Output                     
+-------------------------------------------------
+
+>>Welcome to GFG
+
+-------------------------------------------------
+
+Example: Python Function with arguments
+In this example, we will create a simple function to check whether the number passed as an argument to the function is even or odd.
+
+-------------------------------------------------
+                     CODE                           
+-------------------------------------------------
+# A simple Python function to check
+# whether x is even or odd
+ 
+ 
+def evenOdd(x):
+    if (x % 2 == 0):
+        print("even")
+    else:
+        print("odd")
+ 
+ 
+# Driver code to call the function
+evenOdd(2)
+evenOdd(3)
+-------------------------------------------------
+Output
+-------------------------------------------------
+>>even
+>>odd
+-------------------------------------------------
+
+Types of Arguments
+
+Python supports various types of arguments that can be passed at the time of the function call. Let’s discuss each type in detail.
+
+Default arguments
+
+A default argument is a parameter that assumes a default value if a value is not provided in the function call for that argument. The following example illustrates Default arguments. 
+
+-------------------------------------------------
+                     CODE                           
+-------------------------------------------------
+# Python program to demonstrate
+# default arguments
+ 
+ 
+def myFun(x, y=50):
+    print("x: ", x)
+    print("y: ", y)
+ 
+ 
+# Driver code (We call myFun() with only
+# argument)
+myFun(10)
+-------------------------------------------------
+Output
+-------------------------------------------------
+>>('x: ', 10)
+>>('y: ', 50)
+
+-------------------------------------------------
+
+Like C++ default arguments, any number of arguments in a function can have a default value. But once we have a default argument, all the arguments to its right must also have default values.
+
+
+Keyword arguments
+
+The idea is to allow the caller to specify the argument name with values so that caller does not need to remember the order of parameters.
+
+-------------------------------------------------
+                     CODE                           
+-------------------------------------------------
+# Python program to demonstrate Keyword Arguments
+def student(firstname, lastname):
+    print(firstname, lastname)
+ 
+ 
+# Keyword arguments
+student(firstname='Geeks', lastname='Practice')
+student(lastname='Practice', firstname='Geeks')
+-------------------------------------------------
+Output
+-------------------------------------------------
+>>('Geeks', 'Practice')
+>>('Geeks', 'Practice')
+-------------------------------------------------
+
+Variable-length arguments
+In Python, we can pass a variable number of arguments to a function using special symbols. There are two special symbols:
+
+- *args (Non-Keyword Arguments)
+-  **kwargs (Keyword Arguments)
+
+Example 1: Variable length non-keywords argument
+
+-------------------------------------------------
+                     CODE                           
+-------------------------------------------------
+# Python program to illustrate
+# *args for variable number of arguments
+ 
+ 
+def myFun(*argv):
+    for arg in argv:
+        print(arg)
+ 
+ 
+myFun('Hello', 'Welcome', 'to', 'GeeksforGeeks')
+-------------------------------------------------
+Output
+-------------------------------------------------
+>>Hello
+>>Welcome
+>>to
+>>GeeksforGeeks
+-------------------------------------------------
+
+Example 2: Variable length keyword arguments
+
+-------------------------------------------------
+                     CODE                           
+-------------------------------------------------
+# Python program to illustrate
+# *kargs for variable number of keyword arguments
+ 
+ 
+def myFun(**kwargs):
+    for key, value in kwargs.items():
+        print("%s == %s" % (key, value))
+ 
+ 
+# Driver code
+myFun(first='Geeks', mid='for', last='Geeks')
+-------------------------------------------------
+Output
+-------------------------------------------------
+>>first == Geeks
+>>mid == for
+>>last == Geeks
+-------------------------------------------------
+
+
+Docstring
+
+The first string after the function is called the Document string or Docstring in short. This is used to describe the functionality of the function. The use of docstring in functions is optional but it is considered a good practice.
+
+The below syntax can be used to print out the docstring of a function:
+
+Syntax: print(function_name.__doc__)
+
+------------------------------------------------
+                     CODE                           
+-------------------------------------------------
+# A simple Python function to check
+# whether x is even or odd
+ 
+ 
+def evenOdd(x):
+    """Function to check if the number is even or odd"""
+     
+    if (x % 2 == 0):
+        print("even")
+    else:
+        print("odd")
+ 
+ 
+# Driver code to call the function
+print(evenOdd.__doc__)
+-------------------------------------------------
+Output
+-------------------------------------------------
+>>Function to check if the number is even or odd
+-------------------------------------------------
+
+
+The return statement
+
+The function return statement is used to exit from a function and go back to the function caller and return the specified value or data item to the caller.
+
+Syntax: return [expression_list]
+The return statement can consist of a variable, an expression, or a constant which is returned to the end of the function execution. If none of the above is present with the return statement a None object is returned.
+
+
+
+
+Anonymous functions: 
+
+In Python, an anonymous function means that a function is without a name. As we already know the def keyword is used to define the normal functions and the lambda keyword is used to create anonymous functions. Please see this for details.
+
+------------------------------------------------
+                     CODE                           
+-------------------------------------------------
+# Python code to illustrate the cube of a number
+# using lambda function
+ 
+ 
+def cube(x): return x*x*x
+ 
+cube_v2 = lambda x : x*x*x
+ 
+print(cube(7))
+print(cube_v2(7))
+-------------------------------------------------
+Output
+-------------------------------------------------
+>>343
+-------------------------------------------------
+
+
+Python Function within Functions
+
+A function that is defined inside another function is known as the inner function or nested function. Nested functions are able to access variables of the enclosing scope. Inner functions are used so that they can be protected from everything happening outside the function.
+
+------------------------------------------------
+                     CODE                           
+-------------------------------------------------
+# Python program to
+# demonstrate accessing of
+# variables of nested functions
+ 
+def f1():
+    s = 'I love GeeksforGeeks'
+     
+    def f2():
+        print(s)
+         
+    f2()
+ 
+# Driver's code
+f1()
+-------------------------------------------------
+Output
+-------------------------------------------------
+I love GeeksforGeeks
+-------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,2021 @@
+In the previous article, we read about the basics of Python. Now, we continue 
+with some more python concepts.
+
+Strings in Python 
+A string is a sequence of characters. It can be declared in python by using 
+double-quotes. Strings are immutable, i.e., they cannot be changed.
+
+
+# Assigning string to a variable
+a = "This is a string"
+print (a)
+Lists in Python 
+Lists are one of the most powerful tools in python. They are just like the 
+arrays declared in other languages. But the most powerful thing is that list 
+need not be always homogeneous. A single list can contain strings, integers, 
+as well as objects. Lists can also be used for implementing stacks and queues. 
+Lists are mutable, i.e., they can be altered once declared.
+
+
+# Declaring a list
+L = [1, "a" , "string" , 1+2]
+print L
+L.append(6)
+print L
+L.pop()
+print L
+print L[1]
+The output is :  
+
+[1, 'a', 'string', 3]
+[1, 'a', 'string', 3, 6]
+[1, 'a', 'string', 3]
+a
+Tuples in Python 
+A tuple is a sequence of immutable Python objects. Tuples are just like lists 
+with the exception that tuples cannot be changed once declared. Tuples are 
+usually faster than lists.
+
+
+
+
+
+tup = (1, "a", "string", 1+2)
+print(tup)
+print(tup[1])
+The output is : 
+
+(1, 'a', 'string', 3)
+a
+Iterations in Python 
+Iterations or looping can be performed in python by ‘for’ and ‘while’ loops. Apart from iterating upon a particular condition, we can also iterate on strings, lists, and tuples.
+Example 1: Iteration by while loop for a condition
+
+
+i = 1
+while (i < 10):
+    print(i)
+    i += 1
+The output is : 
+
+1
+2
+3
+4
+5
+6
+7
+8
+9 
+Example 2: Iteration by for loop on string
+
+
+s = "Hello World"
+for i in s :
+    print (i)
+The output is : 
+
+H
+e
+l
+l
+o
+ 
+W
+o
+r
+l
+d
+Example 3: Iteration by for loop on list
+
+
+L = [1, 4, 5, 7, 8, 9]
+for  i in L:
+    print (i)
+The output is : 
+
+1
+4
+5
+7
+8
+9
+Example 4 : Iteration by for loop for range
+
+
+for i in range(0, 10):
+    print (i)
+The output is : 
+
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9 
+
+================================================
+
+****** Python Strings ******
+
+In Python, Strings are arrays of bytes representing Unicode characters. 
+However, Python does not have a character data type, a single character is 
+simply a string with a length of 1. Square brackets can be used to access 
+elements of the string.
+
+Creating a String
+Strings in Python can be created using single quotes or double quotes or even 
+triple quotes. 
+
+
+# Python Program for
+# Creation of String
+ 
+# Creating a String
+# with single Quotes
+String1 = 'Welcome to the Geeks World'
+print("String with the use of Single Quotes: ")
+print(String1)
+ 
+# Creating a String
+# with double Quotes
+String1 = "I'm a Geek"
+print("\nString with the use of Double Quotes: ")
+print(String1)
+ 
+# Creating a String
+# with triple Quotes
+String1 = '''I'm a Geek and I live in a world of "Geeks"'''
+print("\nString with the use of Triple Quotes: ")
+print(String1)
+ 
+# Creating String with triple
+# Quotes allows multiple lines
+String1 = '''Geeks
+            For
+            Life'''
+print("\nCreating a multiline String: ")
+print(String1)
+Output: 
+
+String with the use of Single Quotes: 
+Welcome to the Geeks World
+
+String with the use of Double Quotes: 
+I'm a Geek
+
+String with the use of Triple Quotes: 
+I'm a Geek and I live in a world of "Geeks"
+
+Creating a multiline String: 
+Geeks
+            For
+            Life
+ 
+Accessing characters in Python
+In Python, individual characters of a String can be accessed by using the 
+method of Indexing. Indexing allows negative address references to access 
+characters from the back of the String, e.g. -1 refers to the last character, 
+-2 refers to the second last character and so on. 
+
+While accessing an index out of the range will cause an IndexError. Only 
+Integers are allowed to be passed as an index, float or other types will cause 
+a TypeError. 
+
+================================================
+
+****** Python Lists ******
+
+Lists are just like dynamic sized arrays, declared in other languages (vector 
+in C++ and ArrayList in Java). Lists need not be homogeneous always which 
+makes it a most powerful tool in Python. A single list may contain DataTypes 
+like Integers, Strings, as well as Objects. Lists are mutable, and hence, they 
+can be altered even after their creation.
+
+List in Python are ordered and have a definite count. The elements in a list 
+are indexed according to a definite sequence and the indexing of a list is 
+done with 0 being the first index. Each element in the list has its definite 
+place in the list, which allows duplicating of elements in the list, with each 
+element having its own distinct place and credibility.
+
+Note- Lists are a useful tool for preserving a sequence of data and further 
+iterating over it.
+
+Table of content:
+
+Creating a List
+Knowing the size of List
+Adding Elements to a List:
+Using append() method
+Using insert() method
+Using extend() method
+Accessing elements from the List
+Removing Elements from the List:
+Using remove() method
+Using pop() method
+Slicing of a List
+List Comprehension
+Operations on List
+List Methods
+Creating a List
+Lists in Python can be created by just placing the sequence inside the square 
+brackets[]. Unlike Sets, list doesn’t need a built-in function for creation of 
+list.
+
+Note – Unlike Sets, list may contain mutable elements.
+
+
+# Python program to demonstrate 
+# Creation of List 
+  
+# Creating a List
+List = []
+print("Blank List: ")
+print(List)
+  
+# Creating a List of numbers
+List = [10, 20, 14]
+print("\nList of numbers: ")
+print(List)
+  
+# Creating a List of strings and accessing
+# using index
+List = ["Geeks", "For", "Geeks"]
+print("\nList Items: ")
+print(List[0]) 
+print(List[2])
+  
+# Creating a Multi-Dimensional List
+# (By Nesting a list inside a List)
+List = [['Geeks', 'For'] , ['Geeks']]
+print("\nMulti-Dimensional List: ")
+print(List)
+Output:
+Blank List: 
+[]
+
+List of numbers: 
+[10, 20, 14]
+
+List Items
+Geeks
+Geeks
+
+Multi-Dimensional List: 
+[['Geeks', 'For'], ['Geeks']]
+Creating a list with multiple distinct or duplicate elements
+A list may contain duplicate values with their distinct positions and hence, 
+multiple distinct or duplicate values can be passed as a sequence at the time 
+of list creation.
+
+
+# Creating a List with 
+# the use of Numbers
+# (Having duplicate values)
+List = [1, 2, 4, 4, 3, 3, 3, 6, 5]
+print("\nList with the use of Numbers: ")
+print(List)
+  
+# Creating a List with 
+# mixed type of values
+# (Having numbers and strings)
+List = [1, 2, 'Geeks', 4, 'For', 6, 'Geeks']
+print("\nList with the use of Mixed Values: ")
+print(List)
+Output:
+List with the use of Numbers: 
+[1, 2, 4, 4, 3, 3, 3, 6, 5]
+
+List with the use of Mixed Values: 
+[1, 2, 'Geeks', 4, 'For', 6, 'Geeks']
+Knowing the size of List
+
+# Creating a List
+List1 = []
+print(len(List1))
+  
+# Creating a List of numbers
+List2 = [10, 20, 14]
+print(len(List2))
+Output:
+0
+3
+Adding Elements to a List
+Using append() method
+Elements can be added to the List by using built-in append() function. Only 
+one element at a time can be added to the list by using append() method, for 
+addition of multiple elements with the append() method, loops are used. Tuples 
+can also be added to the List with the use of append method because tuples are 
+immutable. Unlike Sets, Lists can also be added to the existing list with the 
+use of append() method.
+
+
+# Python program to demonstrate 
+# Addition of elements in a List
+  
+# Creating a List
+List = []
+print("Initial blank List: ")
+print(List)
+  
+# Addition of Elements 
+# in the List
+List.append(1)
+List.append(2)
+List.append(4)
+print("\nList after Addition of Three elements: ")
+print(List)
+  
+# Adding elements to the List
+# using Iterator
+for i in range(1, 4):
+    List.append(i)
+print("\nList after Addition of elements from 1-3: ")
+print(List)
+  
+# Adding Tuples to the List
+List.append((5, 6))
+print("\nList after Addition of a Tuple: ")
+print(List)
+  
+# Addition of List to a List
+List2 = ['For', 'Geeks']
+List.append(List2)
+print("\nList after Addition of a List: ")
+print(List)
+Output:
+
+
+Initial blank List: 
+[]
+
+List after Addition of Three elements: 
+[1, 2, 4]
+
+List after Addition of elements from 1-3: 
+[1, 2, 4, 1, 2, 3]
+
+List after Addition of a Tuple: 
+[1, 2, 4, 1, 2, 3, (5, 6)]
+
+List after Addition of a List: 
+[1, 2, 4, 1, 2, 3, (5, 6), ['For', 'Geeks']]
+Using insert() method
+append() method only works for addition of elements at the end of the List, 
+for addition of element at the desired position, insert() method is used. 
+Unlike append() which takes only one argument, insert() method requires two 
+arguments(position, value).
+
+
+# Python program to demonstrate 
+# Addition of elements in a List
+   
+# Creating a List
+List = [1,2,3,4]
+print("Initial List: ")
+print(List)
+  
+# Addition of Element at 
+# specific Position
+# (using Insert Method)
+List.insert(3, 12)
+List.insert(0, 'Geeks')
+print("\nList after performing Insert Operation: ")
+print(List)
+Output:
+Initial List: 
+[1, 2, 3, 4]
+
+List after performing Insert Operation: 
+['Geeks', 1, 2, 3, 12, 4]
+Using extend() method
+Other than append() and insert() methods, there’s one more method for Addition 
+of elements, extend(), this method is used to add multiple elements at the 
+same time at the end of the list.
+
+Note – append() and extend() methods can only add elements at the end.
+
+
+# Python program to demonstrate 
+# Addition of elements in a List
+    
+# Creating a List
+List = [1,2,3,4]
+print("Initial List: ")
+print(List)
+  
+# Addition of multiple elements
+# to the List at the end
+# (using Extend Method)
+List.extend([8, 'Geeks', 'Always'])
+print("\nList after performing Extend Operation: ")
+print(List)
+Output:
+Initial List: 
+[1, 2, 3, 4]
+
+List after performing Extend Operation: 
+[1, 2, 3, 4, 8, 'Geeks', 'Always']
+Accessing elements from the List
+In order to access the list items refer to the index number. Use the index 
+operator [ ] to access an item in a list.The index must be an integer.Nested 
+list are accessed using nested indexing.
+
+
+# Python program to demonstrate 
+# accessing of element from list
+  
+# Creating a List with
+# the use of multiple values
+List = ["Geeks", "For", "Geeks"]
+  
+# accessing a element from the 
+# list using index number
+print("Accessing a element from the list")
+print(List[0]) 
+print(List[2])
+  
+# Creating a Multi-Dimensional List
+# (By Nesting a list inside a List)
+List = [['Geeks', 'For'] , ['Geeks']]
+  
+# accessing an element from the 
+# Multi-Dimensional List using
+# index number
+print("Accessing a element from a Multi-Dimensional list")
+print(List[0][1])
+print(List[1][0])
+Output:
+Accessing a element from the list
+Geeks
+Geeks
+Accessing a element from a Multi-Dimensional list
+For
+Geeks
+Negative indexing
+In Python, negative sequence indexes represent positions from the end of the 
+array. Instead of having to compute the offset as in List[len(List)-3], it is 
+enough to just write List[-3]. Negative indexing means beginning from the end, 
+-1 refers to the last item, -2 refers to the second-last item, etc.
+
+
+List = [1, 2, 'Geeks', 4, 'For', 6, 'Geeks']
+  
+# accessing an element using
+# negative indexing
+print("Accessing element using negative indexing")
+  
+# print the last element of list
+print(List[-1])
+  
+# print the third last element of list 
+print(List[-3])
+Output:
+Accessing element using negative indexing
+Geeks
+For
+Removing Elements from the List
+Using remove() method
+Elements can be removed from the List by using built-in remove() function but 
+an Error arises if element doesn’t exist in the set. Remove() method only 
+removes one element at a time, to remove range of elements, iterator is used. 
+The remove() method removes the specified item.
+
+
+
+
+Note – Remove method in List will only remove the first occurrence of the 
+searched element.
+
+
+# Python program to demonstrate 
+# Removal of elements in a List
+  
+# Creating a List
+List = [1, 2, 3, 4, 5, 6, 
+        7, 8, 9, 10, 11, 12]
+print("Initial List: ")
+print(List)
+  
+# Removing elements from List
+# using Remove() method
+List.remove(5)
+List.remove(6)
+print("\nList after Removal of two elements: ")
+print(List)
+  
+# Removing elements from List
+# using iterator method
+for i in range(1, 5):
+    List.remove(i)
+print("\nList after Removing a range of elements: ")
+print(List)
+Output:
+Initial List: 
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+List after Removal of two elements: 
+[1, 2, 3, 4, 7, 8, 9, 10, 11, 12]
+
+List after Removing a range of elements: 
+[7, 8, 9, 10, 11, 12]
+Using pop() method
+Pop() function can also be used to remove and return an element from the set, 
+but by default it removes only the last element of the set, to remove element 
+from a specific position of the List, index of the element is passed as an 
+argument to the pop() method.
+
+
+List = [1,2,3,4,5]
+  
+# Removing element from the 
+# Set using the pop() method
+List.pop()
+print("\nList after popping an element: ")
+print(List)
+  
+# Removing element at a 
+# specific location from the 
+# Set using the pop() method
+List.pop(2)
+print("\nList after popping a specific element: ")
+print(List)
+Output:
+List after popping an element: 
+[1, 2, 3, 4]
+
+List after popping a specific element: 
+[1, 2, 4]
+Slicing of a List
+In Python List, there are multiple ways to print the whole List with all the 
+elements, but to print a specific range of elements from the list, we use 
+Slice operation. Slice operation is performed on Lists with the use of a colon
+(:). To print elements from beginning to a range use [: Index], to print 
+elements from end-use [:-Index], to print elements from specific Index till 
+the end use [Index:], to print elements within a range, use [Start Index:End 
+Index] and to print the whole List with the use of slicing operation, use [:]. 
+Further, to print the whole List in reverse order, use [::-1].
+
+Note – To print elements of List from rear end, use Negative Indexes.
+python-list-slicing
+
+
+# Python program to demonstrate 
+# Removal of elements in a List
+  
+# Creating a List
+List = ['G','E','E','K','S','F',
+        'O','R','G','E','E','K','S']
+print("Initial List: ")
+print(List)
+  
+# Print elements of a range
+# using Slice operation
+Sliced_List = List[3:8]
+print("\nSlicing elements in a range 3-8: ")
+print(Sliced_List)
+  
+# Print elements from a 
+# pre-defined point to end
+Sliced_List = List[5:]
+print("\nElements sliced from 5th "
+      "element till the end: ")
+print(Sliced_List)
+  
+# Printing elements from
+# beginning till end
+Sliced_List = List[:]
+print("\nPrinting all elements using slice operation: ")
+print(Sliced_List)
+Output:
+Initial List: 
+['G', 'E', 'E', 'K', 'S', 'F', 'O', 'R', 'G', 'E', 'E', 'K', 'S']
+
+Slicing elements in a range 3-8: 
+['K', 'S', 'F', 'O', 'R']
+
+Elements sliced from 5th element till the end: 
+['F', 'O', 'R', 'G', 'E', 'E', 'K', 'S']
+
+Printing all elements using slice operation: 
+['G', 'E', 'E', 'K', 'S', 'F', 'O', 'R', 'G', 'E', 'E', 'K', 'S']
+Negative index List slicing
+
+# Creating a List
+List = ['G','E','E','K','S','F',
+        'O','R','G','E','E','K','S']
+print("Initial List: ")
+print(List)
+  
+# Print elements from beginning
+# to a pre-defined point using Slice
+Sliced_List = List[:-6]
+print("\nElements sliced till 6th element from last: ")
+print(Sliced_List)
+  
+# Print elements of a range
+# using negative index List slicing
+Sliced_List = List[-6:-1]
+print("\nElements sliced from index -6 to -1")
+print(Sliced_List)
+  
+# Printing elements in reverse
+# using Slice operation
+Sliced_List = List[::-1]
+print("\nPrinting List in reverse: ")
+print(Sliced_List)
+Output:
+Initial List: 
+['G', 'E', 'E', 'K', 'S', 'F', 'O', 'R', 'G', 'E', 'E', 'K', 'S']
+
+Elements sliced till 6th element from last: 
+['G', 'E', 'E', 'K', 'S', 'F', 'O']
+
+Elements sliced from index -6 to -1
+['R', 'G', 'E', 'E', 'K']
+
+Printing List in reverse: 
+['S', 'K', 'E', 'E', 'G', 'R', 'O', 'F', 'S', 'K', 'E', 'E', 'G']
+List Comprehension
+List comprehensions are used for creating new lists from other iterables like 
+tuples, strings, arrays, lists, etc.
+
+A list comprehension consists of brackets containing the expression, which is 
+executed for each element along with the for loop to iterate over each element.
+
+
+
+
+Syntax:
+
+newList = [ expression(element) for element in oldList if condition ]
+
+Example:
+
+
+# Python program to demonstrate list 
+# comprehension in Python 
+    
+# below list contains square of all 
+# odd numbers from range 1 to 10 
+odd_square = [x ** 2 for x in range(1, 11) if x % 2 == 1] 
+print (odd_square)
+Output:
+
+[1, 9, 25, 49, 81]
+For better understanding the above code is similar to –
+
+
+# for understanding, above generation is same as, 
+odd_square = [] 
+  
+for x in range(1, 11): 
+    if x % 2 == 1: 
+        odd_square.append(x**2) 
+  
+print (odd_square) 
+Output:
+
+[1, 9, 25, 49, 81]
+Refer to the below articles to get detailed information about List 
+Comprehension.
+
+Python List Comprehension and Slicing
+Nested List Comprehensions in Python
+List comprehension and ord() in Python
+Operations on List
+Find length of list
+Iterate over a list in Python
+Concatenating two lists in Python
+List Membership Test
+List Methods
+Function	Description
+Append()	Add an element to the end of the list
+Extend()	Add all elements of a list to the another list
+Insert()	Insert an item at the defined index
+Remove()	Removes an item from the list
+Pop()	Removes and returns an element at the given index
+Clear()	Removes all items from the list
+Index()	Returns the index of the first matched item
+Count()	Returns the count of number of items passed as an argument
+Sort()	Sort items in a list in ascending order
+Reverse()	Reverse the order of items in the list
+copy()	Returns a copy of the list
+Built-in functions with List
+Function	Description
+reduce()	apply a particular function passed in its argument to all of the 
+list elements stores the intermediate result and only returns the final 
+summation value
+sum()	Sums up the numbers in the list
+ord()	Returns an integer representing the Unicode code point of the given 
+Unicode character
+cmp()	This function returns 1, if first list is “greater” than second list
+max()	return maximum element of given list
+min()	return minimum element of given list
+all()	Returns true if all element are true or if list is empty
+any()	return true if any element of the list is true. if list is empty, 
+return false
+len()	Returns length of the list or size of the list
+enumerate()	Returns enumerate object of list
+accumulate()	apply a particular function passed in its argument to all of 
+the list elements returns a list containing the intermediate results
+filter()	tests if each element of a list true or not
+map()	returns a list of the results after applying the given function to 
+each item of a given iterable
+lambda()	This function can have any number of arguments but only one 
+expression, which is evaluated and returned.
+
+***** Python Tuples *****
+Tuple is a collection of Python objects much like a list. The sequence of 
+values stored in a tuple can be of any type, and they are indexed by integers. 
+
+Values of a tuple are syntactically separated by ‘commas’. Although it is not 
+necessary, it is more common to define a tuple by closing the sequence of 
+values in parentheses. This helps in understanding the Python tuples more 
+easily.
+ 
+Creating a Tuple
+In Python, tuples are created by placing a sequence of values separated by 
+‘comma’ with or without the use of parentheses for grouping the data sequence.
+ 
+Note: Creation of Python tuple without the use of parentheses is known as 
+Tuple Packing. 
+ 
+Python program to demonstrate the addition of elements in a Tuple.
+
+#Creating an empty Tuple
+Tuple1 = ()
+print("Initial empty Tuple: ")
+print (Tuple1)
+ 
+#Creating a Tuple
+#with the use of string
+Tuple1 = ('Geeks', 'For')
+print("\nTuple with the use of String: ")
+print(Tuple1)
+ 
+# Creating a Tuple with
+# the use of list
+list1 = [1, 2, 4, 5, 6]
+print("\nTuple using List: ")
+print(tuple(list1))
+ 
+#Creating a Tuple
+#with the use of built-in function
+Tuple1 = tuple('Geeks')
+print("\nTuple with the use of function: ")
+print(Tuple1)
+Output: 
+ 
+Initial empty Tuple: 
+()
+
+Tuple with the use of String: 
+('Geeks', 'For')
+
+Tuple using List: 
+(1, 2, 4, 5, 6)
+
+Tuple with the use of function: 
+('G', 'e', 'e', 'k', 's')
+ 
+
+Creating a Tuple with Mixed Datatypes.
+Tuples can contain any number of elements and of any datatype (like strings,
+integers, list, etc.). Tuples can also be created with a single element, but 
+it is a bit tricky. Having one element in the parentheses is not sufficient, 
+there must be a trailing ‘comma’ to make it a tuple.
+ 
+
+
+#Creating a Tuple
+#with Mixed Datatype
+Tuple1 = (5, 'Welcome', 7, 'Geeks')
+print("\nTuple with Mixed Datatypes: ")
+print(Tuple1)
+ 
+#Creating a Tuple
+#with nested tuples
+Tuple1 = (0, 1, 2, 3)
+Tuple2 = ('python', 'geek')
+Tuple3 = (Tuple1, Tuple2)
+print("\nTuple with nested tuples: ")
+print(Tuple3)
+ 
+#Creating a Tuple
+#with repetition
+Tuple1 = ('Geeks',) * 3
+print("\nTuple with repetition: ")
+print(Tuple1)
+ 
+#Creating a Tuple
+#with the use of loop
+Tuple1 = ('Geeks')
+n = 5
+print("\nTuple with a loop")
+for i in range(int(n)):
+    Tuple1 = (Tuple1,)
+    print(Tuple1)
+Output: 
+ 
+
+Tuple with Mixed Datatypes: 
+(5, 'Welcome', 7, 'Geeks')
+
+Tuple with nested tuples: 
+((0, 1, 2, 3), ('python', 'geek'))
+
+Tuple with repetition: 
+('Geeks', 'Geeks', 'Geeks')
+
+Tuple with a loop
+('Geeks',)
+(('Geeks',),)
+((('Geeks',),),)
+(((('Geeks',),),),)
+((((('Geeks',),),),),)
+ 
+
+Accessing of Tuples
+Tuples are immutable, and usually, they contain a sequence of heterogeneous 
+elements that are accessed via unpacking or indexing (or even by attribute in 
+the case of named tuples). Lists are mutable, and their elements are usually 
+homogeneous and are accessed by iterating over the list.
+ 
+
+Note: In unpacking of tuple number of variables on the left-hand side should 
+be equal to a number of values in given tuple a.
+ 
+
+
+#Accessing Tuple
+#with Indexing
+Tuple1 = tuple("Geeks")
+print("\nFirst element of Tuple: ")
+print(Tuple1[1])
+ 
+ 
+#Tuple unpacking
+Tuple1 = ("Geeks", "For", "Geeks")
+ 
+#This line unpack
+#values of Tuple1
+a, b, c = Tuple1
+print("\nValues after unpacking: ")
+print(a)
+print(b)
+print(c)
+Output: 
+ 
+
+First element of Tuple:
+e
+
+Values after unpacking:
+Geeks
+For
+Geeks
+ 
+
+
+
+
+Concatenation of Tuples
+Concatenation of tuple is the process of joining two or more Tuples. 
+Concatenation is done by the use of ‘+’ operator. Concatenation of tuples is 
+done always from the end of the original tuple. Other arithmetic operations do 
+not apply on Tuples. 
+Note- Only the same datatypes can be combined with concatenation, an error 
+arises if a list and a tuple are combined. 
+ 
+# Concatenation of tuples
+Tuple1 = (0, 1, 2, 3)
+Tuple2 = ('Geeks', 'For', 'Geeks')
+ 
+Tuple3 = Tuple1 + Tuple2
+ 
+# Printing first Tuple
+print("Tuple 1: ")
+print(Tuple1)
+ 
+# Printing Second Tuple
+print("\nTuple2: ")
+print(Tuple2)
+ 
+# Printing Final Tuple
+print("\nTuples after Concatenation: ")
+print(Tuple3)
+Output: 
+
+Tuple 1: 
+(0, 1, 2, 3)
+
+Tuple2: 
+('Geeks', 'For', 'Geeks')
+
+Tuples after Concatenation: 
+(0, 1, 2, 3, 'Geeks', 'For', 'Geeks')
+ 
+
+Slicing of Tuple
+Slicing of a Tuple is done to fetch a specific range or slice of sub-elements 
+from a Tuple. Slicing can also be done to lists and arrays. Indexing in a list 
+results to fetching a single element whereas Slicing allows to fetch a set of 
+elements. 
+Note- Negative Increment values can also be used to reverse the sequence of 
+Tuples
+
+# Slicing of a Tuple
+ 
+# Slicing of a Tuple
+# with Numbers
+Tuple1 = tuple('GEEKSFORGEEKS')
+ 
+# Removing First element
+print("Removal of First Element: ")
+print(Tuple1[1:])
+ 
+# Reversing the Tuple
+print("\nTuple after sequence of Element is reversed: ")
+print(Tuple1[::-1])
+ 
+# Printing elements of a Range
+print("\nPrinting elements between Range 4-9: ")
+print(Tuple1[4:9])
+Output: 
+
+Removal of First Element: 
+('E', 'E', 'K', 'S', 'F', 'O', 'R', 'G', 'E', 'E', 'K', 'S')
+
+Tuple after sequence of Element is reversed: 
+('S', 'K', 'E', 'E', 'G', 'R', 'O', 'F', 'S', 'K', 'E', 'E', 'G')
+
+Printing elements between Range 4-9: 
+('S', 'F', 'O', 'R', 'G')
+ 
+
+Deleting a Tuple
+Tuples are immutable and hence they do not allow deletion of a part of it. The 
+entire tuple gets deleted by the use of del() method. 
+ 
+
+Note- Printing of Tuple after deletion results in an Error. 
+ 
+
+
+# Deleting a Tuple
+ 
+Tuple1 = (0, 1, 2, 3, 4)
+del Tuple1
+ 
+print(Tuple1)
+Traceback (most recent call last): 
+File “/home/efa50fd0709dec08434191f32275928a.py”, line 7, in 
+print(Tuple1) 
+NameError: name ‘Tuple1’ is not defined
+
+Built-In Methods
+Built-in-Method	Description
+index( )	find in the tuple and returns the index of the given value where 
+it’s available
+count( )	returns the frequency of occurrence of a specified value
+Built-In Functions
+Built-in Function	Description
+all()	Returns true if all element are true or if tuple is empty
+any()	return true if any element of the tuple is true. if tuple is empty, 
+return false
+len()	Returns length of the tuple or size of the tuple
+enumerate()	Returns enumerate object of tuple
+max()	return maximum element of given tuple
+min()	return minimum element of given tuple
+sum()	Sums up the numbers in the tuple
+sorted()	input elements in the tuple and return a new sorted list
+tuple()	Convert an iterable to a tuple.
+
+================================================
+
+***** Python Sets *****
+
+In Python, Set is an unordered collection of data type that is iterable, 
+mutable and has no duplicate elements. The order of elements in a set is 
+undefined though it may consist of various elements.
+
+The major advantage of using a set, as opposed to a list, is that it has a 
+highly optimized method for checking whether a specific element is contained 
+in the set.
+
+Creating a Set
+Sets can be created by using the built-in set() function with an iterable 
+object or a sequence by placing the sequence inside curly braces, separated by 
+‘comma’.
+
+Note – A set cannot have mutable elements like a list, set or dictionary, as 
+its elements.  
+
+
+# Python program to demonstrate
+# Creation of Set in Python
+ 
+# Creating a Set
+set1 = set()
+print("Initial blank Set: ")
+print(set1)
+ 
+# Creating a Set with
+# the use of a String
+set1 = set("GeeksForGeeks")
+print("\nSet with the use of String: ")
+print(set1)
+ 
+# Creating a Set with
+# the use of Constructor
+# (Using object to Store String)
+String = 'GeeksForGeeks'
+set1 = set(String)
+print("\nSet with the use of an Object: " )
+print(set1)
+ 
+# Creating a Set with
+# the use of a List
+set1 = set(["Geeks", "For", "Geeks"])
+print("\nSet with the use of List: ")
+print(set1)
+Output: 
+
+
+
+Initial blank Set: 
+set()
+
+Set with the use of String: 
+{'e', 'r', 'k', 'o', 'G', 's', 'F'}
+
+Set with the use of an Object: 
+{'r', 'o', 'e', 'F', 's', 'k', 'G'}
+
+Set with the use of List: 
+{'Geeks', 'For'}
+A set contains only unique elements but at the time of set creation, multiple 
+duplicate values can also be passed. Order of elements in a set is undefined 
+and is unchangeable. Type of elements in a set need not be the same, various 
+mixed up data type values can also be passed to the set. 
+
+
+# Creating a Set with
+# a List of Numbers
+# (Having duplicate values)
+set1 = set([1, 2, 4, 4, 3, 3, 3, 6, 5])
+print("\nSet with the use of Numbers: ")
+print(set1)
+ 
+# Creating a Set with
+# a mixed type of values
+# (Having numbers and strings)
+set1 = set([1, 2, 'Geeks', 4, 'For', 6, 'Geeks'])
+print("\nSet with the use of Mixed Values")
+print(set1)
+Output: 
+
+Set with the use of Numbers: 
+{1, 2, 3, 4, 5, 6}
+
+Set with the use of Mixed Values
+{1, 2, 4, 'Geeks', 6, 'For'}
+Adding Elements to a Set
+Using add() method
+Elements can be added to the Set by using built-in add() function. Only one 
+element at a time can be added to the set by using add() method, loops are 
+used to add multiple elements at a time with the use of add() method.
+
+Note – Lists cannot be added to a set as elements because Lists are not 
+hashable whereas Tuples can be added because tuples are immutable and hence 
+Hashable. 
+
+
+# Python program to demonstrate
+# Addition of elements in a Set
+ 
+# Creating a Set
+set1 = set()
+print("Initial blank Set: ")
+print(set1)
+ 
+# Adding element and tuple to the Set
+set1.add(8)
+set1.add(9)
+set1.add((6,7))
+print("\nSet after Addition of Three elements: ")
+print(set1)
+ 
+# Adding elements to the Set
+# using Iterator
+for i in range(1, 6):
+    set1.add(i)
+print("\nSet after Addition of elements from 1-5: ")
+print(set1)
+Output: 
+
+Initial blank Set: 
+set()
+
+Set after Addition of Three elements: 
+{8, 9, (6, 7)}
+
+Set after Addition of elements from 1-5: 
+{1, 2, 3, (6, 7), 4, 5, 8, 9}
+Using update() method
+For addition of two or more elements Update() method is used. The update() 
+method accepts lists, strings, tuples as well as other sets as its arguments. 
+In all of these cases, duplicate elements are avoided.
+
+
+# Python program to demonstrate
+# Addition of elements in a Set
+ 
+# Addition of elements to the Set
+# using Update function
+set1 = set([ 4, 5, (6, 7)])
+set1.update([10, 11])
+print("\nSet after Addition of elements using Update: ")
+print(set1)
+Output: 
+
+Set after Addition of elements using Update: 
+{10, 11, 4, 5, (6, 7)}
+ 
+Accessing a Set
+Set items cannot be accessed by referring to an index, since sets are 
+unordered the items has no index. But you can loop through the set items using 
+a for loop, or ask if a specified value is present in a set, by using the in 
+keyword.
+
+
+
+
+
+# Python program to demonstrate
+# Accessing of elements in a set
+ 
+# Creating a set
+set1 = set(["Geeks", "For", "Geeks"])
+print("\nInitial set")
+print(set1)
+ 
+# Accessing element using
+# for loop
+print("\nElements of set: ")
+for i in set1:
+    print(i, end=" ")
+ 
+# Checking the element
+# using in keyword
+print("Geeks" in set1)
+Output: 
+
+Initial set: 
+{'Geeks', 'For'}
+
+Elements of set: 
+Geeks For 
+
+True 
+Removing elements from the Set
+Using remove() method or discard() method
+Elements can be removed from the Set by using built-in remove() function but a 
+KeyError arises if element doesn’t exist in the set. To remove elements from a 
+set without KeyError, use discard(), if the element doesn’t exist in the set, 
+it remains unchanged.
+
+
+# Python program to demonstrate
+# Deletion of elements in a Set
+ 
+# Creating a Set
+set1 = set([1, 2, 3, 4, 5, 6,
+            7, 8, 9, 10, 11, 12])
+print("Initial Set: ")
+print(set1)
+ 
+# Removing elements from Set
+# using Remove() method
+set1.remove(5)
+set1.remove(6)
+print("\nSet after Removal of two elements: ")
+print(set1)
+ 
+# Removing elements from Set
+# using Discard() method
+set1.discard(8)
+set1.discard(9)
+print("\nSet after Discarding two elements: ")
+print(set1)
+ 
+# Removing elements from Set
+# using iterator method
+for i in range(1, 5):
+    set1.remove(i)
+print("\nSet after Removing a range of elements: ")
+print(set1)
+Output: 
+
+Initial Set: 
+{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+
+Set after Removal of two elements: 
+{1, 2, 3, 4, 7, 8, 9, 10, 11, 12}
+
+Set after Discarding two elements: 
+{1, 2, 3, 4, 7, 10, 11, 12}
+
+Set after Removing a range of elements: 
+{7, 10, 11, 12}
+Using pop() method
+Pop() function can also be used to remove and return an element from the set, 
+but it removes only the last element of the set. 
+Note – If the set is unordered then there’s no such way to determine which 
+element is popped by using the pop() function. 
+
+
+# Python program to demonstrate
+# Deletion of elements in a Set
+ 
+# Creating a Set
+set1 = set([1, 2, 3, 4, 5, 6,
+            7, 8, 9, 10, 11, 12])
+print("Initial Set: ")
+print(set1)
+ 
+# Removing element from the
+# Set using the pop() method
+set1.pop()
+print("\nSet after popping an element: ")
+print(set1)
+Output: 
+
+Initial Set: 
+{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+
+Set after popping an element: 
+{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+Using clear() method
+To remove all the elements from the set, clear() function is used. 
+
+
+#Creating a set
+set1 = set([1,2,3,4,5])
+print("\n Initial set: ")
+print(set1)
+ 
+ 
+# Removing all the elements from
+# Set using clear() method
+set1.clear()
+print("\nSet after clearing all the elements: ")
+print(set1)
+Output: 
+
+Initial set:
+{1, 2, 3, 4, 5}
+
+Set after clearing all the elements: 
+set()
+Frozen sets in Python are immutable objects that only support methods and 
+operators that produce a result without affecting the frozen set or sets to 
+which they are applied. While elements of a set can be modified at any time, 
+elements of the frozen set remain the same after creation. 
+
+If no parameters are passed, it returns an empty frozenset.  
+
+
+# Python program to demonstrate
+# working of a FrozenSet
+ 
+# Creating a Set
+String = ('G', 'e', 'e', 'k', 's', 'F', 'o', 'r')
+ 
+Fset1 = frozenset(String)
+print("The FrozenSet is: ")
+print(Fset1)
+ 
+# To print Empty Frozen Set
+# No parameter is passed
+print("\nEmpty FrozenSet: ")
+print(frozenset())
+Set Methods
+Function	Description
+add()	Adds an element to a set
+remove()	Removes an element from a set. If the element is not present in 
+the set, raise a KeyError
+clear()	Removes all elements form a set
+copy()	Returns a shallow copy of a set
+pop()	Removes and returns an arbitrary set element. Raise KeyError if the 
+set is empty
+update()	Updates a set with the union of itself and others
+union()	Returns the union of sets in a new set
+difference()	Returns the difference of two or more sets as a new set
+difference_update()	Removes all elements of another set from this set
+discard()	Removes an element from set if it is a member. (Do nothing if the 
+element is not in set)
+intersection()	Returns the intersection of two sets as a new set
+intersection_update()	Updates the set with the intersection of itself and 
+another
+isdisjoint()	Returns True if two sets have a null intersection
+issubset()	Returns True if another set contains this set
+issuperset()	Returns True if this set contains another set
+symmetric_difference()	Returns the symmetric difference of two sets as a new 
+set
+symmetric_difference_update()	Updates a set with the symmetric difference of itself and another
+
+================================================
+
+***** Python Dictionary *****
+
+Dictionary in Python is an unordered collection of data values, used to store 
+data values like a map, which, unlike other Data Types that hold only a single 
+value as an element, Dictionary holds key:value pair. Key-value is provided in 
+the dictionary to make it more optimized. 
+ 
+
+Note – Keys in a dictionary don’t allow Polymorphism.
+
+Disclamer: It is important to note that Dictionaries have been modified to 
+maintain insertion order with the release of Python 3.7, so they are now 
+ordered collection of data values.
+
+Creating a Dictionary
+In Python, a Dictionary can be created by placing a sequence of elements 
+within curly {} braces, separated by ‘comma’. Dictionary holds a pair of 
+values, one being the Key and the other corresponding pair element being its 
+Key:value. Values in a dictionary can be of any data type and can be 
+duplicated, whereas keys can’t be repeated and must be immutable. 
+ 
+
+Note – Dictionary keys are case sensitive, the same name but different cases 
+of Key will be treated distinctly. 
+
+# Creating a Dictionary
+# with Integer Keys
+Dict = {1: 'Geeks', 2: 'For', 3: 'Geeks'}
+print("\nDictionary with the use of Integer Keys: ")
+print(Dict)
+ 
+# Creating a Dictionary
+# with Mixed keys
+Dict = {'Name': 'Geeks', 1: [1, 2, 3, 4]}
+print("\nDictionary with the use of Mixed Keys: ")
+print(Dict)
+Output: 
+ 
+
+Dictionary with the use of Integer Keys: 
+{1: 'Geeks', 2: 'For', 3: 'Geeks'}
+
+Dictionary with the use of Mixed Keys: 
+{1: [1, 2, 3, 4], 'Name': 'Geeks'}
+Dictionary can also be created by the built-in function dict(). An empty 
+dictionary can be created by just placing to curly braces{}. 
+ 
+
+
+# Creating an empty Dictionary
+Dict = {}
+print("Empty Dictionary: ")
+print(Dict)
+ 
+# Creating a Dictionary
+# with dict() method
+Dict = dict({1: 'Geeks', 2: 'For', 3:'Geeks'})
+print("\nDictionary with the use of dict(): ")
+print(Dict)
+ 
+# Creating a Dictionary
+# with each item as a Pair
+Dict = dict([(1, 'Geeks'), (2, 'For')])
+print("\nDictionary with each item as a pair: ")
+print(Dict)
+Output: 
+
+Empty Dictionary: 
+{}
+
+Dictionary with the use of dict(): 
+{1: 'Geeks', 2: 'For', 3: 'Geeks'}
+
+Dictionary with each item as a pair: 
+{1: 'Geeks', 2: 'For'}
+Nested Dictionary:
+
+# Creating a Nested Dictionary
+# as shown in the below image
+Dict = {1: 'Geeks', 2: 'For',
+        3:{'A' : 'Welcome', 'B' : 'To', 'C' : 'Geeks'}}
+ 
+print(Dict)
+Output: 
+
+{1: 'Geeks', 2: 'For', 3: {'A': 'Welcome', 'B': 'To', 'C': 'Geeks'}}
+ 
+
+Adding elements to a Dictionary
+In Python Dictionary, the Addition of elements can be done in multiple ways. 
+One value at a time can be added to a Dictionary by defining value along with 
+the key e.g. Dict[Key] = ‘Value’. Updating an existing value in a Dictionary 
+can be done by using the built-in update() method. Nested key values can also 
+be added to an existing Dictionary. 
+ 
+Note- While adding a value, if the key-value already exists, the value gets 
+updated otherwise a new Key with the value is added to the Dictionary.
+
+
+# Creating an empty Dictionary
+Dict = {}
+print("Empty Dictionary: ")
+print(Dict)
+ 
+# Adding elements one at a time
+Dict[0] = 'Geeks'
+Dict[2] = 'For'
+Dict[3] = 1
+print("\nDictionary after adding 3 elements: ")
+print(Dict)
+ 
+# Adding set of values
+# to a single Key
+Dict['Value_set'] = 2, 3, 4
+print("\nDictionary after adding 3 elements: ")
+print(Dict)
+ 
+# Updating existing Key's Value
+Dict[2] = 'Welcome'
+print("\nUpdated key value: ")
+print(Dict)
+ 
+# Adding Nested Key value to Dictionary
+Dict[5] = {'Nested' :{'1' : 'Life', '2' : 'Geeks'}}
+print("\nAdding a Nested Key: ")
+print(Dict)
+Output:  
+
+Empty Dictionary: 
+{}
+
+Dictionary after adding 3 elements: 
+{0: 'Geeks', 2: 'For', 3: 1}
+
+Dictionary after adding 3 elements: 
+{0: 'Geeks', 2: 'For', 3: 1, 'Value_set': (2, 3, 4)}
+
+Updated key value: 
+{0: 'Geeks', 2: 'Welcome', 3: 1, 'Value_set': (2, 3, 4)}
+
+Adding a Nested Key: 
+{0: 'Geeks', 2: 'Welcome', 3: 1, 5: {'Nested': {'1': 'Life', '2': 'Geeks'}}, 
+'Value_set': (2, 3, 4)}
+ 
+
+Accessing elements from a Dictionary
+In order to access the items of a dictionary refer to its key name. Key can be 
+used inside square brackets. 
+
+
+# Python program to demonstrate 
+# accessing a element from a Dictionary
+ 
+# Creating a Dictionary
+Dict = {1: 'Geeks', 'name': 'For', 3: 'Geeks'}
+ 
+# accessing a element using key
+print("Accessing a element using key:")
+print(Dict['name'])
+ 
+# accessing a element using key
+print("Accessing a element using key:")
+print(Dict[1])
+Output: 
+
+Accessing a element using key:
+For
+
+Accessing a element using key:
+Geeks
+There is also a method called get() that will also help in accessing the 
+element from a dictionary.
+
+
+# Creating a Dictionary
+Dict = {1: 'Geeks', 'name': 'For', 3: 'Geeks'}
+ 
+# accessing a element using get()
+# method
+print("Accessing a element using get:")
+print(Dict.get(3))
+Output: 
+
+Accessing a element using get:
+Geeks
+Accessing an element of a nested dictionary
+In order to access the value of any key in the nested dictionary, use indexing 
+[] syntax.
+
+
+# Creating a Dictionary
+Dict = {'Dict1': {1: 'Geeks'},
+        'Dict2': {'Name': 'For'}}
+ 
+# Accessing element using key
+print(Dict['Dict1'])
+print(Dict['Dict1'][1])
+print(Dict['Dict2']['Name'])
+Output: 
+
+{1: 'Geeks'}
+Geeks
+For
+Removing Elements from Dictionary
+Using del keyword
+In Python Dictionary, deletion of keys can be done by using the del keyword. 
+Using the del keyword, specific values from a dictionary as well as the whole 
+dictionary can be deleted. Items in a Nested dictionary can also be deleted by 
+using the del keyword and providing a specific nested key and particular key 
+to be deleted from that nested Dictionary.
+ 
+Note: The del Dict will delete the entire dictionary and hence printing it 
+after deletion will raise an Error.
+
+
+# Initial Dictionary
+Dict = { 5 : 'Welcome', 6 : 'To', 7 : 'Geeks',
+        'A' : {1 : 'Geeks', 2 : 'For', 3 : 'Geeks'},
+        'B' : {1 : 'Geeks', 2 : 'Life'}}
+print("Initial Dictionary: ")
+print(Dict)
+ 
+# Deleting a Key value
+del Dict[6]
+print("\nDeleting a specific key: ")
+print(Dict)
+ 
+# Deleting a Key from
+# Nested Dictionary
+del Dict['A'][2]
+print("\nDeleting a key from Nested Dictionary: ")
+print(Dict)
+Output: 
+
+Initial Dictionary: 
+{'A': {1: 'Geeks', 2: 'For', 3: 'Geeks'}, 'B': {1: 'Geeks', 2: 'Life'}, 5: 
+'Welcome', 6: 'To', 7: 'Geeks'}
+
+Deleting a specific key: 
+{'A': {1: 'Geeks', 2: 'For', 3: 'Geeks'}, 'B': {1: 'Geeks', 2: 'Life'}, 5: 
+'Welcome', 7: 'Geeks'}
+
+Deleting a key from Nested Dictionary: 
+{'A': {1: 'Geeks', 3: 'Geeks'}, 'B': {1: 'Geeks', 2: 'Life'}, 5: 'Welcome', 7: 
+'Geeks'}
+Using pop() method
+Pop() method is used to return and delete the value of the key specified.
+
+
+# Creating a Dictionary
+Dict = {1: 'Geeks', 'name': 'For', 3: 'Geeks'}
+ 
+# Deleting a key
+# using pop() method
+pop_ele = Dict.pop(1)
+print('\nDictionary after deletion: ' + str(Dict))
+print('Value associated to poped key is: ' + str(pop_ele))
+Output: 
+
+Dictionary after deletion: {3: 'Geeks', 'name': 'For'}
+Value associated to poped key is: Geeks
+Using popitem() method
+The popitem() returns and removes an arbitrary element (key, value) pair from 
+the dictionary.
+
+
+# Creating Dictionary
+Dict = {1: 'Geeks', 'name': 'For', 3: 'Geeks'}
+ 
+# Deleting an arbitrary key
+# using popitem() function
+pop_ele = Dict.popitem()
+print("\nDictionary after deletion: " + str(Dict))
+print("The arbitrary pair returned is: " + str(pop_ele))
+Output: 
+
+Dictionary after deletion: {3: 'Geeks', 'name': 'For'}
+The arbitrary pair returned is: (1, 'Geeks')
+ Using clear() method
+All the items from a dictionary can be deleted at once by using clear() method.
+
+
+# Creating a Dictionary
+Dict = {1: 'Geeks', 'name': 'For', 3: 'Geeks'}
+ 
+ 
+# Deleting entire Dictionary
+Dict.clear()
+print("\nDeleting Entire Dictionary: ")
+print(Dict)
+Output: 
+
+Deleting Entire Dictionary: 
+{}
+Dictionary Methods 
+Methods	Description
+copy()	They copy() method returns a shallow copy of the dictionary.
+clear()	The clear() method removes all items from the dictionary.
+pop()	Removes and returns an element from a dictionary having the given key.
+popitem()	Removes the arbitrary key-value pair from the dictionary and 
+returns it as tuple.
+get()	It is a conventional method to access a value for a key.
+dictionary_name.values()	returns a list of all the values available in a 
+given dictionary.
+str()	Produces a printable string representation of a dictionary.
+update()	Adds dictionary dict2’s key-values pairs to dict
+setdefault()	Set dict[key]=default if key is not already in dict
+keys()	Returns list of dictionary dict’s keys
+items()	Returns a list of dict’s (key, value) tuple pairs
+has_key()	Returns true if key in dictionary dict, false otherwise
+fromkeys()	Create a new dictionary with keys from seq and values set to value.
+type()	Returns the type of the passed variable.
+cmp()	Compares elements of both dict.
+
+================================================
+
+***** Python Arrays *****
+
+An array is a collection of items stored at contiguous memory locations. The 
+idea is to store multiple items of the same type together. This makes it 
+easier to calculate the position of each element by simply adding an offset to 
+a base value, i.e., the memory location of the first element of the array 
+(generally denoted by the name of the array).
+For simplicity, we can think of an array a fleet of stairs where on each step 
+is placed a value (let’s say one of your friends). Here, you can identify the 
+location of any of your friends by simply knowing the count of the step they 
+are on. Array can be handled in Python by a module named array. They can be 
+useful when we have to manipulate only a specific data type values. A user can 
+treat lists as arrays. However, user cannot constraint the type of elements 
+stored in a list. If you create arrays using the array module, all elements of 
+the array must be of the same type. 
+ 
+
+
+
+ 
+
+Creating a Array
+Array in Python can be created by importing array module. array(data_type, 
+value_list) is used to create an array with data type and value list specified 
+in its arguments. 
+ 
+
+
+# Python program to demonstrate
+# Creation of Array
+ 
+# importing "array" for array creations
+import array as arr
+ 
+# creating an array with integer type
+a = arr.array('i', [1, 2, 3])
+ 
+# printing original array
+print ("The new created array is : ", end =" ")
+for i in range (0, 3):
+    print (a[i], end =" ")
+print()
+ 
+# creating an array with float type
+b = arr.array('d', [2.5, 3.2, 3.3])
+ 
+# printing original array
+print ("The new created array is : ", end =" ")
+for i in range (0, 3):
+    print (b[i], end =" ")
+    
+Output : 
+
+
+
+The new created array is :  1 2 3 
+The new created array is :  2.5 3.2 3.3 
+Some of the data types are mentioned below which will help in creating an 
+array of different data types. 
+ 
+
+
+
+ 
+
+Adding Elements to a Array
+Elements can be added to the Array by using built-in insert() function. Insert 
+is used to insert one or more data elements into an array. Based on the 
+requirement, a new element can be added at the beginning, end, or any given 
+index of array. append() is also used to add the value mentioned in its 
+arguments at the end of the array. 
+ 
+# Python program to demonstrate
+# Adding Elements to a Array
+ 
+# importing "array" for array creations
+import array as arr
+ 
+# array with int type
+a = arr.array('i', [1, 2, 3])
+ 
+ 
+print ("Array before insertion : ", end =" ")
+for i in range (0, 3):
+    print (a[i], end =" ")
+print()
+ 
+# inserting array using
+# insert() function
+a.insert(1, 4)
+ 
+print ("Array after insertion : ", end =" ")
+for i in (a):
+    print (i, end =" ")
+print()
+ 
+# array with float type
+b = arr.array('d', [2.5, 3.2, 3.3])
+ 
+print ("Array before insertion : ", end =" ")
+for i in range (0, 3):
+    print (b[i], end =" ")
+print()
+ 
+# adding an element using append()
+b.append(4.4)
+ 
+print ("Array after insertion : ", end =" ")
+for i in (b):
+    print (i, end =" ")
+print()
+Output : 
+
+Array before insertion : 1 2 3 
+Array after insertion :  1 4 2 3 
+Array before insertion : 2.5 3.2 3.3 
+Array after insertion :  2.5 3.2 3.3 4.4 
+ 
+
+Accessing elements from the Array
+In order to access the array items refer to the index number. Use the index 
+operator [ ] to access an item in a array. The index must be an integer. 
+ 
+
+
+# Python program to demonstrate
+# accessing of element from list
+ 
+# importing array module
+import array as arr
+ 
+# array with int type
+a = arr.array('i', [1, 2, 3, 4, 5, 6])
+ 
+# accessing element of array
+print("Access element is: ", a[0])
+ 
+# accessing element of array
+print("Access element is: ", a[3])
+ 
+# array with float type
+b = arr.array('d', [2.5, 3.2, 3.3])
+ 
+# accessing element of array
+print("Access element is: ", b[1])
+ 
+# accessing element of array
+print("Access element is: ", b[2])
+Output : 
+
+
+
+Access element is:  1
+Access element is:  4
+Access element is:  3.2
+Access element is:  3.3
+ 
+
+Removing Elements from the Array
+Elements can be removed from the array by using built-in remove() function but 
+an Error arises if element doesn’t exist in the set. Remove() method only 
+removes one element at a time, to remove range of elements, iterator is used. 
+pop() function can also be used to remove and return an element from the 
+array, but by default it removes only the last element of the array, to remove 
+element from a specific position of the array, index of the element is passed 
+as an argument to the pop() method.
+Note – Remove method in List will only remove the first occurrence of the 
+searched element. 
+ 
+# Python program to demonstrate
+# Removal of elements in a Array
+  
+# importing "array" for array operations
+import array
+  
+# initializing array with array values
+# initializes array with signed integers
+arr = array.array('i', [1, 2, 3, 1, 5])
+ 
+# printing original array
+print ("The new created array is : ", end ="")
+for i in range (0, 5):
+    print (arr[i], end =" ")
+ 
+print ("\r")
+ 
+# using pop() to remove element at 2nd position
+print ("The popped element is : ", end ="")
+print (arr.pop(2))
+ 
+# printing array after popping
+print ("The array after popping is : ", end ="")
+for i in range (0, 4):
+    print (arr[i], end =" ")
+ 
+print("\r")
+ 
+# using remove() to remove 1st occurrence of 1
+arr.remove(1)
+ 
+# printing array after removing
+print ("The array after removing is : ", end ="")
+for i in range (0, 3):
+    print (arr[i], end =" ")
+Output: 
+
+The new created array is : 1 2 3 1 5 
+The popped element is : 3
+The array after popping is : 1 2 1 5 
+The array after removing is : 2 1 5 
+ 
+
+Slicing of a Array
+In Python array, there are multiple ways to print the whole array with all the 
+elements, but to print a specific range of elements from the array, we use 
+Slice operation. Slice operation is performed on array with the use of colon(:)
+. To print elements from beginning to a range use [:Index], to print elements 
+from end use [:-Index], to print elements from specific Index till the end use 
+[Index:], to print elements within a range, use [Start Index:End Index] and to 
+print whole List with the use of slicing operation, use [:]. Further, to print 
+whole array in reverse order, use [::-1]. 
+ 
+
+
+
+ 
+
+
+# Python program to demonstrate
+# slicing of elements in a Array
+ 
+# importing array module
+import array as arr
+ 
+# creating a list
+l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+ 
+a = arr.array('i', l)
+print("Initial Array: ")
+for i in (a):
+    print(i, end =" ")
+ 
+# Print elements of a range
+# using Slice operation
+Sliced_array = a[3:8]
+print("\nSlicing elements in a range 3-8: ")
+print(Sliced_array)
+ 
+# Print elements from a
+# pre-defined point to end
+Sliced_array = a[5:]
+print("\nElements sliced from 5th "
+      "element till the end: ")
+print(Sliced_array)
+ 
+# Printing elements from
+# beginning till end
+Sliced_array = a[:]
+print("\nPrinting all elements using slice operation: ")
+print(Sliced_array)
+Output
+Initial Array: 
+1 2 3 4 5 6 7 8 9 10 
+Slicing elements in a range 3-8: 
+array('i', [4, 5, 6, 7, 8])
+
+Elements sliced from 5th element till the end: 
+array('i', [6, 7, 8, 9, 10])
+
+Printing all elements using slice operation: 
+array('i', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+Output : 
+
+Initial Array: 
+1 2 3 4 5 6 7 8 9 10 
+Slicing elements in a range 3-8: 
+array('i', [4, 5, 6, 7, 8])
+
+Elements sliced from 5th element till the end: 
+array('i', [6, 7, 8, 9, 10])
+
+Printing all elements using slice operation: 
+array('i', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+ 
+
+
+
+
+Searching element in a Array
+In order to search an element in the array we use a python in-built index() 
+method. This function returns the index of the first occurrence of value 
+mentioned in arguments. 
+ 
+
+
+# Python code to demonstrate
+# searching an element in array
+ 
+  
+# importing array module
+import array
+  
+# initializing array with array values
+# initializes array with signed integers
+arr = array.array('i', [1, 2, 3, 1, 2, 5])
+ 
+# printing original array
+print ("The new created array is : ", end ="")
+for i in range (0, 6):
+    print (arr[i], end =" ")
+ 
+print ("\r")
+ 
+# using index() to print index of 1st occurrenece of 2
+print ("The index of 1st occurrence of 2 is : ", end ="")
+print (arr.index(2))
+ 
+# using index() to print index of 1st occurrenece of 1
+print ("The index of 1st occurrence of 1 is : ", end ="")
+print (arr.index(1))
+Output: 
+ 
+
+The new created array is : 1 2 3 1 2 5 
+The index of 1st occurrence of 2 is : 1
+The index of 1st occurrence of 1 is : 0
+ 
+
+Updating Elements in a Array
+In order to update an element in the array we simply reassign a new value to 
+the desired index we want to update. 
+ 
+
+
+# Python code to demonstrate
+# how to update an element in array
+ 
+# importing array module
+import array
+ 
+# initializing array with array values
+# initializes array with signed integers
+arr = array.array('i', [1, 2, 3, 1, 2, 5])
+ 
+# printing original array
+print ("Array before updation : ", end ="")
+for i in range (0, 6):
+    print (arr[i], end =" ")
+ 
+print ("\r")
+ 
+# updating a element in a array
+arr[2] = 6
+print("Array after updation : ", end ="")
+for i in range (0, 6):
+    print (arr[i], end =" ")
+print()
+ 
+# updating a element in a array
+arr[4] = 8
+print("Array after updation : ", end ="")
+for i in range (0, 6):
+    print (arr[i], end =" ")
+Output: 
+
+Array before updation : 1 2 3 1 2 5 
+Array after updation : 1 2 6 1 2 5 
+Array after updation : 1 2 6 1 8 5 
+
+
+================================================

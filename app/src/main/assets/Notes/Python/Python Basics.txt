@@ -1,0 +1,61 @@
+*****Python Basics*****
+
+	Python uses new lines to complete a command, as opposed to other programming languages which often use semicolons or parentheses. Python relies on indentation, using whitespace, to define scope; such as the scope of loops, functions and classes. Other programming languages often use curly-brackets for this purpose.
+
+---------------------------------------------------------------
+
+*****Keywords in Python*****
+
+	Python has a set of keywords that are reserved words that cannot be used as variable names, function names, or any other identifiers. Eg. 'False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield' are Keywords in Python.
+
+---------------------------------------------------------------
+
+*****Namespace and Scope in Python*****
+
+	Name (also called identifier) is simply a name given to objects. Everything in Python is an object. Name is a way to access the underlying object.
+
+	For example, when we do the assignment a = 2, 2 is an object stored in memory and a is the name we associate it with. We can get the address (in RAM) of some object through the built-in function id().
+Eg: # Note: You may get different values for the id
+    a = 2
+    print('id(2) =', id(2))
+    print('id(a) =', id(a))
+ -->id(2) = 9302208
+ -->id(a) = 9302208
+Here, both refer to the same object 2, so they have the same id()
+
+---------------------------------------------------------------
+
+*****Statement , Indentation and Comment in Python*****
+
+
+1) Statement : Instructions that a Python interpreter can execute are called statements.
+	For example, a = 1 is an assignment statement. if statement, for statement, while statement, etc. are other kinds of statements which will be discussed further on.
+
+2) Indentation : Most of the programming languages like C, C++, and Java use braces {} to define a block of code. Python, however, uses indentation.
+	A code block (body of a function, loop, etc.) starts with indentation and ends with the first unindented line. The amount of indentation is up to you, but it must be consistent throughout that block.
+	Indentation can be ignored in line continuation, but it's always a good idea to indent. It makes the code more readable. For example:
+ -->if True:
+       print('Hello')
+       a = 5
+ -->if True: print('Hello'); a = 5
+Both are valid and do the same thing, but the former style is clearer.
+
+3)Comments : Comments are very important while writing a program. They describe what is going on inside a program, so that a person looking at the source code does not have a hard time figuring it out.
+	In Python, we use the hash (#) symbol to start writing a comment.Another way of doing this is to use triple quotes, either ''' or """ for multi-line comments.
+
+---------------------------------------------------------------
+
+*****Assigning Values in Python*****
+	Python has no command for declaring a variable. A variable is created the moment you first assign a value to it.
+For eg.
+Input :x = 5
+       y = "John"
+       print(x)
+       print(y)
+Output: 5
+	John
+	
+Variables do not need to be declared with any particular type, and can even change type after they have been set.
+	String variables can be declared either by using single or double quotes. For eg: x = "John"
+
+---------------------------------------------------------------

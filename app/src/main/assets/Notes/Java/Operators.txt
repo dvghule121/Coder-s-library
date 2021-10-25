@@ -1,0 +1,247 @@
+﻿Operators in Java
+Java provides many types of operators which can be used according to the need. They are classified based on the functionality they provide. Some of the types are- 
+ 
+1. Arithmetic Operators
+2. Unary Operators
+3. Assignment Operator
+4. Relational Operators
+5. Logical Operators
+6. Ternary Operator
+7. Bitwise Operators
+8. Shift Operators
+9. instance of operator
+10. Precedence and Associativity
+11. Interesting Questions
+Lets take a look at them in detail. 
+ 
+* Arithmetic Operators: They are used to perform simple arithmetic operations on primitive data types. 
+   * * : Multiplication
+   * / : Division
+   * % : Modulo
+   * + : Addition
+   * – : Subtraction
+* Unary Operators: Unary operators need only one operand. They are used to increment, decrement or negate a value. 
+   * – :Unary minus, used for negating the values.
+   * + :Unary plus, indicates positive value (numbers are positive without this, however). It performs an automatic conversion to int when the type of its operand is byte, char, or short. This is called unary numeric promotion.
+   * ++ :Increment operator, used for incrementing the value by 1. There are two varieties of increment operator. 
+      * Post-Increment : Value is first used for computing the result and then incremented.
+      * Pre-Increment : Value is incremented first and then result is computed.
+   * — : Decrement operator, used for decrementing the value by 1. There are two varieties of decrement operator. 
+      * Post-decrement : Value is first used for computing the result and then decremented.
+      * Pre-Decrement : Value is decremented first and then result is computed.
+   * ! : Logical not operator, used for inverting a boolean value.
+* Assignment Operator : ‘=’ Assignment operator is used to assign a value to any variable. It has a right to left associativity, i.e value given on right hand side of operator is assigned to the variable on the left and therefore right hand side value must be declared before using it or should be a constant. 
+General format of assignment operator is, 
+
+variable = value;
+   * In many cases assignment operator can be combined with other operators to build a shorter version of statement called Compound Statement. For example, instead of a = a+5, we can write a += 5. 
+   * +=, for adding left operand with right operand and then assigning it to variable on the left.
+   * -=, for subtracting left operand with right operand and then assigning it to variable on the left.
+   * *=, for multiplying left operand with right operand and then assigning it to variable on the left.
+   * /=, for dividing left operand with right operand and then assigning it to variable on the left.
+   * %=, for assigning modulo of left operand with right operand and then assigning it to variable on the left.
+   * Relational Operators : These operators are used to check for relations like equality, greater than, less than. They return boolean result after the comparison and are extensively used in looping statements as well as conditional if else statements. General format is, 
+
+variable relation_operator value
+      * Some of the relational operators are- 
+      * ==, Equal to : returns true if left hand side is equal to right hand side.
+      * !=, Not Equal to : returns true if left hand side is not equal to right hand side.
+      * <, less than : returns true if left hand side is less than right hand side.
+      * <=, less than or equal to : returns true if left hand side is less than or equal to right hand side.
+      * >, Greater than : returns true if left hand side is greater than right hand side.
+      * >=, Greater than or equal to: returns true if left hand side is greater than or equal to right hand side.
+      * Logical Operators : These operators are used to perform “logical AND” and “logical OR” operation, i.e. the function similar to AND gate and OR gate in digital electronics. One thing to keep in mind is the second condition is not evaluated if the first one is false, i.e. it has a short-circuiting effect. Used extensively to test for several conditions for making a decision. 
+Conditional operators are-
+         * &&, Logical AND : returns true when both conditions are true.
+         * ||, Logical OR : returns true if at least one condition is true.
+         * Ternary operator : Ternary operator is a shorthand version of if-else statement. It has three operands and hence the name ternary. General format is- 
+
+condition ? if true : if false
+The above statement means that if the condition evaluates to true, then execute the statements after the ‘?’ else execute the statements after the ‘:’. 
+ 
+            * Java
+// Java program to illustrate
+// max of three numbers using
+// ternary operator.
+public class operators {
+    public static void main(String[] args)
+    {
+        int a = 20, b = 10, c = 30, result;
+ 
+        // result holds max of three
+        // numbers
+        result = ((a > b)
+                      ? (a > c)
+                            ? a
+                            : c
+                      : (b > c)
+                            ? b
+                            : c);
+        System.out.println("Max of three numbers = "
+                           + result);
+    }
+}
+	 
+Output: 
+
+
+Max of three numbers = 30
+ 
+ 
+            * Bitwise Operators : These operators are used to perform manipulation of individual bits of a number. They can be used with any of the integer types. They are used when performing update and query operations of Binary indexed tree. 
+            * &, Bitwise AND operator: returns bit by bit AND of input values.
+            * |, Bitwise OR operator: returns bit by bit OR of input values.
+            * ^, Bitwise XOR operator: returns bit by bit XOR of input values.
+            * ~, Bitwise Complement Operator: This is a unary operator which returns the one’s compliment representation of the input value, i.e. with all bits inversed.
+            * Shift Operators : These operators are used to shift the bits of a number left or right thereby multiplying or dividing the number by two respectively. They can be used when we have to multiply or divide a number by two. General format- 
+
+number shift_op number_of_places_to_shift;
+               * <<, Left shift operator: shifts the bits of the number to the left and fills 0 on voids left as a result. Similar effect as of multiplying the number with some power of two.
+               * >>, Signed Right shift operator: shifts the bits of the number to the right and fills 0 on voids left as a result. The leftmost bit depends on the sign of initial number. Similar effect as of dividing the number with some power of two.
+               * >>>, Unsigned Right shift operator: shifts the bits of the number to the right and fills 0 on voids left as a result. The leftmost bit is set to 0.
+               * instance of operator : Instance of operator is used for type checking. It can be used to test if an object is an instance of a class, a subclass or an interface. General format- 
+
+object instance of class/subclass/interface
+                  * Java
+// Java program to illustrate
+// instance of operator
+class operators {
+    public static void main(String[] args)
+    {
+ 
+        Person obj1 = new Person();
+        Person obj2 = new Boy();
+ 
+        // As obj is of type person, it is not an
+        // instance of Boy or interface
+        System.out.println("obj1 instanceof Person: "
+                           + (obj1 instanceof Person));
+        System.out.println("obj1 instanceof Boy: "
+                           + (obj1 instanceof Boy));
+        System.out.println("obj1 instanceof MyInterface: "
+                           + (obj1 instanceof MyInterface));
+ 
+        // Since obj2 is of type boy,
+        // whose parent class is person
+        // and it implements the interface Myinterface
+        // it is instance of all of these classes
+        System.out.println("obj2 instanceof Person: "
+                           + (obj2 instanceof Person));
+        System.out.println("obj2 instanceof Boy: "
+                           + (obj2 instanceof Boy));
+        System.out.println("obj2 instanceof MyInterface: "
+                           + (obj2 instanceof MyInterface));
+    }
+}
+ 
+class Person {
+}
+ 
+class Boy extends Person implements MyInterface {
+}
+ 
+interface MyInterface {
+}
+	 
+Output: 
+obj1 instanceof Person: true
+obj1 instanceof Boy: false
+obj1 instanceof MyInterface: false
+obj2 instanceof Person: true
+obj2 instanceof Boy: true
+obj2 instanceof MyInterface: true
+ 
+ 
+ 
+Precedence and Associativity of Operators
+Precedence and associative rules are used when dealing with hybrid equations involving more than one type of operator. In such cases, these rules determine which part of the equation to consider first as there can be many different valuations for the same equation. The below table depicts the precedence of operators in decreasing order as magnitude with the top representing the highest precedence and bottom shows the lowest precedence.
+ 
+ Precedence and Associativity of Operators 
+
+
+
+
+
+ 
+Interesting Questions on Operators
+ 
+                  * Precedence and Associativity: There is often a confusion when it comes to hybrid equations that is equations having multiple operators. The problem is which part to solve first. There is a golden rule to follow in these situations. If the operators have different precedence, solve the higher precedence first. If they have same precedence, solve according to associativity, that is either from right to left or from left to right. Explanation of below program is well written in comments withing the program itself. 
+
+                     * Java
+public class operators {
+    public static void main(String[] args)
+    {
+        int a = 20, b = 10, c = 0, d = 20, e = 40, f = 30;
+ 
+        // precedence rules for arithmetic operators.
+        // (* = / = %) > (+ = -)
+        // prints a+(b/d)
+        System.out.println("a+b/d = " + (a + b / d));
+ 
+        // if same precendence then associative
+        // rules are followed.
+        // e/f -> b*d -> a+(b*d) -> a+(b*d)-(e/f)
+        System.out.println("a+b*d-e/f = "
+                           + (a + b * d - e / f));
+    }
+}
+	 
+Output: 
+a+b/d = 20
+a+b*d-e/f = 219
+ 
+ 
+                     * Be a Compiler: Compiler in our systems uses lex tool to match the greatest match when generating tokens. This creates a bit of a problem if overlooked. For example, consider the statement a=b+++c;, to many of the readers this might seem to create compiler error. But this statement is absolutely correct as the token created by lex are a, =, b, ++, +, c. Therefore this statement has a similar effect of first assigning b+c to a and then incrementing b. Similarly, a=b+++++c; would generate error as tokens generated are a, =, b, ++, ++, +, c. which is actually an error as there is no operand after second unary operand. 
+
+                        * Java
+public class operators {
+    public static void main(String[] args)
+    {
+        int a = 20, b = 10, c = 0;
+ 
+        // a=b+++c is compiled as
+        // b++ +c
+        // a=b+c then b=b+1
+        a = b++ + c;
+        System.out.println("Value of a(b+c), "
+                           + " b(b+1), c = "
+                           + a + ", " + b
+                           + ", " + c);
+ 
+        // a=b+++++c is compiled as
+        // b++ ++ +c
+        // which gives error.
+        // a=b+++++c;
+        // System.out.println(b+++++c);
+    }
+}
+	 
+Output: 
+Value of a(b+c), b(b+1), c = 10, 11, 0
+ 
+ 
+                        * Using + over (): When using + operator inside system.out.println() make sure to do addition using parenthesis. If we write something before doing addition, then string addition takes place, that is associativity of addition is left to right and hence integers are added to a string first producing a string, and string objects concatenate when using +, therefore it can create unwanted results. 
+
+                           * Java
+public class operators {
+    public static void main(String[] args)
+    {
+ 
+        int x = 5, y = 8;
+ 
+        // concatenates x and y as
+        // first x is added to "concatenation (x+y) = "
+        // producing "concatenation (x+y) = 5"
+        // and then 8 is further concatenated.
+        System.out.println("Concatenation (x+y)= "
+                           + x + y);
+ 
+        // addition of x and y
+        System.out.println("Addition (x+y) = "
+                           + (x + y));
+    }
+}
+	 
+Output: 
+Concatenation (x+y)= 58
+Addition (x+y) = 13
